@@ -1,5 +1,6 @@
+{% load static %}
 <link rel="stylesheet"
-href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+href="{% static 'bootstrap/css/bootstrap.min.css' %}">
 <div class="container my-3">
     <form method="post" class="post-form" action="{% url 'member:login' %}">
         {% csrf_token %}
