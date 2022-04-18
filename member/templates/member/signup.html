@@ -11,7 +11,7 @@ href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
             <span>또는 <a href="{% url 'member:login' %}">로그인 하세요.</a></span>
         </div>
     </div>
-<form method="post" class="post-form">
+<form method="post" class="post-form",action=member/login}>
     {% csrf_token %}
     {% include "form_errors.html" %}
     <div class="form-group">

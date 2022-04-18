@@ -13,7 +13,8 @@ def signup(request):
 
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('index')
+            # return redirect('login')
+            return redirect('http://127.0.0.1:8000/member/login/')
     else:
         form = UserForm()
     return render(request, 'member/signup.html', {'form': form})
