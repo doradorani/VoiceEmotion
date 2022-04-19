@@ -1,12 +1,15 @@
-from django.shortcuts import render,redirect
-from django.core.paginator import Paginator
-from django.views.decorators.csrf import csrf_exempt
-from .forms import BoardWriteForm
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator
+from django.shortcuts import redirect, render
+from django.views.decorators.csrf import csrf_exempt
+
+from .forms import BoardWriteForm
 from .models import *
+
+
 # Create your views here.
-def boardpaging(request) : #board 간략하게 paging
-    now_page = request.GET.get('page',1)
+def boardpaging(request):  # board 간략하게 paging
+    now_page = request.GET.get('page', 1)
     datas = Board.objects.order_by('-id')
 
     p = Paginator(datas, 10)
@@ -15,17 +18,15 @@ def boardpaging(request) : #board 간략하게 paging
     end_page = start_page + 9
     if end_page > p.num_pages:
         end_page = p.num_pages
-    context = {
-        'info': info,
-        'page_range': range(start_page, end_page + 1)
-    }
+    context = {'info': info, 'page_range': range(start_page, end_page + 1)}
     return render(request, 'board/board.html', context)
+
 
 @csrf_exempt
 @login_required
 def board_write(request):
     if request.method == 'POST':
-        form = BoardWriteForm(request.POST,request.FILES)
+        form = BoardWriteForm(request.POST, request.FILES)
         if form.is_valid():
             writing = form.save(commit=False)
             writing.user = request.user

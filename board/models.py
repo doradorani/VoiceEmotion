@@ -1,18 +1,23 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.timezone import now
-from django.contrib.auth import get_user_model
+
 # Create your models here.
 
 User = get_user_model()
 
+
 class Board(models.Model):
+    objects = None
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=256, null=False)
     content = models.TextField(null=False)
-    image = models.FileField(null = True, blank = True, upload_to='img/')
+    image = models.FileField(null=True, blank=True, upload_to='img/')
     date = models.DateTimeField(default=now, editable=False, null=False)
+
     class Meta:
         db_table = 'board'
+
 
 class Comment(models.Model):
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
