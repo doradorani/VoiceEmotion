@@ -25,6 +25,7 @@ def board_paging(request):
 @csrf_exempt
 @login_required
 def board_write(request):
+    """Write New Posts."""
     if request.method == 'POST':
         form = BoardWriteForm(request.POST, request.FILES)
         if form.is_valid():
