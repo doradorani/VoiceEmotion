@@ -42,6 +42,7 @@ def board_write(request):
 
 @csrf_exempt
 def board_detail(request, pk):
+    # TODO Documentation
     board = get_object_or_404(Board, pk=pk)
     comments = Comment.objects.filter(board=pk)
     if request.method == 'POST':
