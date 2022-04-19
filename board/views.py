@@ -7,7 +7,8 @@ from .forms import BoardWriteForm
 from .models import *
 
 
-def board_paging(request):  # board 간략하게 paging
+def board_paging(request):
+    """Simple Board Paging."""
     now_page = request.GET.get('page', 1)
     datas = Board.objects.order_by('-id')
 
