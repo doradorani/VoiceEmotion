@@ -7,8 +7,7 @@ from .forms import BoardWriteForm
 from .models import *
 
 
-# Create your views here.
-def boardpaging(request):  # board 간략하게 paging
+def board_paging(request):  # board 간략하게 paging
     now_page = request.GET.get('page', 1)
     datas = Board.objects.order_by('-id')
 
