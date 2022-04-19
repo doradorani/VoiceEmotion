@@ -1,18 +1,10 @@
-<<<<<<< HEAD
 from django.shortcuts import render,redirect, get_object_or_404
-=======
 from django.contrib.auth.decorators import login_required
->>>>>>> c809c3d6f650c65c1d98f74072c5d47e8f0dfc60
 from django.core.paginator import Paginator
 from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
-<<<<<<< HEAD
-from .forms import BoardWriteForm, CommentForm
 from django.contrib.auth.decorators import login_required
-=======
-
-from .forms import BoardWriteForm
->>>>>>> c809c3d6f650c65c1d98f74072c5d47e8f0dfc60
+from .forms import BoardWriteForm, CommentForm
 from .models import *
 
 
@@ -47,30 +39,7 @@ def board_write(request):
 
     context = {'form': form}
     return render(request, 'board/write.html', context)
-<<<<<<< HEAD
-@csrf_exempt
-def board_detail(request, pk):
-    board = get_object_or_404(Board, pk=pk)
-    comments = Comment.objects.filter(board = pk)
-    if request.method == 'POST':
-        form = CommentForm(request.POST)
-        if form.is_valid():
-            comment = form.save(commit=False)
-            comment.board = board
-            comment.author = request.user
-            comment.save()
-            return redirect('board:board_detail', pk)
-    else:
-        form = CommentForm()
     
-    context = {
-        'form' : form,
-        'board': board,
-        'comments':comments,
-        'pk':pk
-    }
-
-    return render(request, 'board/detail.html', context)
 @csrf_exempt
 def board_detail(request, pk):
     board = get_object_or_404(Board, pk=pk)
@@ -96,5 +65,3 @@ def board_detail(request, pk):
     board.save()
 
     return render(request, 'board/detail.html', context)
-=======
->>>>>>> c809c3d6f650c65c1d98f74072c5d47e8f0dfc60
