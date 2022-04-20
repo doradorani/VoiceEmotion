@@ -1,4 +1,4 @@
-{% extends "base.html"%} {% load static %} {% block content %}
+{% extends "base.html" %} {% load static %} {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/login.css' %}? after" type="text/css" />
 <header class="masthead" id="middlebackground">
@@ -20,33 +20,45 @@
       <input type="password" name="passwd" id="passwd"
       autocomplete="off" required>
       <label for="pw">비밀번호</label>
+      </div>
+      <div class="btn-area">
+        <button id="btn" type="submit">로그인</button>
+      </div>
+    </form>
+
+    <div class="caption">
+      <a href="">아이디와 비밀번호를 잊어버리셨나요?</a>
     </div>
-    <div class="btn-area">
-      <button id = "btn" type="submit">로그인</button>
-  </form>
-  <div class="caption">
-    <a href="">아이디와 비밀번호를 잊어버리셨나요?</a>
-  </div>
-</section>
 
-<script src="jquery-3.4.1.js">
-  let id = $('#id');
-  let pw = $('#pw');
-  let btn = $('#btn');
+  </section>
 
-  $(btn).on('click', function() {
-    if($(id).val()== ""){
-      $(id).next('label').addClass('warning');
-      setTimeout(function()) {
-        $('label').removeClass('warning');
-      },1500);
-    }
-    else if($(pw).val()== ""){
-      $(pw).next('label').addClass('warning');
-      setTimeout(function()) {
-        $('label').removeClass('warning');
-      },1500);
-    }
-  });
-</script>
+  <script src="https://releases.jquery.com/git/jquery-3.x-git.js">
+    let id = $('#id');
+    let pw = $('#pw');
+    let btn = $('#btn');
+
+    $(btn).on('click', function () {
+      if ($(id).val() == "") {
+        $(id).next('label').addClass('warning');
+        setTimeout(function ())
+        {
+          $('label').removeClass('warning');
+        }
+      ,
+        1500
+      )
+        ;
+      } else if ($(pw).val() == "") {
+        $(pw).next('label').addClass('warning');
+        setTimeout(function ())
+        {
+          $('label').removeClass('warning');
+        }
+      ,
+        1500
+      )
+        ;
+      }
+    });
+  </script>
 {% endblock %}

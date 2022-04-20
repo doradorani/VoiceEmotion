@@ -1,11 +1,10 @@
 from django.contrib.auth import authenticate, login
-from django.shortcuts import redirect, render
+from django.shortcuts import HttpResponse, redirect, render
 
 from .forms import UserForm
 
 
-# Create your views here.
-def signup(request):
+def signup(request) -> HttpResponse:
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
@@ -16,8 +15,7 @@ def signup(request):
 
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            # return redirect('login')
-            return redirect('http://127.0.0.1:8000/member/login/')
+            return redirect('/member/login/')
     else:
         form = UserForm()
     return render(request, 'member/signup.html', {'form': form})
