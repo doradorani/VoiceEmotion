@@ -21,10 +21,10 @@ body {
 .login-form {
   font-family: 'Jua', sans-serif;
   position: absolute;
-  width: 348.606px;
-  height: 374.352px;
-  left: 1394.427px;
-  top: 264.836px;
+  width: 349px;
+  height: 374px;
+  left: 1394px;
+  top: 265px;
   overflow: visible;
   z-index: 2;
 }
