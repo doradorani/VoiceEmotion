@@ -89,11 +89,12 @@ def comment(request, board_id):
 
     return render(request, 'board:detail', context)
 
+
 @csrf_exempt
 @login_required
 def board_edit(request, pk):
     board = Board.objects.get(id=pk)
-    if request.method == "POST":
+    if request.method == 'POST':
         board.title = request.POST['title']
         board.content = request.POST['content']
         board.save()
