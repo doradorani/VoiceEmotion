@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import BoardWriteForm, CommentForm
-from .models import *
+from .models import Board, Comment
 
 
 def board_paging(request) -> HttpResponse:
@@ -48,7 +48,7 @@ def board_write(request) -> HttpResponse:
 
 @csrf_exempt
 def board_detail(request, pk) -> HttpResponse:
-    # TODO Documentation
+    """TODO board detail???"""
     board = get_object_or_404(Board, pk=pk)
     comments = Comment.objects.filter(board=pk)
 
@@ -56,17 +56,52 @@ def board_detail(request, pk) -> HttpResponse:
         form = CommentForm(request.POST)
 
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.board = board
-            comment.author = request.user
-            comment.save()
+            _comment = form.save(commit=False)
+            _comment.board = board
+            _comment.author = request.user
+            _comment.save()
 
             return redirect('board:board_detail', pk)
     else:
         form = CommentForm()
 
     context = {'form': form, 'board': board, 'comments': comments, 'pk': pk}
-    board.hit_cnt += 1
     board.save()
 
     return render(request, 'board/detail.html', context)
+
+
+@csrf_exempt
+@login_required
+def comment(request, board_id) -> HttpResponse:
+    """Excpect as Comment"""
+    board = get_object_or_404(Board, pk=board_id)
+    if request.method == 'POST':
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            _comment = form.save(commit=False)
+            _comment.board = board
+            _comment.save()
+            return redirect('board:detail', board_id=board_id)
+    else:
+        form = CommentForm()
+
+    context = {'board': board, 'form': form}
+
+    return render(request, 'board:detail', context)
+
+
+@csrf_exempt
+@login_required
+def board_edit(request, pk) -> HttpResponse:
+    # NOTE Better move to top. This function is seprate by `comment()`
+    """TODO Expect as Edit private board"""
+    board = Board.objects.get(id=pk)
+    if request.method == 'POST':
+        board.title = request.POST['title']
+        board.content = request.POST['content']
+        board.save()
+        return redirect('board:board')
+    else:
+        boardForm = BoardWriteForm
+        return render(request, 'board/edit.html', {'boardForm': boardForm})
