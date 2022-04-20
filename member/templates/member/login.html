@@ -37,27 +37,18 @@
     let pw = $('#pw');
     let btn = $('#btn');
 
-    $(btn).on('click', function () {
+    $(btn).on('click', () => {
       if ($(id).val() == "") {
         $(id).next('label').addClass('warning');
-        setTimeout(function ())
-        {
+        setTimeout(() => {
           $('label').removeClass('warning');
-        }
-      ,
-        1500
-      )
-        ;
-      } else if ($(pw).val() == "") {
+        }), 1500
+      }
+      else if ($(pw).val() == "") {
         $(pw).next('label').addClass('warning');
-        setTimeout(function ())
-        {
+        setTimeout(() => {
           $('label').removeClass('warning');
-        }
-      ,
-        1500
-      )
-        ;
+        }), 1500
       }
     });
   </script>
