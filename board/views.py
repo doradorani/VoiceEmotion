@@ -73,7 +73,7 @@ def board_detail(request, pk) -> HttpResponse:
 
 @csrf_exempt
 @login_required
-def comment(request, board_id):
+def comment(request, board_id) -> HttpResponse:
     board = get_object_or_404(Board, pk=board_id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -92,7 +92,7 @@ def comment(request, board_id):
 
 @csrf_exempt
 @login_required
-def board_edit(request, pk):
+def board_edit(request, pk) -> HttpResponse:
     board = Board.objects.get(id=pk)
     if request.method == 'POST':
         board.title = request.POST['title']
