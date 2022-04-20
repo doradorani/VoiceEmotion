@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
-a{text-decoration: none !important;}
 
 .footer-basic {
     padding: 0px;
@@ -294,38 +293,32 @@ a{text-decoration: none !important;}
     list-style: none;
     font-family: 'Jua', sans-serif;
     text-decoration: none;
-    position: relative;
-    left: 54rem;
 }
 #nav-item{
     display: flex;
     list-style: none;
+    text-decoration: none;
     position: absolute;
-    right: 0px;
+    left: 1278px;
+    top: 4px;
     font-size: 21px;
-    padding-top: 8px;
 }
 #navcozl-1{
     display:flex;
     font-family: 'Jua', sans-serif;
     text-decoration: none;
-    position: relative;
-    width: 100%;
 }
 
 #nav-container{
     display: flex;
     align-items: center;
     text-decoration: none;
-    width: 100%;
 }
 
 body{
     background: #8CA8FA 0% 0% no-repeat padding-box;
     background-size: cover;
     margin: 0px;
-    width: 1920px;
-    overflow-x: hidden;
 }
 
 #nav-logo{
@@ -338,28 +331,44 @@ body{
 
 
 #navbar-nav-main{
-    position: relative;
+    position: absolute;
+    top: 34px;
+    left: 1124px;
+    width: 83px;
+    height: 37px;
     font-size: 32px;
+    text-decoration-line: none;
 }
 
 #navbar-nav-service{
-    position: relative;
+    position: absolute;
+    top: 34px;
+    left: 1239px;
+    width: 83px;
+    height: 37px;
     font-size: 32px;
 }
 
 
 #navbar-nav-notice{
-    position: relative;
+    position: absolute;
+    top: 34px;
+    left: 1385px;
+    width: 83px;
+    height: 37px;
     font-size: 32px;
 }
 
 #navbar-nav-mypage{
-    position: relative;
+    position: absolute;
+    top: 34px;
+    left: 1518px;
+    width: 83px;
+    height: 37px;
     font-size: 32px;
 }
 
-#nav-bar{
-    width: 100%;
-}
 
 
+
+.

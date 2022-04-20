@@ -1,3 +1,9 @@
-.tbody{
-    
+.container{
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 0 10px;
+}
+
+.tr{
+    background: #fff;
 }
