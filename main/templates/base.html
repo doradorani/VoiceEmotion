@@ -8,7 +8,7 @@
   </head>
   <body>
     <!-- Start: Navigation Clean -->
-    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean" id="nav-bar">
       <div class="container" id='nav-container'>
         <a href="{% url 'main:main' %}"><img id="nav-logo" src='{% static "\logo.png" %}'></a>
         <div class="collapse navbar-collapse" id="navcozl-1">
@@ -26,17 +26,16 @@
                     <a class="nav-link"  href="{#}">Notice</a>
                   </li>
                   <li class="nav-item" id="navbar-nav-mypage">
-                    <a class="nav-link"  href="{#}">My Page</a>
+                    <a class="nav-link"  href="{#}">MyPage</a>
                   </li>
                 </ul>
               </div>
             </div>
           </nav>
-          <ul class="navbar-nav ms-auto" id="nav-item">
+          <ul class="navbar-nav" id="nav-item">
             <li class="nav-item">
             </li>
               {% if user.is_authenticated %}
-              <li class="nav-item"><a class="nav-link">{{user.username}}님</a></li>
               <li class="nav-item"><a class="nav-link" href="{% url 'member:logout' %}">logout</a></li>
               {% else %}
               <li class="nav-item"><a class="nav-link" href="{% url 'member:login' %}">login</a></li>
