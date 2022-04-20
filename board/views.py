@@ -48,7 +48,7 @@ def board_write(request) -> HttpResponse:
 
 @csrf_exempt
 def board_detail(request, pk) -> HttpResponse:
-    # TODO Documentation
+    """TODO board detail???"""
     board = get_object_or_404(Board, pk=pk)
     comments = Comment.objects.filter(board=pk)
 
@@ -74,6 +74,7 @@ def board_detail(request, pk) -> HttpResponse:
 @csrf_exempt
 @login_required
 def comment(request, board_id) -> HttpResponse:
+    """Excpect as Comment"""
     board = get_object_or_404(Board, pk=board_id)
     if request.method == 'POST':
         form = CommentForm(request.POST)
@@ -92,7 +93,8 @@ def comment(request, board_id) -> HttpResponse:
 
 @csrf_exempt
 @login_required
-def board_edit(request, pk) -> HttpResponse:
+def board_edit(request, pk) -> HttpResponse: # NOTE Better move to top. This function is seprate by `comment()`
+    """TODO Expect as Edit private board"""
     board = Board.objects.get(id=pk)
     if request.method == 'POST':
         board.title = request.POST['title']
