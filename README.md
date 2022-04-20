@@ -1,5 +1,13 @@
 # VoiceEmotion
 
+VSCODE 를 사용할 경우 
+
+https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+
+코드스타일 통일을 위해 위 플러그인을 설치해 주세요.
+
+---
+
 사용자의 기분에 따라 알맞는 영화 추천 시스템
 
 ---

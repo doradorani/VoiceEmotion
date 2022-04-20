@@ -1,102 +1,102 @@
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
 
-.masthead{
-    display: flex;
-    width: 1920px;
-    height: auto;
+.masthead {
+  display: flex;
+  width: 1920px;
+  height: auto;
 }
 
-body{
-    background: #8CA8FA 0% 0% no-repeat padding-box;
-    background-size: cover;
+body {
+  background: #8CA8FA 0% 0% no-repeat padding-box;
+  background-size: cover;
 }
 
-#n_1{
-    left: 970px;
-    top: 328px;
-    position: absolute;
-    overflow: visible;
-    width: 914px;
-    white-space: nowrap;
-    text-align: right;
-    font-family: 'Jua', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 124px;
-    color: rgba(33,30,63,1);
+#n_1 {
+  left: 970px;
+  top: 328px;
+  position: absolute;
+  overflow: visible;
+  width: 914px;
+  white-space: nowrap;
+  text-align: right;
+  font-family: 'Jua', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 124px;
+  color: rgba(33, 30, 63, 1);
 }
 
-#n_2{
-    left: 1333px;
-    top: 463px;
-    position: absolute;
-    overflow: visible;
-    width: 548px;
-    white-space: nowrap;
-    text-align: right;
-    font-family: 'Jua', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 45px;
-    color: rgba(46,45,105,1);
+#n_2 {
+  left: 1333px;
+  top: 463px;
+  position: absolute;
+  overflow: visible;
+  width: 548px;
+  white-space: nowrap;
+  text-align: right;
+  font-family: 'Jua', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 45px;
+  color: rgba(46, 45, 105, 1);
 }
 
-#m_char{
-    position: absolute;
-    display: flex;
-    top: 462px;
-    left: 1458px;
-    width: 66px;
-    height: 49px;
+#m_char {
+  position: absolute;
+  display: flex;
+  top: 462px;
+  left: 1458px;
+  width: 66px;
+  height: 49px;
 }
 
-#n_3{
-    left: 1714px;
-    top: 520px;
-    position: absolute;
-    overflow: visible;
-    width: 166px;
-    white-space: nowrap;
-    text-align: right;
-    font-family: 'Jua', sans-serif;
-    font-style: normal;
-    font-weight: bold;
-    font-size: 20px;
-    color: rgba(141,166,248,1);
+#n_3 {
+  left: 1714px;
+  top: 520px;
+  position: absolute;
+  overflow: visible;
+  width: 166px;
+  white-space: nowrap;
+  text-align: right;
+  font-family: 'Jua', sans-serif;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 20px;
+  color: rgba(141, 166, 248, 1);
 }
 
-#watchingTV{
-    width: 1920px;
-    height: auto;
+#watchingTV {
+  width: 1920px;
+  height: auto;
 }
 
-#NETFLIXlogo{
-    position: absolute;
-    top: 1178px;
-    left: 665px;
-    width: 295px;
-    height: 92px;
-    display: flex;
+#NETFLIXlogo {
+  position: absolute;
+  top: 1178px;
+  left: 665px;
+  width: 295px;
+  height: 92px;
+  display: flex;
 }
 
-#t_1{
-    position: absolute;
-    top: 1165px;
-    left: 974px;
-    width: 292px;
-    height: 117px;
-    font-family: 'Jua', sans-serif;
-    font-style: normal;
-    font-size: 100px;
+#t_1 {
+  position: absolute;
+  top: 1165px;
+  left: 974px;
+  width: 292px;
+  height: 117px;
+  font-family: 'Jua', sans-serif;
+  font-style: normal;
+  font-size: 100px;
 }
 
-#t_2{
-    top: 1353px;
-    left: 121px;
-    width: 290px;
-    height: 388px;
+#t_2 {
+  top: 1353px;
+  left: 121px;
+  width: 290px;
+  height: 388px;
 
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    opacity: 1;
+  background: #FFFFFF 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
 }

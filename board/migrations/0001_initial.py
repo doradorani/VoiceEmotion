@@ -21,12 +21,15 @@ class Migration(migrations.Migration):
                 (
                     'id',
                     models.BigAutoField(
-                        auto_created=True, primary_key=True, serialize=False, verbose_name='ID'
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
                     ),
                 ),
                 ('title', models.CharField(max_length=256)),
                 ('content', models.TextField()),
-                ('image', models.FileField(blank=True, null=True, upload_to='img/')),
+                ('image', models.FileField(blank=True, null=True, upload_to='img/'),),
                 (
                     'date',
                     models.DateTimeField(default=django.utils.timezone.now, editable=False),
@@ -47,7 +50,10 @@ class Migration(migrations.Migration):
                 (
                     'id',
                     models.BigAutoField(
-                        auto_created=True, primary_key=True, serialize=False, verbose_name='ID'
+                        auto_created=True,
+                        primary_key=True,
+                        serialize=False,
+                        verbose_name='ID',
                     ),
                 ),
                 (
@@ -58,7 +64,7 @@ class Migration(migrations.Migration):
                 (
                     'board_id',
                     models.ForeignKey(
-                        on_delete=django.db.models.deletion.CASCADE, to='board.board'
+                        on_delete=django.db.models.deletion.CASCADE, to='board.board',
                     ),
                 ),
             ],
