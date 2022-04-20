@@ -66,7 +66,23 @@ def board_detail(request, pk) -> HttpResponse:
         form = CommentForm()
 
     context = {'form': form, 'board': board, 'comments': comments, 'pk': pk}
-    board.hit_cnt += 1
     board.save()
 
     return render(request, 'board/detail.html', context)
+
+@csrf_exempt
+@login_required
+def comment(request, board_id):
+    board = get_object_or_404(Board, pk=board_id)
+    if request.method == "POST":
+        form = CommentForm(request.POST)
+        if form.is_valid():
+            comment = form.save(commit=False)
+            comment.board = board
+            comment.save()
+            return redirect('board:detail', board_id=board_id)
+    else:
+        form = CommentForm()
+
+    context = {'board': board, 'form': form}
+    return render(request, 'board:detail', context)
