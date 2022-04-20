@@ -45,18 +45,6 @@
           </ul>
         </div>
       </nav>
-      <ul class="navbar-nav ms-auto" id="nav-item">
-        <li class="nav-item">
-        </li>
-        {% if user.is_authenticated %}
-          <li class="nav-item"><a class="nav-link">{{ user.username }}님</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'member:logout' %}">logout</a></li>
-        {% else %}
-          <li class="nav-item"><a class="nav-link" href="{% url 'member:login' %}">login</a></li>
-          <li class="nav-item"><a class="nav-link" href="{% url 'member:signup' %}">signup</a></li>
-        {% endif %}
-        </li>
-      </ul>
     </div>
   </div>
 </nav>
