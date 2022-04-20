@@ -93,7 +93,8 @@ def comment(request, board_id) -> HttpResponse:
 
 @csrf_exempt
 @login_required
-def board_edit(request, pk) -> HttpResponse: # NOTE Better move to top. This function is seprate by `comment()`
+def board_edit(request, pk) -> HttpResponse:
+    # NOTE Better move to top. This function is seprate by `comment()`
     """TODO Expect as Edit private board"""
     board = Board.objects.get(id=pk)
     if request.method == 'POST':
