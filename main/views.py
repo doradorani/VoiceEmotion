@@ -3,4 +3,4 @@ from django.shortcuts import render
 
 
 def main(request) -> HttpResponse:
-    return render(request, 'testing.html', {})
+    return render(request, 'base.html', {})
