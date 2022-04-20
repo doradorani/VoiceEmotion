@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import BoardWriteForm, CommentForm
-from .models import *
+from .models import Board, Comment
 
 
 def board_paging(request) -> HttpResponse:
