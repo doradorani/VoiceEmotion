@@ -6,7 +6,7 @@ from django.views.decorators.csrf import csrf_exempt
 from sqlalchemy import null
 
 from .forms import BoardWriteForm, CommentForm
-from .models import *
+from .models import Board, Comment
 
 
 def board_paging(request) -> HttpResponse:
@@ -57,10 +57,10 @@ def board_detail(request, pk) -> HttpResponse:
         form = CommentForm(request.POST)
 
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.board = board
-            comment.author = request.user
-            comment.save()
+            _comment = form.save(commit=False)
+            _comment.board = board
+            _comment.author = request.user
+            _comment.save()
 
             return redirect('board:board_detail', pk)
     else:
@@ -79,14 +79,15 @@ def comment(request, board_id):
     if request.method == 'POST':
         form = CommentForm(request.POST)
         if form.is_valid():
-            comment = form.save(commit=False)
-            comment.board = board
-            comment.save()
+            _comment = form.save(commit=False)
+            _comment.board = board
+            _comment.save()
             return redirect('board:detail', board_id=board_id)
     else:
         form = CommentForm()
 
     context = {'board': board, 'form': form}
+
     return render(request, 'board:detail', context)
 
 @csrf_exempt
