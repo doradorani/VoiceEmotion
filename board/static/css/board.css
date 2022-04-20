@@ -5,5 +5,8 @@
 }
 
 .tr{
-    background: #fff;
+    box-sizing: border-box;
+    background: #5D6A8FC2;
+    width: 1311px;
+    display: relative;
 }
