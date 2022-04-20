@@ -1,35 +1,49 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="ko">
-<head>
-  <meta charset="UTF-8">
-  <title>Document</title>
-  <link rel="stylesheet" href="{% static 'css/base.css' %}? after" type="text/css"/>
-</head>
-<body>
-<!-- Start: Navigation Clean -->
-<nav class="navbar navbar-light navbar-expand-lg navigation-clean">
-  <div class="container" id='nav-container'>
-    <a href="/"><img class="nav-logo" src='{% static "\css\logo.png" %}'></a>
-    <div class="collapse navbar-collapse" id="navcozl-1">
-      <nav class="navbar navbar-light navbar-expand-md">
-        <div class="container-fluid">
-          <div class="collapse navbar-collapse" id="navcol-2">
-            <ul class="navbar-nav" id="navbar-nav">
-              <li class="nav-item">
-                <a class="nav-link" href="{#}">Home</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{#}">Service</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{#}">Notice</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{#}">My Page</a>
-              </li>
-            </ul>
-          </div>
+  <head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <link rel="stylesheet" href="{% static 'css/base.css' %}? after" type="text/css" />
+  </head>
+  <body>
+    <!-- Start: Navigation Clean -->
+    <nav class="navbar navbar-light navbar-expand-lg navigation-clean">
+      <div class="container" id='nav-container'>
+        <a href="{% url 'main:main' %}"><img id="nav-logo" src='{% static "\logo.png" %}'></a>
+        <div class="collapse navbar-collapse" id="navcozl-1">
+          <nav class="navbar navbar-light navbar-expand-md">
+            <div class="container-fluid">
+              <div class="collapse navbar-collapse" id="navcol-2">
+                <ul class="navbar-nav" id="navbar-nav">
+                  <li class="nav-item" id="navbar-nav-main">
+                    <a class="nav-link" href="{% url 'main:main' %}">Home</a>
+                  </li>
+                  <li class="nav-item" id="navbar-nav-service">
+                    <a class="nav-link"  href="{#}">Service</a>
+                  </li>
+                  <li class="nav-item" id="navbar-nav-notice">
+                    <a class="nav-link"  href="{#}">Notice</a>
+                  </li>
+                  <li class="nav-item" id="navbar-nav-mypage">
+                    <a class="nav-link"  href="{#}">My Page</a>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </nav>
+          <ul class="navbar-nav ms-auto" id="nav-item">
+            <li class="nav-item">
+            </li>
+              {% if user.is_authenticated %}
+              <li class="nav-item"><a class="nav-link">{{user.username}}님</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'member:logout' %}">logout</a></li>
+              {% else %}
+              <li class="nav-item"><a class="nav-link" href="{% url 'member:login' %}">login</a></li>
+              <li class="nav-item"><a class="nav-link" href="{% url 'member:signup' %}">signup</a></li>
+              {% endif%}
+            </li>
+          </ul>
         </div>
       </nav>
       <ul class="navbar-nav ms-auto" id="nav-item">

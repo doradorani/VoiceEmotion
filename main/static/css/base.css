@@ -5,6 +5,7 @@
     padding: 0px;
     background-color: #9CB6FF;
     color: #555353;
+    position: relative;
 }
 
 .footer-basic ul {
@@ -126,7 +127,7 @@
 
 .navigation-clean,
 .navigation-clean-search {
-    background: #9CB6FF;
+    background: #8CA8FA 0% 0% no-repeat padding-box;
     padding-top: .75rem;
     padding-bottom: .75rem;
     color: #333;
@@ -181,7 +182,7 @@
 
 .navigation-clean-search.navbar-light .navbar-nav .nav-link,
 .navigation-clean.navbar-light .navbar-nav .nav-link {
-    color: #465765
+    color: #211E3F;
 }
 
 .navigation-clean-search.navbar-light .navbar-nav .nav-link:focus,
@@ -313,5 +314,51 @@
 body{
     background: #8CA8FA 0% 0% no-repeat padding-box;
     background-size: cover;
+    margin: 0px;
 }
 
+#nav-logo{
+    position: relative;
+    width: 316px;
+    height: 65px;
+    left: 81px;
+    top: 8px;
+}
+
+
+#navbar-nav-main{
+    position: absolute;
+    top: 34px;
+    left: 1124px;
+    width: 83px;
+    height: 37px;
+    font-size: 32px;
+}
+
+#navbar-nav-service{
+    position: absolute;
+    top: 34px;
+    left: 1253px;
+    width: 83px;
+    height: 37px;
+    font-size: 32px;
+}
+
+
+#navbar-nav-notice{
+    position: absolute;
+    top: 34px;
+    left: 1382px;
+    width: 83px;
+    height: 37px;
+    font-size: 32px;
+}
+
+#navbar-nav-mypage{
+    position: absolute;
+    top: 34px;
+    left: 1511px;
+    width: 83px;
+    height: 37px;
+    font-size: 32px;
+}

@@ -134,6 +134,7 @@ body {
 }
 
 
-#watchingTV {
-  width: 100%;
+#watchingTV{
+    width: 1920px;
+    height: auto;
 }
