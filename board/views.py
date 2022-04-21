@@ -131,3 +131,23 @@ def notice_detail(request, pk):
     }
 
     return render(request, 'board/notice_detail.html', context)
+
+@login_required
+def mypage(request):
+    now_page = request.GET.get('page', 1)
+    user = request.user
+    datas = Board.objects.filter(user_id = user).order_by('-id')
+
+    paginator = Paginator(datas, 10)
+    info = paginator.get_page(now_page)
+    start_page = (int(now_page)-1) // 10 * 10 + 1
+    end_page = start_page + 1
+
+    if end_page > paginator.num_pages:
+        end_page = paginator.num_pages
+
+    context = {
+        'info': info,
+        'page_range': range(start_page, end_page + 1)
+    }
+    return render(request, 'board/mypage.html', context)
