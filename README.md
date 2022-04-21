@@ -1,6 +1,6 @@
 # VoiceEmotion
 
-VSCODE 를 사용할 경우 
+VSCODE 를 사용할 경우
 
 https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
 
@@ -30,8 +30,8 @@ MFCC를 이용하여 사용자의 기분을 파악한 후 현재 기분을 풀�
 
 ## Contributors
 
-| 이름                                       | 담당 직무                                  |
-|------------------------------------------|----------------------------------------|
+| 이름                                        | 담당 직무                              |
+| ------------------------------------------- | -------------------------------------- |
 | [권윤경](https://github.com/yoonkyeongkwon) | ML / AI Modeling                       |
 | [김란희](https://github.com/doradorani)     | Frontend                               |
 | [배성훈](https://github.com/fish895623)     | Server Management, Additional Manpower |

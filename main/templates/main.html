@@ -1,27 +1,26 @@
 {% extends "base.html"%} {% load static %} {% block content %}
-<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+<link rel="stylesheet" type="text/css" href="slick/slick.css" />
 <link rel="stylesheet" href="{% static 'css/main.css' %}? after" type="text/css" />
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
 <script type="text/javascript" src="http://cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
-
 <div class="wrapper">
   <header class="masthead">
     <div class="container">
-      <img id="watchingTV" src='{% static "\background.jpg" %}' alt="">
+      <img id="watchingTV" src='{% static "\background.jpg" %}' alt="" />
     </div>
   </header>
   <section>
-    <div class='middlebackground-form'>
+    <div class="middlebackground-form">
       <div id="n_1">
         <span>목소리만 들려줘!</span>
-        <br>
+        <br />
       </div>
       <div id="n_2">
         <span>니모션 　 이 딱! 골라드립니다</span>
       </div>
       <div id="m_char">
-        <img src='{% static "\main_character.png" %}'>
+        <img src='{% static "\main_character.png" %}' />
       </div>
       <div id="n_3">
         <span>#니모션영화추천해줘</span>
@@ -29,68 +28,68 @@
     </div>
     <div class="TOP10-form">
       <div id="NETFLIXlogo">
-        <img src='{% static "\NETFLIXlogo.png" %}'>
+        <img src='{% static "\NETFLIXlogo.png" %}' />
       </div>
       <div id="t_1">
         <span>TOP10</span>
       </div>
       <div class="scrollcard">
         <div class="card">
-          <img src='{% static "\1. The In Between.jpg" %}' alt="">
+          <img src='{% static "\1. The In Between.jpg" %}' alt="" />
           <h1>The In Between</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 5.8/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\3. Yaksha Ruthless Operations.jpg" %}' alt="">
+          <img src='{% static "\3. Yaksha Ruthless Operations.jpg" %}' alt="" />
           <h1>FURIOZA</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 6.6/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\6. Metal Lords.jpg" %}' alt="">
+          <img src='{% static "\6. Metal Lords.jpg" %}' alt="" />
           <h1>FURIOZA</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 6.6/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\1. The In Between.jpg" %}' alt="">
+          <img src='{% static "\1. The In Between.jpg" %}' alt="" />
           <h1>The In Between</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 5.8/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\3. Yaksha Ruthless Operations.jpg" %}' alt="">
+          <img src='{% static "\3. Yaksha Ruthless Operations.jpg" %}' alt="" />
           <h1>FURIOZA</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 6.6/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\6. Metal Lords.jpg" %}' alt="">
+          <img src='{% static "\6. Metal Lords.jpg" %}' alt="" />
           <h1>FURIOZA</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 6.6/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\1. The In Between.jpg" %}' alt="">
+          <img src='{% static "\1. The In Between.jpg" %}' alt="" />
           <h1>The In Between</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 5.8/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\3. Yaksha Ruthless Operations.jpg" %}' alt="">
+          <img src='{% static "\3. Yaksha Ruthless Operations.jpg" %}' alt="" />
           <h1>FURIOZA</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 6.6/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\6. Metal Lords.jpg" %}' alt="">
+          <img src='{% static "\6. Metal Lords.jpg" %}' alt="" />
           <h1>FURIOZA</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 6.6/10</p>
         </div>
         <div class="card">
-          <img src='{% static "\6. Metal Lords.jpg" %}' alt="">
+          <img src='{% static "\6. Metal Lords.jpg" %}' alt="" />
           <h1>FURIOZA</h1>
           <p>Rotten Toamto: -</p>
           <p>IMDB 평점: 6.6/10</p>
@@ -100,10 +99,10 @@
   </section>
 </div>
 <script>
-  $(function(){
-    $('.scrollcard').slick({
+  $(function () {
+    $(".scrollcard").slick({
       centerMode: true,
-      centerPadding: '40px',
+      centerPadding: "40px",
       slidesToShow: 3,
       responsive: [
         {
@@ -111,20 +110,20 @@
           settings: {
             arrows: false,
             centerMode: true,
-            centerPadding: '30px',
-            slidesToShow: 4
-          }
+            centerPadding: "30px",
+            slidesToShow: 4,
+          },
         },
         {
           breakpoint: 480,
           settings: {
             arrows: false,
             centerMode: true,
-            centerPadding: '10px',
-            slidesToShow: 1
-          }
-        }
-      ]
+            centerPadding: "10px",
+            slidesToShow: 1,
+          },
+        },
+      ],
     });
   });
 </script>
