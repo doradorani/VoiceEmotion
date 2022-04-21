@@ -13,14 +13,14 @@
           </tr>
         </thead>
         <tbody>
-          {% comment %} {% for data in board %} {% endcomment %}
+          {% for data in info %}
           <tr>
-            <td>1</td>
-            <td><a href="../board/detail/{{ data.id }}">로그인이 안돼요</a></td>
-            <td>2022.04.17</td>
-            <td>no</td>
+            <td>{{ data.id }}</td>
+            <td><a href="../board/detail/{{ data.id }}">{{ data.title}}</a></td>
+            <td>{{ data.date}}</td>
+            <td>{{ data.response}}</td>
           </tr>
-          {% comment %} {% endfor %} {% endcomment %}
+          {% endfor %}
         </tbody>
       </table>
     </div>
