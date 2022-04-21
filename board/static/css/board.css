@@ -1,12 +1,12 @@
-.container{
-    height: auto;
-    min-height: 100%;
-    padding-bottom: 0 10px;
+.container {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 0 10px;
 }
 
-.tr{
-    box-sizing: border-box;
-    background: #5D6A8FC2;
-    width: 1311px;
-    display: relative;
+.tr {
+  box-sizing: border-box;
+  background: #5d6a8fc2;
+  width: 1311px;
+  display: relative;
 }
