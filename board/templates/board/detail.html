@@ -34,7 +34,7 @@
               <div class="card-text" style="white-space: pre-line">{{ board.content }}</div>
             </div>
           </div>
-          <a href="../edit/{{ board.id }}" class="btn btn-primary" type="submit">수정</a>
+          <a href="{% url 'board:edit' board.id %}" class="btn btn-primary" type="submit">수정</a>
           <hr />
           <div style="text-align: center">
             <p><b>댓글</b></p>

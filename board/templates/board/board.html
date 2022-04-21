@@ -16,7 +16,7 @@
           {% for data in info %}
           <tr>
             <td>{{ data.id }}</td>
-            <td><a href="../board/detail/{{ data.id }}">{{ data.title}}</a></td>
+            <td><a href="{% url 'board:board_detail' data.id %}">{{ data.title}}</a></td>
             <td>{{ data.date}}</td>
             <td>{{ data.response}}</td>
           </tr>
