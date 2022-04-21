@@ -15,7 +15,7 @@
         {% for data in info %}
         <tr>
           <td>{{ data.id }}</td>
-          <td><a href="../detail/{{ data.id }}">{{ data.title }}</a></td>
+          <td><a href="../notice_detail/{{ data.id }}">{{ data.title }}</a></td>
           <td>{{ data.user }}</td>
           <td>{{ data.date }}</td>
         </tr>
@@ -36,7 +36,6 @@
       <li class="page-item">
         <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
       </li>
-      <a href="{% url 'board:write' %}" class="btn btn-primary" type="button">글쓰기</a>
     </ul>
   </nav>
 </div>

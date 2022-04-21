@@ -5,7 +5,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 
 from .forms import BoardWriteForm, CommentForm
-from .models import Board, Comment
+from .models import Board, Comment, Notice
 
 
 def board_paging(request) -> HttpResponse:
@@ -105,3 +105,29 @@ def board_edit(request, pk) -> HttpResponse:
     else:
         boardForm = BoardWriteForm
         return render(request, 'board/edit.html', {'boardForm': boardForm})
+
+@csrf_exempt    
+def notice_boardpaging(request):
+    now_page = request.GET.get('page',1)
+    datas =  Notice.objects.all().order_by('-id')
+
+    p = Paginator(datas,10)
+    info = p.get_page(now_page)
+    start_page = (int(now_page) - 1) // 10 * 10 + 1
+    end_page = start_page + 9
+    if end_page > p.num_pages:
+        end_page = p.num_pages
+    context = {
+        'info' : info,
+        'page_range' : range(start_page, end_page + 1)
+    }
+    return render(request, 'board/notice.html', context)
+
+@csrf_exempt
+def notice_detail(request, pk):
+    notice = get_object_or_404(Notice, pk=pk)
+    context = {
+        'notice': notice,
+    }
+
+    return render(request, 'board/notice_detail.html', context)
