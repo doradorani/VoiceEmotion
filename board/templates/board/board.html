@@ -1,46 +1,46 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <link rel="stylesheet" href="{% static 'css/board.css' %}? after" type="text/css" />
-<div class="container">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>번호</th>
-          <th>제목</th>
-          <th>작성일자</th>
-          <th>답변 여부</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for data in Board %}
-        <tr>
-          <td>{{ data.id }}</td>
-          <!--             <td><a href="../detail/{{ data.id }}">{{ data.title }}</a></td> -->
-          <td><a href="../board/detail/{{ data.id }}">{{ data.title }}</a></td>
-          <td>{{ data.user }}</td>
-          <td>{{ data.hit_cnt }}</td>
-          <td>{{ data.date }}</td>
-        </tr>
+<div class="wrapper">
+  <div class="wrapper-box">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>제목</th>
+            <th>작성일자</th>
+            <th>답변 여부</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% comment %} {% for data in board %} {% endcomment %}
+          <tr>
+            <td>1</td>
+            <td><a href="../board/detail/{{ data.id }}">로그인이 안돼요</a></td>
+            <td>2022.04.17</td>
+            <td>no</td>
+          </tr>
+          {% comment %} {% endfor %} {% endcomment %}
+        </tbody>
+      </table>
+    </div>
+    <nav
+      class="d-sm-flex d-md-flex d-lg-flex justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+        </li>
+        {% for i in page_range %}
+        <li class="page-item">
+          <a class="page-link" href='{% url "board:board" %}?page={{ i }}'>{{ i }}</a>
+        </li>
         {% endfor %}
-      </tbody>
-    </table>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
+        </li>
+        <a href="{% url 'board:write' %}" class="btn btn-primary" type="button">글쓰기</a>
+      </ul>
+    </nav>
   </div>
-  <nav
-    class="d-sm-flex d-md-flex d-lg-flex justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
-      </li>
-      {% for i in page_range %}
-      <li class="page-item">
-        <a class="page-link" href='{% url "board:board" %}?page={{ i }}'>{{ i }}</a>
-      </li>
-      {% endfor %}
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
-      </li>
-      <a href="{% url 'board:write' %}" class="btn btn-primary" type="button">글쓰기</a>
-    </ul>
-  </nav>
 </div>
 {% endblock %}
