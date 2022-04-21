@@ -1,97 +1,95 @@
+<<<<<<< HEAD
 @import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+=======
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+>>>>>>> 1f41d877e6f84a60d18e344faf85828dfc86dd25
 
-
-.wrapper{
-    width: 1920px;
-    height: auto;
-    min-height: 100%;
-    padding-bottom: 0 10px;
+.wrapper {
+  width: 1920px;
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 0 10px;
 }
 
-.wrapper-box{
-    width: 1554px;
-    height: 780px;
-    top: 186px;
-    left: 183px;
-    border-radius: 59px 59px 26px 26px;
-    opacity: 1;
-    background: #F6F7FF;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
+.wrapper-box {
+  width: 1554px;
+  height: 780px;
+  top: 186px;
+  left: 183px;
+  border-radius: 59px 59px 26px 26px;
+  opacity: 1;
+  background: #f6f7ff;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 20px;
 }
 
-
-
-.table{
-    width: 1310px;
-    display: inline-table;
-    margin-left: 122px;
-    margin-top: 3rem; 
-    border-spacing: 0; 
+.table {
+  width: 1310px;
+  display: inline-table;
+  margin-left: 122px;
+  margin-top: 3rem;
+  border-spacing: 0;
 }
 
-.table > thead{
-    background: #5D6A8FC2;
-    height: 45px;
-    border-radius: 15px 15px 0px 0px;
+.table > thead {
+  background: #5d6a8fc2;
+  height: 45px;
+  border-radius: 15px 15px 0px 0px;
 }
 
-.table > thead > tr > th{
-    color: #F6F7FF;
-    font-family: 'Jua', sans-serif;
-    font-weight: 100 !important;
-    font-size: 20px; 
-    text-align: center;
+.table > thead > tr > th {
+  color: #f6f7ff;
+  font-family: "Jua", sans-serif;
+  font-weight: 100 !important;
+  font-size: 20px;
+  text-align: center;
 }
 
-.table > thead > tr > th:nth-child(4){
-    width: 150px;
+.table > thead > tr > th:nth-child(4) {
+  width: 150px;
 }
 
-.table > thead > tr > th:nth-child(3){
-    width: 150px;
+.table > thead > tr > th:nth-child(3) {
+  width: 150px;
 }
 
-.table > thead > tr > th:nth-child(2){
-    width: 1000px;
+.table > thead > tr > th:nth-child(2) {
+  width: 1000px;
 }
 
-.table > thead > tr > th:nth-child(1){
-    width: 100px;
+.table > thead > tr > th:nth-child(1) {
+  width: 100px;
 }
 
-
-.table > tbody{
-    background: #D4DFFF42;
+.table > tbody {
+  background: #d4dfff42;
 }
 
-.table > tbody > tr > td{
-    color: #171717;
-    font-family: 'Jua', sans-serif;
-    font-weight: 100 !important;
-    font-size: 20px;
-    text-align: center;
+.table > tbody > tr > td {
+  color: #171717;
+  font-family: "Jua", sans-serif;
+  font-weight: 100 !important;
+  font-size: 20px;
+  text-align: center;
 }
 
-
-
-.table > tbody > tr > td:nth-child(4){
-    width: 150px;
+.table > tbody > tr > td:nth-child(4) {
+  width: 150px;
 }
 
-.table > tbody > tr > td:nth-child(3){
-    width: 150px;
+.table > tbody > tr > td:nth-child(3) {
+  width: 150px;
 }
 
-.table > tbody > tr > td:nth-child(2){
-    width: 1000px;
+.table > tbody > tr > td:nth-child(2) {
+  width: 1000px;
 }
 
-.table > tbody > tr > td:nth-child(1){
-    width: 100px;
+.table > tbody > tr > td:nth-child(1) {
+  width: 100px;
 }
 
-a{
-    text-decoration: none !important;
+a {
+  text-decoration: none !important;
 }

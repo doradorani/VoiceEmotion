@@ -124,12 +124,12 @@ a {
   top: 1500px;
 }
 
-.TOP10-form .scrollcard .card > img{
-    width: 150px;
-    height: auto;
-    border-radius: 8px;
-    display: block;
-    margin:0 auto;
+.TOP10-form .scrollcard .card > img {
+  width: 150px;
+  height: auto;
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
 }
 
 .TOP10-form .scrollcard .card h1 {
