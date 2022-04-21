@@ -1,0 +1,30 @@
+{% extends "base.html" %} 
+{% load static %} 
+{% block content %}
+<!-- End: Navigation Clean --><!-- Start: Article Clean -->
+<section class="article-clean">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+        <!-- Start: Intro -->
+        <div class="intro">
+          <h1 class="text-center">{{ notice.title }}</h1>
+          <!-- Start: Date and Author -->
+          <p class="text-center">
+            <span class="by"> by {{ notice.username }} </span>
+            <span class="date"> {{ notice.date }} </span>
+          </p>
+          <!-- End: Date and Author -->
+        </div>
+        <!-- End: Intro --><!-- Start: Text -->
+        <div class="text">
+          <hr />
+          <p>{{ notice.content }}</p>
+          <hr />
+        </div>
+      </div>
+      <!-- End: Text -->
+    </div>
+  </div>
+</section>
+{% endblock %}

@@ -26,3 +26,11 @@ class Comment(models.Model):
 
     class Meta:
         db_table = 'comment'
+        
+class Notice(models.Model):
+    title = models.CharField(max_length= 45)
+    content = models.CharField(max_length= 400)
+    date = models.DateTimeField(default=now, editable=False, null=False)
+    username= models.CharField(max_length= 45, default="관리자")
+    class Meta:
+        db_table = 'notice'
