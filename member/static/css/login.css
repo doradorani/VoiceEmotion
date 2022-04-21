@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
 .wrapper{
   height: auto;
@@ -8,19 +8,19 @@
 
 
 #loginform {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
 body {
-  background: #8CA8FA 0% 0% no-repeat padding-box;
+  background: #8ca8fa 0% 0% no-repeat padding-box;
   background-size: cover;
 }
 
 .login-form {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   position: absolute;
   width: 349px;
   height: 374px;
@@ -31,7 +31,7 @@ body {
 }
 
 .login-form h1 {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   font-size: 32px;
   color: #000000;
   text-align: center;
@@ -48,7 +48,7 @@ body {
 }
 
 .int-area input {
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   width: 87%;
   padding: 20px 10px 10px;
   background-color: transparent;
@@ -65,13 +65,13 @@ body {
   top: 15px;
   font-size: 18px;
   color: #999;
-  transition: top .5s ease;
+  transition: top 0.5s ease;
 }
 
 .int-area label.warning {
   color: red !important;
-  animation: warning .3s ease;
-  font-family: 'Jua', sans-serif;
+  animation: warning 0.3s ease;
+  font-family: "Jua", sans-serif;
   animation-iteration-count: 3;
 }
 
@@ -97,7 +97,6 @@ body {
   color: #166cea;
 }
 
-
 .btn-area {
   margin-top: 30px;
   text-align: center;
@@ -106,12 +105,12 @@ body {
 .btn-area button {
   width: 100%;
   height: 50px;
-  background: #9BB3DB;
+  background: #9bb3db;
   color: #000000;
   font-size: 20px;
   border: none;
   border-radius: 25px;
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
 }
 
 .caption {
@@ -125,7 +124,6 @@ body {
   text-decoration: none;
 }
 
-
 @media (min-width: 992px) {
   #masthead {
     padding-top: calc(6rem + 104px);
@@ -134,8 +132,7 @@ body {
   }
 }
 
-
-#watchingTV{
-    width: 1920px;
-    height: auto;
+#watchingTV {
+  width: 1920px;
+  height: auto;
 }

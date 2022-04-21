@@ -1,19 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Jua&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
 
-.wrapper{
-    height: auto;
-    min-height: 100%;
-    padding-bottom: 0 10px;
+.wrapper {
+  height: auto;
+  min-height: 100%;
+  padding-bottom: 0 10px;
 }
 
-.masthead{
-    display: flex;
-    width: 1920px;
-    height: auto;
+.masthead {
+  display: flex;
+  width: 1920px;
+  height: auto;
 }
 
 body {
-  background: #8CA8FA 0% 0% no-repeat padding-box;
+  background: #8ca8fa 0% 0% no-repeat padding-box;
   background-size: cover;
 }
 
@@ -25,7 +25,7 @@ body {
   width: 914px;
   white-space: nowrap;
   text-align: right;
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   font-style: normal;
   font-weight: 500;
   font-size: 124px;
@@ -40,7 +40,7 @@ body {
   width: 548px;
   white-space: nowrap;
   text-align: right;
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 45px;
@@ -64,7 +64,7 @@ body {
   width: 166px;
   white-space: nowrap;
   text-align: right;
-  font-family: 'Jua', sans-serif;
+  font-family: "Jua", sans-serif;
   font-style: normal;
   font-weight: bold;
   font-size: 20px;
@@ -76,54 +76,52 @@ body {
   height: auto;
 }
 
-
-#NETFLIXlogo{
-    position: relative;
-    top: 51px;
-    left: 665px;
-    width: 295px;
-    height: 92px;
+#NETFLIXlogo {
+  position: relative;
+  top: 51px;
+  left: 665px;
+  width: 295px;
+  height: 92px;
 }
 
-#t_1{
-    position: relative;
-    top: -53px;
-    left: 974px;
-    width: 292px;
-    height: 117px;
-    font-family: 'Jua', sans-serif;
-    font-style: normal;
-    font-size: 100px;
+#t_1 {
+  position: relative;
+  top: -53px;
+  left: 974px;
+  width: 292px;
+  height: 117px;
+  font-family: "Jua", sans-serif;
+  font-style: normal;
+  font-size: 100px;
 }
 
 #t_2 {
-    top: 1353px;
-    left: 121px;
-    width: 290px;
-    height: 388px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    opacity: 1;
+  top: 1353px;
+  left: 121px;
+  width: 290px;
+  height: 388px;
+  background: #ffffff 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  opacity: 1;
 }
 
-a{
-    text-decoration: none !important;
+a {
+  text-decoration: none !important;
 }
 
-
-.TOP10-form .scrollcard{
-    top: 1500px;
+.TOP10-form .scrollcard {
+  top: 1500px;
 }
 
-.TOP10-form .scrollcard .card{
-    font-family: 'Jua', sans-serif;
-    display: inline-block;
-    padding: 15px;
-    height: 350px;
-    background: #fff;
-    border-radius: 8px;
-    margin: 15px;
-    top: 1500px;
+.TOP10-form .scrollcard .card {
+  font-family: "Jua", sans-serif;
+  display: inline-block;
+  padding: 15px;
+  height: 350px;
+  background: #fff;
+  border-radius: 8px;
+  margin: 15px;
+  top: 1500px;
 }
 
 .TOP10-form .scrollcard .card > img{
@@ -134,23 +132,22 @@ a{
     margin:0 auto;
 }
 
-.TOP10-form .scrollcard .card h1{
-    font-size: 24px;
-    color: #F16822;
-    text-align: center;
+.TOP10-form .scrollcard .card h1 {
+  font-size: 24px;
+  color: #f16822;
+  text-align: center;
 }
 
-.TOP10-form .scrollcard .card p{
-    font-size: 16px;
-    color: #000;
-    text-align: center;
+.TOP10-form .scrollcard .card p {
+  font-size: 16px;
+  color: #000;
+  text-align: center;
 }
 
-
-body > div > section > div.TOP10-form > div.scrollcard.slick-initialized.slick-slider > button.slick-prev.slick-arrow{
-    display:none !important; 
+body > div > section > div.TOP10-form > div.scrollcard.slick-initialized.slick-slider > button.slick-prev.slick-arrow {
+  display: none !important;
 }
 
-body > div > section > div.TOP10-form > div.scrollcard.slick-initialized.slick-slider > button.slick-next.slick-arrow{
-    display:none !important; 
+body > div > section > div.TOP10-form > div.scrollcard.slick-initialized.slick-slider > button.slick-next.slick-arrow {
+  display: none !important;
 }
