@@ -4,13 +4,14 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .forms import UserForm
 
+
 @csrf_exempt
 def signup(request) -> HttpResponse:
     if request.method == 'POST':
         form = UserForm(request.POST)
         if form.is_valid():
             form.save()
-            
+
             username = form.cleaned_data.get('username')
             raw_password = form.cleaned_data.get('password1')
 
