@@ -3,7 +3,9 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
-
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.hashers import check_password
 from .forms import BoardWriteForm, CommentForm
 from .models import Board, Comment, Notice
 
@@ -151,3 +153,31 @@ def mypage(request):
         'page_range': range(start_page, end_page + 1)
     }
     return render(request, 'board/mypage.html', context)
+@login_required
+def change_password(request):
+    if request.method == 'POST':
+        form = PasswordChangeForm(request.user, request.POST)
+        if form.is_valid():
+            form.save()
+            update_session_auth_hash(request, form.user)
+            return redirect('board:mypage')
+    else:
+        form = PasswordChangeForm(request.user)
+
+    context = {
+        'form': form,
+    }
+
+    return render(request, 'board/change_password.html', context)
+
+@csrf_exempt
+@login_required
+def withdraw(request):
+    if request.method == 'POST':
+        password = request.POST.get('password', '')
+        user = request.user
+        if check_password(password, user.password):
+            user.delete()
+            return redirect('/main/')
+
+    return render(request, 'board/withdraw.html')

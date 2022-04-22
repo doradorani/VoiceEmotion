@@ -1,9 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import HttpResponse, redirect, render
+from django.views.decorators.csrf import csrf_exempt
 
 from .forms import UserForm
 
-
+@csrf_exempt
 def signup(request) -> HttpResponse:
     if request.method == 'POST':
         form = UserForm(request.POST)
@@ -15,7 +16,7 @@ def signup(request) -> HttpResponse:
 
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('/main/')
+            return redirect('member:login')
     else:
         form = UserForm()
     return render(request, 'member/signup.html', {'form': form})
