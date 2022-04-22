@@ -3,12 +3,10 @@
 .wrapper {
   height: auto;
   min-height: 100%;
-  padding-bottom: 0 10px;
 }
 
 .masthead {
-  display: flex;
-  width: 1920px;
+  width: 100%;
   height: auto;
 }
 
@@ -18,82 +16,68 @@ body {
 }
 
 #n_1 {
-  left: 970px;
+  right: 4px;
   top: 328px;
   position: absolute;
-  overflow: visible;
-  width: 914px;
-  white-space: nowrap;
-  text-align: right;
   font-family: "Jua", sans-serif;
-  font-style: normal;
-  font-weight: 500;
   font-size: 124px;
   color: rgba(33, 30, 63, 1);
 }
 
 #n_2 {
-  left: 1333px;
+  right: 4px;
   top: 463px;
   position: absolute;
-  overflow: visible;
   width: 548px;
-  white-space: nowrap;
   text-align: right;
   font-family: "Jua", sans-serif;
-  font-style: normal;
-  font-weight: bold;
   font-size: 45px;
   color: rgba(46, 45, 105, 1);
 }
 
 #m_char {
   position: absolute;
-  display: flex;
-  top: 462px;
-  left: 1458px;
+  top: -12px;
+  left: 116px;
   width: 66px;
   height: 49px;
 }
 
 #n_3 {
-  left: 1714px;
-  top: 520px;
-  position: absolute;
-  overflow: visible;
-  width: 166px;
-  white-space: nowrap;
-  text-align: right;
-  font-family: "Jua", sans-serif;
-  font-style: normal;
-  font-weight: bold;
-  font-size: 20px;
-  color: rgba(141, 166, 248, 1);
+    top: 520px;
+    right: 4px;
+    position: absolute;
+    font-weight: bold;
+    font-size: 20px;
+    letter-spacing: 4px;
+    width: auto;
+    font-family: "Jua", sans-serif;
+    color: rgba(141, 166, 248, 1);
 }
 
 #watchingTV {
-  width: 1920px;
+  width: 100%;
   height: auto;
 }
 
 #NETFLIXlogo {
-  position: relative;
-  top: 51px;
-  left: 665px;
-  width: 295px;
-  height: 92px;
+    position: absolute;
+    top: 901px;
+    right: 801px;
+    width: 295px;
+    height: 92px;
 }
 
 #t_1 {
-  position: relative;
-  top: -53px;
-  left: 974px;
-  width: 292px;
-  height: 117px;
-  font-family: "Jua", sans-serif;
-  font-style: normal;
-  font-size: 100px;
-}
+    position: absolute;
+    top: 886px;
+    right: 501px;
+    width: 292px;
+    height: 117px;
+    font-family: "Jua", sans-serif;
+    font-style: normal;
+    font-size: 100px;
+  }
 
 #t_2 {
   top: 1353px;
@@ -110,7 +94,7 @@ a {
 }
 
 .TOP10-form .scrollcard {
-  top: 1500px;
+  display: relative;
 }
 
 .TOP10-form .scrollcard .card {
@@ -124,12 +108,12 @@ a {
   top: 1500px;
 }
 
-.TOP10-form .scrollcard .card > img {
-  width: 150px;
-  height: auto;
-  border-radius: 8px;
-  display: block;
-  margin: 0 auto;
+.TOP10-form .scrollcard .card > img{
+    width: 150px;
+    height: auto;
+    border-radius: 8px;
+    display: block;
+    margin:0 auto;
 }
 
 .TOP10-form .scrollcard .card h1 {
@@ -144,10 +128,20 @@ a {
   text-align: center;
 }
 
-body > div > section > div.TOP10-form > div.scrollcard.slick-initialized.slick-slider > button.slick-prev.slick-arrow {
+body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > button.slick-prev.slick-arrow{
   display: none !important;
 }
 
-body > div > section > div.TOP10-form > div.scrollcard.slick-initialized.slick-slider > button.slick-next.slick-arrow {
+body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > button.slick-next.slick-arrow{
   display: none !important;
+}
+
+body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > div{
+  transform: translateY(172px);
+}
+
+
+
+body > div > div.wrapper > section > div.TOP10-form > div.scroll > div{
+  min-height: 600px;
 }

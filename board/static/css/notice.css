@@ -10,14 +10,13 @@
 
 .wrapper-box{
     width: 80%;
-    min-height: 100%;
+    margin:20px auto;
     border-radius: 59px 59px 26px 26px;
     background: #F6F7FF;
-    margin: 20px auto;
     align-content: center;
+    min-height: 100%;
     position: relative;
 }
-
 
 
 .table{
@@ -30,18 +29,32 @@
 .table > thead{
     background: #5D6A8FC2;
     height: 45px;
+    border-radius: 15px 15px 0px 0px;
 }
+
+
+body > div > div > div > table > thead{
+    border-radius: 15px 15px 0px 0px !important;
+}
+
+
+
+
 
 .table > thead > tr > th{
     color: #F6F7FF;
     font-family: 'Jua', sans-serif;
     font-weight: 100 !important;
-    font-size: 20px;
+    font-size: 20px; 
+    text-align: center;
 }
 
-.table > thead > tr > th:nth-child(4){
+
+
+.table > thead > tr > th:nth-child(3){
     border-radius: 0px 15px 0px 0px;
 }
+
 .table > thead > tr > th:nth-child(1){
     border-radius: 15px 0px 0px 0px;
 }
@@ -60,49 +73,20 @@
 }
 
 
-
-.table > tbody > tr > td:nth-child(4){
-    width: 150px;
-}
-
-.table > tbody > tr > td:nth-child(3){
-    width: 150px;
-}
-
-.table > tbody > tr > td:nth-child(2){
-    width: 1000px;
-}
-
-.table > tbody > tr > td:nth-child(1){
-    width: 100px;
-}
-
 a{
     text-decoration: none !important;
 }
 
-
-
-.pagination{
+body > div > div > nav > ul{
     display: flex;
+    list-style: none;
+}
+
+
+.paginator{
     position: absolute;
     bottom: 3%;
     left: 50%;
     transform: translateX(-100%);
 }
 
-
-.write-button{
-    display: flex;
-    position: absolute;
-    bottom: 10%;
-    right: 0%;
-    transform: translateX(-100%);
-    border: none;
-    font-family:  'Jua', sans-serif;
-    font-size: 18px;
-    background: #9BB3DB;
-    border-radius: 8px;
-    padding: 5px 20px;
-    color: #171717;
-}

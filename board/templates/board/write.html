@@ -1,14 +1,34 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<section style="padding: 0 50px">
-  <form method="post" enctype="multipart/form-data">
-    {% csrf_token %} {% include "form_errors.html" %}
-    <div>제목 <input name="title" size="80" placeholder="제목을 입력하세요" /></div>
-    <div>내용 <textarea name="content" size="80" placeholder="내용을 입력하세요"></textarea></div>
-    <div style="width: 800px">첨부파일 <input type="file" name="file" /></div>
-    <button class="btn btn-primary" type="submit">저장</button>
-    <a href="{% url 'board:board' %}">
-      <button class="btn btn-primary" type="button">취소</button>
-    </a>
-  </form>
+<link rel="stylesheet" href="{% static 'css/write.css' %}? after" type="text/css" />
+<section class="board_write">
+  <div class="board_wrap">
+    <div class="board_title">
+      <strong>문의사항</strong>
+    </div>
+    <form method="post" enctype="multipart/form-data">
+      {% csrf_token %} {% include "form_errors.html" %}
+      <div class="title">
+        <dl>
+          <dt>제목</dt>
+          <dd><input type="text"/></dd>
+        </dl>
+      </div>
+      <div class="content">
+        내용
+        <textarea type="text" placeholder="내용"></textarea>
+      </div>
+      <div class="attachment">
+        <p>첨부파일</p>
+        <input type="file" name="file" />
+      </div>
+      <div class="button">
+        <a href="{% url 'main:main' %}">
+          <button class="btn btn-primary" type="button" class="on">취소</button>
+        <a href="{% url 'board:board' %}">
+          <button class="btn btn-primary" type="submit" class="on">저장</button>
+        </a>
+      </div>
+    </form>
+  </div>
 </section>
 {% endblock %}

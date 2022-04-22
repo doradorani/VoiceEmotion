@@ -1,42 +1,47 @@
-{% extends "base.html" %} {% block content %}
-<div class="container">
-  <div class="table-responsive">
-    <table class="table">
-      <thead>
-        <tr>
-          <th>순번</th>
-          <th>제목</th>
-          <th>작성자</th>
-          <th>조회수</th>
-          <th>작성일</th>
-        </tr>
-      </thead>
-      <tbody>
-        {% for data in info %}
-        <tr>
-          <td>{{ data.id }}</td>
-          <td><a href="../notice_detail/{{ data.id }}">{{ data.title }}</a></td>
-          <td>{{ data.user }}</td>
-          <td>{{ data.date }}</td>
-        </tr>
+{% extends "base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/notice.css' %}? after" type="text/css" />
+<div class="wrapper">
+  <div class="wrapper-box">
+    <div class="table-responsive">
+      <table class="table">
+        <colgroup>
+          <col width="10%">
+          <col width="60%">
+          <col width="30%">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>제목</th>
+            <th>작성일자</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in info %}
+          <tr>
+            <td>{{ data.id }}</td>
+            <td><a href="../board/notice_detail/{{ data.id }}">{{ data.title }}</a></td>
+            <td>{{ data.date }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <nav class="paginator">
+      <ul class="pagination" style="display:flex;list-style: none;">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+        </li>
+        {% for i in page_range %}
+        <li class="page-item">
+          <a class="page-link" href='{% url "board:notice" %}?page={{ i }}'>{{ i }}</a>
+        </li>
         {% endfor %}
-      </tbody>
-    </table>
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
+        </li>
+      </ul>
+    </nav>
   </div>
-  <nav class="d-sm-flex d-md-flex d-lg-flex justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center">
-    <ul class="pagination">
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
-      </li>
-      {% for i in page_range %}
-      <li class="page-item">
-        <a class="page-link" href='{% url "board:board" %}?page={{ i }}'>{{ i }}</a>
-      </li>
-      {% endfor %}
-      <li class="page-item">
-        <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
-      </li>
-    </ul>
-  </nav>
 </div>
 {% endblock %}
