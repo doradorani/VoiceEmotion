@@ -9,7 +9,7 @@
       <span>또는 <a href="{% url 'member:login' %}">로그인 하세요.</a></span>
     </div>
   </div>
-  <form method="post" class="post-form" action=member/login}> {% csrf_token %} {% include "form_errors.html" %}
+  <form method="post" class="post-form"> {% csrf_token %} {% include "form_errors.html" %}
   <div class="form-group">
     <label for="username">사용자 이름</label>
     <input type="text" class="form-control" name="username" id="username" value="" />
