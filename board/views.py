@@ -1,11 +1,12 @@
+from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.forms import PasswordChangeForm
+from django.contrib.auth.hashers import check_password
 from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
-from django.contrib.auth.forms import PasswordChangeForm
-from django.contrib.auth import update_session_auth_hash
-from django.contrib.auth.hashers import check_password
+
 from .forms import BoardWriteForm, CommentForm
 from .models import Board, Comment, Notice
 
@@ -108,22 +109,21 @@ def board_edit(request, pk) -> HttpResponse:
         boardForm = BoardWriteForm
         return render(request, 'board/edit.html', {'boardForm': boardForm})
 
-@csrf_exempt    
-def notice_boardpaging(request):
-    now_page = request.GET.get('page',1)
-    datas =  Notice.objects.all().order_by('-id')
 
-    p = Paginator(datas,10)
+@csrf_exempt
+def notice_boardpaging(request):
+    now_page = request.GET.get('page', 1)
+    datas = Notice.objects.all().order_by('-id')
+
+    p = Paginator(datas, 10)
     info = p.get_page(now_page)
     start_page = (int(now_page) - 1) // 10 * 10 + 1
     end_page = start_page + 9
     if end_page > p.num_pages:
         end_page = p.num_pages
-    context = {
-        'info' : info,
-        'page_range' : range(start_page, end_page + 1)
-    }
+    context = {'info': info, 'page_range': range(start_page, end_page + 1)}
     return render(request, 'board/notice.html', context)
+
 
 @csrf_exempt
 def notice_detail(request, pk):
@@ -134,25 +134,25 @@ def notice_detail(request, pk):
 
     return render(request, 'board/notice_detail.html', context)
 
+
 @login_required
 def mypage(request):
     now_page = request.GET.get('page', 1)
     user = request.user
-    datas = Board.objects.filter(user_id = user).order_by('-id')
+    datas = Board.objects.filter(user_id=user).order_by('-id')
 
     paginator = Paginator(datas, 10)
     info = paginator.get_page(now_page)
-    start_page = (int(now_page)-1) // 10 * 10 + 1
+    start_page = (int(now_page) - 1) // 10 * 10 + 1
     end_page = start_page + 1
 
     if end_page > paginator.num_pages:
         end_page = paginator.num_pages
 
-    context = {
-        'info': info,
-        'page_range': range(start_page, end_page + 1)
-    }
+    context = {'info': info, 'page_range': range(start_page, end_page + 1)}
     return render(request, 'board/mypage.html', context)
+
+
 @login_required
 def change_password(request):
     if request.method == 'POST':
@@ -169,6 +169,7 @@ def change_password(request):
     }
 
     return render(request, 'board/change_password.html', context)
+
 
 @csrf_exempt
 @login_required
