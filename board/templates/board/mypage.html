@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "/base.html" %}
 {% load static %}
 {% block content %}
 <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
@@ -15,11 +15,11 @@
       <li>
         <a href="{% url 'board:withdraw' %}"><i class="nav-link"></i>회원탈퇴</a>
       </li>
-      <li>
+      {% comment %} <li>
         <a href="/admin"
           ><i class="nav-link"></i>관리자페이지</a
         >
-      </li>
+      </li> {% endcomment %}
     </ul>
   </div>
   <div class="main_content">
@@ -38,10 +38,11 @@
           <tbody>
             {% for data in info %}
             <tr>
-              <td>{{ data.id }}</td>
-              <td><a href="{% url 'board:board_detail' pk=data.id %}">{{ data.title}}</a></td>
+              <td>{{ data.id}}</td>
+              <td><a href="../detail/{{ data.id}}">{{ data.title}}</a></td>
+              <td>{{ data.user}}</td>
+              <td>{{ data.hit_cnt}}</td>
               <td>{{ data.date}}</td>
-              <td>{{ data.response}}</td>
             </tr>
             {% endfor%}
           </tbody>

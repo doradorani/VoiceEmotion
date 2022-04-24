@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <!-- Start: Article Clean -->
-<section class="article-clean">
+<link rel="stylesheet" href="{% static 'css/detail.css' %}? after" type="text/css" />
+<div class="wrapper">
   <div class="container">
     <div class="row">
       <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
@@ -22,7 +23,8 @@
             {% endif %}
           </div>
         </div>
-        <!-- End: Intro --><!-- Start: Text -->
+        <!-- End: Intro -->
+        <!-- Start: Text -->
         <div class="text">
           <br />
           <div style="text-align: center">
@@ -55,7 +57,7 @@
             {% csrf_token %} {% include "form_errors.html" %}
             <div>
               내용
-              <textarea name="content" size="80" placeholder="내용을 입력하세요" />
+              <textarea name="content" size="80" placeholder="내용을 입력하세요"></textarea>
             </div>
             <input type="submit" value="댓글등록" class="btn btn-primary" />
           </form>
@@ -64,6 +66,6 @@
       </div>
     </div>
   </div>
-</section>
+</div>
 <!-- End: Article Clean -->
 {% endblock %}

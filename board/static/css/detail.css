@@ -1,0 +1,16 @@
+.wrapper{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 0 10px;
+}
+
+.container{
+    width: 80%;
+    min-height: 100%;
+    border-radius: 59px 59px 26px 26px;
+    background: #F6F7FF;
+    margin: 20px auto;
+    align-content: center;
+    position: relative;
+}
