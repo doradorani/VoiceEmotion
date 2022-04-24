@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 from .forms import UserForm
 
+
 @csrf_exempt
 def signup(request) -> HttpResponse:
     if request.method == 'POST':
@@ -16,7 +17,7 @@ def signup(request) -> HttpResponse:
 
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('member:login')
+            return redirect('main:main')
     else:
         form = UserForm()
     return render(request, 'member/signup.html', {'form': form})

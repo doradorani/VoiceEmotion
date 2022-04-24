@@ -23,7 +23,7 @@
 }
 
 .board_write .title {
-    padding: 15px;
+  padding: 15px;
 }
 
 .title_content_attachment{
@@ -81,19 +81,18 @@
     width: 100%;
 }
 
-
-.button > a:nth-child(1) > button{
-    display: flex;
-    position: absolute;
-    bottom: 5%;
-    left: 6%;
-    border: none;
-    font-family:  'Jua', sans-serif;
-    font-size: 18px;
-    background: none;
-    border-radius: 8px;
-    padding: 5px 20px;
-    color: #707070;
+.button > a:nth-child(1) > button {
+  display: flex;
+  position: absolute;
+  bottom: 5%;
+  left: 6%;
+  border: none;
+  font-family: "Jua", sans-serif;
+  font-size: 18px;
+  background: none;
+  border-radius: 8px;
+  padding: 5px 20px;
+  color: #707070;
 }
 
 
