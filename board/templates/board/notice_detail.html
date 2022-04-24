@@ -1,4 +1,5 @@
 {% extends "base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/notice_detail.css' %}? after" type="text/css" />
 <!-- End: Navigation Clean --><!-- Start: Article Clean -->
 <section class="article-clean">
   <div class="container">
@@ -9,16 +10,16 @@
           <h1 class="text-center">{{ notice.title }}</h1>
           <!-- Start: Date and Author -->
           <p class="text-center">
-            <span class="by"> by {{ notice.username }} </span>
             <span class="date"> {{ notice.date }} </span>
           </p>
           <!-- End: Date and Author -->
         </div>
-        <!-- End: Intro --><!-- Start: Text -->
+        <!-- End: Intro -->
+        <!-- Start: Text -->
         <div class="text">
-          <hr />
+          <div>
           <p>{{ notice.content }}</p>
-          <hr />
+          </div>
         </div>
       </div>
       <!-- End: Text -->

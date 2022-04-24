@@ -4,13 +4,12 @@
 <div class="wrapper">
   <div class="container">
     <div class="row">
-      <div class="col-lg-10 col-xl-8 offset-lg-1 offset-xl-2">
+      <div class="content">
         <!-- Start: Intro -->
         <div class="intro">
           <h1 class="text-center">{{ board.title }}</h1>
           <!-- Start: Date and Author -->
           <p class="text-center">
-            <span class="by"> by {{ board.user }} </span>
             <span class="date"> {{ board.date }} </span>
           </p>
           <!-- End: Date and Author -->
@@ -27,25 +26,22 @@
         <!-- Start: Text -->
         <div class="text">
           <br />
-          <div style="text-align: center">
+          <div>
             <p><b>게시글</b></p>
           </div>
-          <hr />
           <div class="card my-3">
             <div class="card-body">
-              <div class="card-text" style="white-space: pre-line">{{ board.content }}</div>
+              <div class="card-text" >{{ board.content }}</div>
             </div>
           </div>
           <a href="{% url 'board:edit' board.id %}" class="btn btn-primary" type="submit">수정</a>
-          <hr />
-          <div style="text-align: center">
+          <div>
             <p><b>댓글</b></p>
           </div>
-          <hr />
           {% for comment in comments %}
-          <div class="card my-3">
+          <div class="cardmy-3">
             <div class="card-body">
-              <div class="card-text" style="white-space: pre-line">
+              <div class="card-text" >
                 <span>작성자 : {{ comment.user }} </span>
                 <span>내용 : {{ comment.content }} </span>
                 <span>작성일 : {{ comment.date }} </span>
@@ -57,7 +53,7 @@
             {% csrf_token %} {% include "form_errors.html" %}
             <div>
               내용
-              <textarea name="content" size="80" placeholder="내용을 입력하세요"></textarea>
+              <textarea name="content" size="160" placeholder="내용을 입력하세요"></textarea>
             </div>
             <input type="submit" value="댓글등록" class="btn btn-primary" />
           </form>

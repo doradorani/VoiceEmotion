@@ -23,8 +23,9 @@
 
 .intro > p{
     position: absolute;
-    left: 75%;
-    top: 8%;
+    left: 78%;
+    top: 15%;
+    font-size: 20px;
 }
 .text > div:nth-child(3) > div > div{
     padding: 5%;
@@ -48,31 +49,6 @@
     position: absolute;
 }
 
-.text > div:nth-child(7){
-    text-align: left;
+.text > div{
     padding: 0 5%;
-}
-
-.text > div:nth-child(3) > div{
-    width: 100%;
-    min-height: 50%;
-    font-weight: lighter;
-}
-
-.text > div:nth-child(5){
-    padding: 5%;
-}
-
-.text > div:nth-child(6) > div > div{
-    padding: 0 5%;
-}
-
-.text > form > div{
-    padding: 5%;
-}
-
-.text > form > input.btn.btn-primary{
-    bottom: 3%;
-    right: 5%;
-    position: absolute;
 }
