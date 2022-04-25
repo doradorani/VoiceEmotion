@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+{% extends "base.html"%} {% load static %} {% block content %}
+</head>
+  <title>chatbot</title>
+  {% block scripts %}
+  <script>
+  function sendAsk(){
+    ctext = document.getElementById("chattext").value;
+    if(ctext == ""){
+      document.getElementById("chattext").focus();
+      return false;
+    }
+    addtext = "<div style='margin:12px 0;text-align:right;><span style='background-color:#3388cc;padding:5px 8px;'>" + ctext + "</span></div>"
+    document.getElementById("chatbox").innerHTML += addtext;
+  }
+  </script>
+  {% endblock %}
+  {% block styles %}
+  <style>
+      .chatheader {
+      left:0;
+      width:100%;
+      padding:18px 0;
+      background-color:#DDD;
+      color:#000;
+      text-align:center;
+      }
+      .chatfooter {
+        left:0;
+        width:100%;
+        padding:18px 0;
+        background-color:#FFF;
+        color:#000;
+        text-align:center;
+        }
+  </style>
+  {% endblock %}
+</head>
+
+<body style="'height:108%;background-color:##BBCCDD;">
+<div style="padding:0px;height:100%;background-color:#e8e8e8;">
+<div class="chatheader">
+  <table>
+    <tr>
+      <td width="50%" align="left">My chat</td>
+    </tr>
+  </table>        
+</div>
+<div style="height:450px;magin-top:50px;background-color:#BBCCDD;" id="chatbox">...</div>
+<div class="chatfooter">
+  <table>
+    <tr>
+      <td width="85%" align="left">
+        <input type="text" id="chattext" style="padding:10px;width:100%;">
+      </td>
+      <td width="15%" align="right">
+        <button style="padding:10px;width:100%;" onclick="sendAsk()">SEND</button>
+      </td>
+    </tr>
+  </table>    
+</div>
+</div>
+</body>
+{%endblock%}
