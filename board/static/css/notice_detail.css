@@ -1,0 +1,54 @@
+.wrapper{
+    width: 100%;
+    height: auto;
+    min-height: 100%;
+    padding-bottom: 0 10px;
+}
+
+.container{
+    width: 80%;
+    min-height: 100%;
+    border-radius: 59px 59px 26px 26px;
+    background: #F6F7FF;
+    margin: 20px auto;
+    align-content: center;
+    position: relative;
+}
+
+.intro > h1{
+    text-align: center;
+    padding: 5%;
+    font-size: 50px;
+}
+
+.intro > p{
+    position: absolute;
+    left: 78%;
+    top: 15%;
+    font-size: 20px;
+}
+.text > div:nth-child(3) > div > div{
+    padding: 5%;
+}
+
+.text > div:nth-child(2){
+    padding: 0px 5%;
+}
+
+
+.text > div:nth-child(4){
+    width: 100%;
+}
+
+.text > div:nth-child(2) > p > b{
+    font-weight: 200;
+    font-size: 32px;
+}
+.text > a{
+    right: 6%;
+    position: absolute;
+}
+
+.text > div{
+    padding: 0 5%;
+}
