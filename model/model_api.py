@@ -41,7 +41,7 @@ def audio_test(x_test):
 
 @app.post('/uploadfiles')
 async def create_upload_files(files : List[UploadFile] = File(...)):
-    UPLOAD_DIRECTORY = "model/upload_audio"
+    UPLOAD_DIRECTORY = "./backend/tmp/"
     for file in files:
             contents = await file.read()
             with open(os.path.join(UPLOAD_DIRECTORY, file.filename), "wb") as fp:
