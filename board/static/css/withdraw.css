@@ -62,3 +62,41 @@
 .sidebar > ul > li:nth-child(3){
     padding: 10% 0;
 }
+
+
+.main_content > div > section > form{
+    position: absolute;
+    width: 100%;
+}
+
+.main_content > div > section > form > span > ul{
+    list-style: none;
+    margin-block-start: 0;
+    margin-block-end: 0;
+    padding-inline-start: 0;
+    padding: 2%;
+}
+
+.main_content > div > section > h2{
+    text-align: center;
+}
+
+body > div > div.wrapper > div.main_content > div > section > form{
+    text-align: center;
+    width: 67%;
+}
+
+
+.main_content > div > section > form > div:nth-child(7) > button{
+    position: absolute;
+    margin: 4% 0% 0% 17%;
+}
+
+.main_content > div > section > form > ul > li{
+    font-size: 15px;
+    width: 90%;
+}
+
+.main_content > div > section > form > div:nth-child(6){
+    width: 94%;
+}

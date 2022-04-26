@@ -1,0 +1,22 @@
+.container {
+    position:absolute;
+    top: 50%;
+    left: 33%;
+    width:30em;
+    height:18em;
+
+}
+
+#speech {
+    width: 300px;
+}
+
+#spokenResponse {
+    margin-top: 10px;
+    font-size: 18px;
+    color: white;
+    background-color: lightsalmon;
+}
+
+
+

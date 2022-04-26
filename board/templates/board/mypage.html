@@ -7,19 +7,14 @@
     <h2>Mypage</h2>
     <ul>
       <li>
-        <a href="{% url 'board:mypage' %}"><i class="nav-link"></i>내가 쓴 글</a>
+        <a href="{% url 'board:change_password' %}"><i class="nav-link"></i>회원정보수정</a>
       </li>
       <li>
-        <a href="{% url 'board:change_password' %}"><i class="nav-link"></i>회원정보수정</a>
+        <a href="{#}"><i class="nav-link"></i>내가 본 영화 목록</a>
       </li>
       <li>
         <a href="{% url 'board:withdraw' %}"><i class="nav-link"></i>회원탈퇴</a>
       </li>
-      {% comment %} <li>
-        <a href="/admin"
-          ><i class="nav-link"></i>관리자페이지</a
-        >
-      </li> {% endcomment %}
     </ul>
   </div>
   <div class="main_content">
@@ -31,7 +26,6 @@
               <th>순번</th>
               <th>제목</th>
               <th>작성자</th>
-              <th>조회수</th>
               <th>작성일</th>
             </tr>
           </thead>
@@ -41,14 +35,13 @@
               <td>{{ data.id}}</td>
               <td><a href="../detail/{{ data.id}}">{{ data.title}}</a></td>
               <td>{{ data.user}}</td>
-              <td>{{ data.hit_cnt}}</td>
               <td>{{ data.date}}</td>
             </tr>
             {% endfor%}
           </tbody>
         </table>
       </div>
-      <nav class="d-sm-flex d-md-flex d-lg-flex justify-content-sm-center align-items-sm-center justify-content-md-center align-items-md-center justify-content-lg-center align-items-lg-center">
+      <nav class="paginator">
         <ul class="pagination">
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
@@ -61,8 +54,8 @@
           <li class="page-item">
             <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
           </li>
-          <a href="{%url 'board:write' %}" class="btn btn-primary" type="button">글쓰기</a>
         </ul>
+        <a href="{%url 'board:write' %}" class="btn btn-primary" type="button">글쓰기</a>
       </nav>
     </div>
   </div>

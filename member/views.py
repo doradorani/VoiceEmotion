@@ -20,4 +20,4 @@ def signup(request) -> HttpResponse:
             return redirect('main:main')
     else:
         form = UserForm()
-    return render(request, 'member/signup.html', {'form': form})
+    return render(request, 'member/signup1.html', {'form': form})

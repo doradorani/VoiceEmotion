@@ -9,28 +9,29 @@
       <form method="post" enctype="multipart/form-data">
         {% csrf_token %} {% include "form_errors.html" %}
         <div class="title_content_attachment">
-        <div class="title">
+          <div class="title">
             <p>제목</p>
-            <input calss= "input_title" type="text" placeholder="제목"/>
+            <input calss="input_title" type="text" placeholder="제목" />
+          </div>
+          <div class="content">
+            <p>내용</p>
+            <textarea class="input_content" type="text" placeholder="문의 내용"></textarea>
+          </div>
+          <div class="attachment">
+            <p>첨부파일</p>
+            <input class="input_img" type="file" name="file" />
+          </div>
+          <div class="button">
+            <a href="{% url 'main:main' %}">
+              <button class="btn btn-primary" type="button" class="on">취소</button>
+            </a>
+            <a href="{% url 'board:notice' %}">
+              <button class="btn btn-primary" type="submit">저장</button>
+            </a>
+          </div>
         </div>
-        <div class="content">
-          <p>내용</p>
-          <textarea class="input_content" type="text" placeholder="문의 내용"></textarea>
-        </div>
-        <div class="attachment">
-          <p>첨부파일</p>
-          <input class="input_img" type="file" name="file" />
-        </div>
-        <div class="button">
-          <a href="{% url 'main:main' %}">
-            <button class="btn btn-primary" type="button" class="on">취소</button>
-          <a href="{% url 'board:notice' %}">
-            <button class="btn btn-primary" type="submit">저장</button>
-          </a>
-        </div>
-      </div>
       </form>
-  </div>
+    </div>
   </div>
 </section>
 {% endblock %}
