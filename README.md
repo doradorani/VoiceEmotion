@@ -1,27 +1,15 @@
 # VoiceEmotion
 
-VSCODE 를 사용할 경우
+- Backend 실행하기
 
-https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
+  Root directory 에서 실행됨
 
-코드스타일 통일을 위해 위 플러그인을 설치해 주세요.
+  1. using make `make -B backend`
+  2. using *sh (bash, zsh, ash, sh) `cd backend && python app.py`
+  3. Powershell `cd backend; python app.py`
 
----
+- django 실행하기 ( TODO )
 
-## Submodule 불러오기
-
-### 초기 설정
-
-```bash
-git submodule init
-git submodule update
-```
-
-### backend 업데이트
-
-```bash
-git submodule foreach git pull origin master
-```
 ---
 
 사용자의 기분에 따라 알맞는 영화 추천 시스템
