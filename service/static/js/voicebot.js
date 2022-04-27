@@ -18,7 +18,7 @@ $speechInput.keypress(function(event) {
     send();
   }
 });
-$recBtn.on("click", function(event) {
+$recBtn.on("click", () => {
   switchRecognition();
 });
 $(".debug__btn").on("click", function() {
@@ -32,7 +32,7 @@ recognition = new webkitSpeechRecognition();
 recognition.continuous = false;
     recognition.interimResults = false;
 
-recognition.onstart = function(event) {
+recognition.onstart = () => {
   respond(messageRecording);
   updateRec();
 };

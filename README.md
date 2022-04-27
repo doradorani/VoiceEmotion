@@ -1,5 +1,11 @@
 # VoiceEmotion
 
+- requirements.txt 적용법
+
+```bash
+pip install -r requirements.txt -r backend/requirements.txt
+```
+
 - [Backend](backend/) 실행하기
 
   Root directory 에서 실행됨
@@ -7,17 +13,6 @@
   1. using make `make -B backend`
   2. using *sh (bash, zsh, ash, sh) `cd backend && python app.py`
   3. Powershell `cd backend; python app.py`
-
-
-
-
-
-
-
-
-
-
-
 
 - django 실행하기 ( TODO )
 
