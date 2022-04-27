@@ -1,4 +1,5 @@
 import os
+import ssl
 
 from flask import Flask, render_template, request, jsonify
 from werkzeug.utils import secure_filename
@@ -56,4 +57,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0')
+    app.run(host='0.0.0.0', ssl_context="test")
