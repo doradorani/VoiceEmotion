@@ -14,6 +14,8 @@ warnings.filterwarnings('ignore')
 
 MODEL = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
 Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
+
+# TODO Seperate File loc audio
 UPLOAD_DIRECTORY = './tmp/'
 TEMP_DIRECTORY = './temp/'
 
@@ -40,6 +42,8 @@ def audio_preprocessing(filename: str) -> list:
     return [feature]
 
 
+# TODO 파일을 저장하고 불러와서 다시 변환하고 삭제하는 형태이기에 저장장치에 무리를 줌
+# TODO fs 모듈을 이용하여 해결하기를 권장
 def webm_2_wav(filename: str) -> None:  # TODO
     """WebM to Wav
 
