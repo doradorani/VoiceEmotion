@@ -10,7 +10,7 @@ jobs:
         with:
           node-version: 16
 
-      - name: Install formatter
+      - name: install formatter
         run: |
           npm install -g prettier --silent
           pip install oitnb isort --quiet
