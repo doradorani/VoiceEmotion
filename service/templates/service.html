@@ -8,7 +8,7 @@
         </div>
         <div id="chat-bot-mood-label">
             <h1 id="chat-bot-mood-text">안녕하세요! 니모션입니다</h1>
-            <h1 id="chat-bot-mood-value">Mood</h1>
+            <h1 id="chat-bot-mood-value">{{user.username}}님</h1>
         </div>
     </div>
     <div id="letter-pool">
@@ -34,14 +34,14 @@
 </div>
 <script>
     const LETTER_POOL = getEl("letter-pool"),
-        TEMP_LETTER_POOL = getEl("temp-letter-pool"),
-        LETTER_OVERLAY = getEl("letter-overlay"),
-        CHAT_MESSAGE_COLUMN_WRAPPER = getEl("chat-message-column-wrapper"),
-        CHAT_MESSAGE_COLUMN = getEl("chat-message-column"),
-        MESSAGE_INPUT = getEl("message-input"),
-        ESSAGE_INPUT_FIELD = getEl("message-input-field"),
-        CHAT_BOT_MOOD = getEl("chat-bot-mood"),
-        CHAT_BOT_MOOD_VALUE = getEl("chat-bot-mood-value");
+          TEMP_LETTER_POOL = getEl("temp-letter-pool"),
+          LETTER_OVERLAY = getEl("letter-overlay"),
+          CHAT_MESSAGE_COLUMN_WRAPPER = getEl("chat-message-column-wrapper"),
+          CHAT_MESSAGE_COLUMN = getEl("chat-message-column"),
+          MESSAGE_INPUT = getEl("message-input"),
+          ESSAGE_INPUT_FIELD = getEl("message-input-field"),
+          CHAT_BOT_MOOD = getEl("chat-bot-mood"),
+          CHAT_BOT_MOOD_VALUE = getEl("chat-bot-mood-value");
 
     const STATE = {
         isUserSendingMessage: true,

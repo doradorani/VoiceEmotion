@@ -1,55 +1,65 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<link rel="stylesheet" href="{% static 'css/signup.css' %}? after" type="text/css" />
+<link
+  rel="stylesheet"
+  href="{% static 'css/signup.css' %}? after"
+  type="text/css"
+/>
 <div class="container">
-    <form method="post" class="post-form">
-        <div class="row">
-            <h4>회원 가입</h4>
-            {% csrf_token %} {% include "form_errors.html" %}
-            <div class="username"><input type="text" placeholder="아이디" />
-            </div>
-            <div class="password1"><input type="password" placeholder="비밀번호" />
-            </div>
-            <div class="password2"><input type="password" placeholder="비밀번호 확인" />
-            </div>
-            <div class="email"><input type="text" placeholder="이메일" />
-            </div>
+  <form method="post" class="post-form">
+    <div class="row">
+      <h4>회원 가입</h4>
+      {% csrf_token %} {% include "form_errors.html" %}
+      <div class="username"><input type="text" name='username' placeholder="아이디" /></div>
+      <div class="password1">
+        <input type="password" name= password placeholder="비밀번호" />
+      </div>
+      <div class="password2">
+        <input type="password" placeholder="비밀번호 확인" />
+      </div>
+      <div class="email"><input type="text" placeholder="이메일" /></div>
+    </div>
+    <div class="row">
+      <div class="col-half">
+        <h4>생년월일</h4>
+        <div class="input-group">
+          <div class="col-third"><input type="text" placeholder="DD" /></div>
+          <div class="col-third"><input type="text" placeholder="MM" /></div>
+          <div class="col-third"><input type="text" placeholder="YYYY" /></div>
         </div>
-        <div class="row">
-            <div class="col-half">
-                <h4>생년월일</h4>
-                <div class="input-group">
-                    <div class="col-third"><input type="text" placeholder="DD" /></div>
-                    <div class="col-third"><input type="text" placeholder="MM" /></div>
-                    <div class="col-third"><input type="text" placeholder="YYYY" /></div>
-                </div>
-            </div>
-            <div class="col-half">
-                <h4>성별</h4>
-                <div class="input-group">
-                    <input id="gender-male" type="radio" name="gender" value="male" />
-                    <label for="gender-male">남</label>
-                    <input id="gender-female" type="radio" name="gender" value="female" />
-                    <label for="gender-female">여</label>
-                </div>
-            </div>
+      </div>
+      <div class="col-half">
+        <h4>성별</h4>
+        <div class="input-group">
+          <input id="gender-male" type="radio" name="gender" value="male" />
+          <label for="gender-male">남</label>
+          <input id="gender-female" type="radio" name="gender" value="female" />
+          <label for="gender-female">여</label>
         </div>
-        <div class="row">
-            <h4>약관 동의</h4>
-            <div class="input-group">
-              <input id="terms" type="checkbox" />
-              <label for="terms">약관에 동의하십니까?</label>
-            </div>
-        </div>
-        <button type="submit" class="btn btn-primary">다음</button>
-    </form>
+      </div>
+    </div>
+    <div class="row">
+      <h4>약관 동의</h4>
+      <div class="input-group">
+        <input id="terms" type="checkbox" />
+        <label for="terms">약관에 동의하십니까?</label>
+      </div>
+    </div>
+    <button
+      type="button"
+      class="btn-next"
+      onclick="action='./signup2.html';submit()">
+      다음
+    </button>
+  </form>
 </div>
 <script>
-  function sendName(){
+  {% comment %} function sendName(){
     let userName = $('#writeUserName').val();
     window.location.href="/signup?user="+userName;
-  }
+  } {% endcomment %}
+  axios.POST(
+    gender: document.isChecked
+  )
 </script>
 {%endblock%}
-
-
