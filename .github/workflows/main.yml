@@ -38,8 +38,8 @@ jobs:
           git config --global user.name 'ci-cd'
           git config --global user.email 'ci-cd@users.noreply.github.com'
           git remote set-url origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}
-          
-          if [ $(git commit --all --amend --no-edit) == 0 ]; then
+          RES=$(git commit --all --amend --no-edit)
+          if [ RES == 0 ]; then
             exit 0
           else
             exit 0
