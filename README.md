@@ -1,6 +1,6 @@
 # VoiceEmotion
 
-- Backend 실행하기
+- [Backend](backend/) 실행하기
 
   Root directory 에서 실행됨
 
