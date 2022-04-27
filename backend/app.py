@@ -27,12 +27,14 @@ def audio_preprocessing(filename) -> list:
     mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=5, n_fft=400, hop_length=160)
     mfcc_1 = scale(mfcc_1, axis=1)
     feature = np.mean(mfcc_1.T, axis=0)
+
     return [feature]
 
 
 def audio_predict(x) -> int:
     """결과값 예측"""
     result = MODEL.predict(x)
+
     return result[0].tolist()
 
 
@@ -45,7 +47,7 @@ def form() -> Response:
         file.save(os.path.join(UPLOAD_DIRECTORY, filename))
         _x_val = audio_preprocessing(file.filename)
         predict_result = audio_predict(_x_val)
-        print(predict_result)
+
         return jsonify({'status': 'success', 'result': Label[predict_result]})
     else:
         return jsonify({'status': 'fail'})
