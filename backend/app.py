@@ -8,7 +8,7 @@ from flask import Flask, jsonify, render_template, request
 from sklearn.preprocessing import scale
 from werkzeug.utils import secure_filename
 
-warnings.filterwarnings('ignore')
+warnings.filterwarnings("ignore")
 
 MODEL = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
 Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
