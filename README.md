@@ -8,6 +8,17 @@
   2. using *sh (bash, zsh, ash, sh) `cd backend && python app.py`
   3. Powershell `cd backend; python app.py`
 
+
+
+
+
+
+
+
+
+
+
+
 - django 실행하기 ( TODO )
 
 ---
