@@ -1,17 +1,16 @@
 import os
-import ssl
-
-from flask import Flask, render_template, request, jsonify
-from werkzeug.utils import secure_filename
-import joblib
-import numpy as np
-import librosa
-from sklearn.preprocessing import scale
 import warnings
 
-warnings.filterwarnings("ignore")
+import joblib
+import librosa
+import numpy as np
+from flask import Flask, jsonify, render_template, request
+from sklearn.preprocessing import scale
+from werkzeug.utils import secure_filename
 
-model = joblib.load(open("../model/saved_model/model_lgbm.pkl", "rb"))
+warnings.filterwarnings('ignore')
+
+model = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
 label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
 
 UPLOAD_DIRECTORY = './tmp/'
@@ -23,7 +22,7 @@ app = Flask(__name__)
 
 
 def audio_preprocessing(filename):
-    xf, sr = librosa.load(UPLOAD_DIRECTORY + filename)
+    xf, _ = librosa.load(UPLOAD_DIRECTORY + filename)
     mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=5, n_fft=400, hop_length=160)
     mfcc_1 = scale(mfcc_1, axis=1)
     feature = np.mean(mfcc_1.T, axis=0)
@@ -45,7 +44,7 @@ def form():
         file.save(os.path.join(UPLOAD_DIRECTORY, filename))
         x_test = audio_preprocessing(file.filename)
         predict_result = audio_test(x_test)
-        return jsonify({'status': 'success', "result": label[predict_result]})
+        return jsonify({'status': 'success', 'result': label[predict_result]})
     else:
         return jsonify({'status': 'fail'})
 
@@ -57,4 +56,4 @@ def hello():
 
 
 if __name__ == '__main__':
-    app.run(host='0.0.0.0', ssl_context="test")
+    app.run()
