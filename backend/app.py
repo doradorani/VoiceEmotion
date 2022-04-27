@@ -8,6 +8,7 @@ from flask import Flask, jsonify, render_template, request
 from flask.wrappers import Response
 from sklearn.preprocessing import scale
 from werkzeug.utils import secure_filename
+from pydub import AudioSegment
 
 warnings.filterwarnings('ignore')
 
@@ -23,12 +24,20 @@ app = Flask(__name__)
 
 def audio_preprocessing(filename) -> list:
     """오디오 전처리"""
-    xf, _ = librosa.load(UPLOAD_DIRECTORY + filename)
+    file_full: str = UPLOAD_DIRECTORY + filename
+    audioSegment = AudioSegment.from_file(file_full)
+    new_file_path = file_full.replace('webm', 'wav')
+    audioSegment.export(new_file_path, format='wav')
+    xf, _ = librosa.load(file_full)
     mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=5, n_fft=400, hop_length=160)
     mfcc_1 = scale(mfcc_1, axis=1)
     feature = np.mean(mfcc_1.T, axis=0)
 
     return [feature]
+
+
+def webm_2_wav() -> None:  # TODO
+    pass
 
 
 def audio_predict(x) -> int:
@@ -60,4 +69,4 @@ def hello() -> str:
 
 
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
