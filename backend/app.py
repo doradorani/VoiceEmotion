@@ -10,8 +10,8 @@ from werkzeug.utils import secure_filename
 
 warnings.filterwarnings('ignore')
 
-model = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
-label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
+MODEL = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
+Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
 
 UPLOAD_DIRECTORY = './tmp/'
 
@@ -29,9 +29,8 @@ def audio_preprocessing(filename):
     return [feature]
 
 
-# 오디오 테스트 데이터 학습
-def audio_test(x_test):
-    result = model.predict(x_test)
+def audio_predict(x):
+    result = MODEL.predict(x)
     return result[0].tolist()
 
 
@@ -42,9 +41,9 @@ def form():
     if file.filename is not None:
         filename = secure_filename(filename=file.filename)
         file.save(os.path.join(UPLOAD_DIRECTORY, filename))
-        x_test = audio_preprocessing(file.filename)
-        predict_result = audio_test(x_test)
-        return jsonify({'status': 'success', 'result': label[predict_result]})
+        _x_val = audio_preprocessing(file.filename)
+        predict_result = audio_predict(_x_val)
+        return jsonify({'status': 'success', 'result': Label[predict_result]})
     else:
         return jsonify({'status': 'fail'})
 
