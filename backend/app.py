@@ -5,10 +5,11 @@ import joblib
 import librosa
 import numpy as np
 from flask import Flask, jsonify, render_template, request
+from flask.wrappers import Response
 from sklearn.preprocessing import scale
 from werkzeug.utils import secure_filename
 
-warnings.filterwarnings("ignore")
+warnings.filterwarnings('ignore')
 
 MODEL = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
 Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
@@ -36,7 +37,7 @@ def audio_predict(x):
 
 
 @app.route('/receive', methods=['POST'])
-def form():
+def form() -> Response:
     """Get wav file"""
     file = request.files['file']
     if file.filename is not None:
@@ -50,7 +51,7 @@ def form():
 
 
 @app.route('/', methods=['GET'])
-def hello():
+def hello() -> str:
     """Render html"""
     return render_template('index.html')
 
