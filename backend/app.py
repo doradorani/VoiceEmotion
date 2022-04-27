@@ -15,6 +15,7 @@ warnings.filterwarnings('ignore')
 MODEL = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
 Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
 UPLOAD_DIRECTORY = './tmp/'
+TEMP_DIRECTORY = './temp/'
 
 if not os.path.exists(UPLOAD_DIRECTORY):
     os.mkdir(UPLOAD_DIRECTORY)
@@ -22,13 +23,16 @@ if not os.path.exists(UPLOAD_DIRECTORY):
 app = Flask(__name__)
 
 
-def audio_preprocessing(filename) -> list:
+def audio_preprocessing(filename: str) -> list:
     """오디오 전처리"""
     file_full: str = UPLOAD_DIRECTORY + filename
+
+    # NOTE 다음에 webm_2_wav 함수로 교체예정
     audioSegment = AudioSegment.from_file(file_full)
     new_file_path = file_full.replace('webm', 'wav')
     audioSegment.export(new_file_path, format='wav')
-    xf, _ = librosa.load(file_full)
+
+    xf, _ = librosa.load(path=file_full)
     mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=5, n_fft=400, hop_length=160)
     mfcc_1 = scale(mfcc_1, axis=1)
     feature = np.mean(mfcc_1.T, axis=0)
@@ -36,8 +40,17 @@ def audio_preprocessing(filename) -> list:
     return [feature]
 
 
-def webm_2_wav() -> None:  # TODO
-    pass
+def webm_2_wav(filename: str) -> None:  # TODO
+    """WebM to Wav
+
+    MediaEncoder에서 받으면 형식이 WebM 형식으로 받아짐.
+    librosa에서 처리가 불가하므로 wav로 변환후 처리.
+    """
+    file_full: str = UPLOAD_DIRECTORY + filename
+    audioSegment = AudioSegment.from_file(file_full)
+    new_file_path = file_full.replace('webm', 'wav')
+    audioSegment.export(new_file_path, format='wav')
+    os.remove(file_full)
 
 
 def audio_predict(x) -> int:
