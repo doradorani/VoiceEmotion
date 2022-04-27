@@ -1,4 +1,0 @@
-[submodule "backend"]
-	path = backend
-	url = https://github.com/AIVLE-School-first-Big-Project/VoiceEmotion_Backend.git
-	branch = master
