@@ -22,18 +22,14 @@ jobs:
         with:
           node-version: 16
 
-      - name: install prettier
+      - name: install formatter
         run: |
-          npm install -g prettier
+          npm install -g prettier --silent
+          pip install oitnb isort --quiet
 
       - name: Format Html, Css, md, js
         run: |
           make html
-
-      # Runs a set of commands using the runners shell
-      - name: Python install formatting package
-        run: |
-          pip install oitnb isort
           
       - name: Python formatting
         run: |
