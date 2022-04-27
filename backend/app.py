@@ -12,7 +12,6 @@ warnings.filterwarnings('ignore')
 
 MODEL = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
 Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
-
 UPLOAD_DIRECTORY = './tmp/'
 
 if not os.path.exists(UPLOAD_DIRECTORY):
@@ -22,6 +21,7 @@ app = Flask(__name__)
 
 
 def audio_preprocessing(filename):
+    """오디오 전처리"""
     xf, _ = librosa.load(UPLOAD_DIRECTORY + filename)
     mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=5, n_fft=400, hop_length=160)
     mfcc_1 = scale(mfcc_1, axis=1)
@@ -30,6 +30,7 @@ def audio_preprocessing(filename):
 
 
 def audio_predict(x):
+    """결과값 예측"""
     result = MODEL.predict(x)
     return result[0].tolist()
 
