@@ -95,7 +95,7 @@ div.footer ul li:last-child::after {
 }
 
 
-@media screen and (max-width:768px) {
+/* @media screen and (max-width:768px) {
   .more-btn{
     display: block;
     position: absolute;
@@ -138,4 +138,4 @@ div.footer ul li:last-child::after {
 @media screen and (max-width:480px) {
   
 }
-
+ */
