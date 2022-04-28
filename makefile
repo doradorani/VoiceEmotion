@@ -4,8 +4,8 @@ python:
 html:
 	prettier --bracket-same-line --write --print-width 240 .
 
-initsub:
-	git submodule init &&	git submodule update
+backend:
+	cd backend; python app.py
 
-updatesub:
-	git submodule foreach git pull origin master
+django:
+	@echo "Not yet finished"

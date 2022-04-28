@@ -1,27 +1,21 @@
 # VoiceEmotion
 
-VSCODE 를 사용할 경우
-
-https://marketplace.visualstudio.com/items?itemName=EditorConfig.EditorConfig
-
-코드스타일 통일을 위해 위 플러그인을 설치해 주세요.
-
----
-
-## Submodule 불러오기
-
-### 초기 설정
+- requirements.txt 적용법
 
 ```bash
-git submodule init
-git submodule update
+pip install -r requirements.txt -r backend/requirements.txt
 ```
 
-### backend 업데이트
+- [Backend](backend/) 실행하기
 
-```bash
-git submodule foreach git pull origin master
-```
+  Root directory 에서 실행됨
+
+  1. using make `make -B backend`
+  2. using *sh (bash, zsh, ash, sh) `cd backend && python app.py`
+  3. Powershell `cd backend; python app.py`
+
+- django 실행하기 ( TODO )
+
 ---
 
 사용자의 기분에 따라 알맞는 영화 추천 시스템
