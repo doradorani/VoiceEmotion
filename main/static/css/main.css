@@ -143,3 +143,21 @@ body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > div {
 body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
   min-height: 600px;
 }
+
+
+@media screen and (max-width:768px) {
+  .wrapper{
+    left:-50%;
+    width: 200%;
+  }
+  .middlebackground-form{
+    width: 100%;
+    height: auto;
+    padding:20px;
+    top: auto;
+    bottom: 20px;
+  }
+  #n_1{
+    font-size: 36px;
+  }
+}

@@ -5,7 +5,7 @@ from django.views.decorators.csrf import csrf_exempt
 
 
 def service(request) -> HttpResponse:
-    return render(request, 'service.html', {})
+    return render(request, "index.html", {})
 
 def chat(request):
     return render(request, 'service/chat.html')
