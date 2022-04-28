@@ -12,7 +12,7 @@
  *********************************/
 let post_address = "http://127.0.0.1:5000/receive"; // TODO 포트지정 필요
 let delay = 2000;
-let save_file_format = `${new Date().getTime()}.wav`;
+let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
 
 if (navigator.mediaDevices === undefined) {

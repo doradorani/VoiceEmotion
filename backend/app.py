@@ -4,6 +4,7 @@ import warnings
 import joblib
 import librosa
 import numpy as np
+from flask_cors import CORS
 from flask import Flask, jsonify, render_template, request
 from flask.wrappers import Response
 from sklearn.preprocessing import scale
@@ -23,6 +24,7 @@ if not os.path.exists(UPLOAD_DIRECTORY):
     os.mkdir(UPLOAD_DIRECTORY)
 
 app = Flask(__name__)
+CORS(app=app, resources={r'*': {'origins': '*'}})
 
 
 def audio_preprocessing(filename: str) -> list:
@@ -54,7 +56,7 @@ def webm_2_wav(filename: str) -> str:
     audioSegment.export(new_file_path, format='wav')
     os.remove(file_full)
 
-    return
+    return new_file_path
 
 
 def audio_predict(x) -> int:
@@ -69,6 +71,7 @@ def audio_predict(x) -> int:
 def form() -> Response:
     """Get wav file"""
     file = request.files['file']
+
     if file.filename is not None:
         filename = secure_filename(filename=file.filename)
         file.save(os.path.join(UPLOAD_DIRECTORY, filename))
