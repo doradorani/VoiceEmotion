@@ -11,7 +11,7 @@
  post_data - post data to flask api
  *********************************/
 let post_address = "http://127.0.0.1:5000/receive"; // TODO 포트지정 필요
-let delay = 2000;
+let delay = 5000;
 let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
 
