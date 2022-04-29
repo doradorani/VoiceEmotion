@@ -29,9 +29,13 @@ CORS(app=app, resources={r'*': {'origins': '*'}})
 
 def audio_preprocessing(filename: str) -> list:
     """오디오 전처리"""
-    file_path = webm_2_wav(filename=filename)
-
-    xf, _ = librosa.load(path=file_path)
+    file_full: str = UPLOAD_DIRECTORY + filename
+    audioSegment = AudioSegment.from_file(file_full)
+    audioSegment = audioSegment.set_sample_width(sample_width=2)
+    new_file_path = file_full.replace('webm', 'wav')
+    audioSegment.export(new_file_path, format='wav', bitrate = '16k')
+    print(audioSegment.sample_width)
+    xf, _ = librosa.load(file_full)
     mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=5, n_fft=400, hop_length=160)
     mfcc_1 = scale(mfcc_1, axis=1)
     feature = np.mean(mfcc_1.T, axis=0)
