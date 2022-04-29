@@ -76,8 +76,16 @@ WSGI_APPLICATION = 'config.wsgi.application'
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {'ENGINE': 'django.db.backends.sqlite3', 'NAME': BASE_DIR / 'db.sqlite3'}
+    'default' : {
+        'ENGINE': 'django.db.backends.mysql',  #사용할 DB Engine
+        'NAME': 'jango_db', #DB 이름
+        'USER': 'root',  # 계정 아이디
+        'PASSWORD':'5631jjyy', # 계정 비밀번호
+        'HOST': '192.18.138.86', # DB 서버 호스트
+        'PORT': '3306', # DB 서버 포트
+    }
 }
+
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
