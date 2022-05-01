@@ -13,6 +13,8 @@ from pydub import AudioSegment
 from pathlib import Path
 warnings.filterwarnings('ignore')
 import pymysql 
+from sklearn.metrics.pairwise import cosine_similarity
+
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -26,7 +28,6 @@ cursor = db.cursor(pymysql.cursors.DictCursor)
 sql = "SELECT * FROM ratings"
 cursor.execute(sql)
 ratings_df = pd.DataFrame(data=cursor.fetchall(), columns=['idx', 'userId', 'movieId', 'rating', 'ts'])
-item_pred = pd.read_csv(os.path.join(BASE_DIR,"recommender/dataset/item_prediction/item_pred.csv"))
 movie_df_copy = movie_df.copy()
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -53,6 +54,37 @@ def audio_preprocessing(filename: str) -> list:
     
     return [feature]
 
+def cossim_matrix(a, b):
+    """코사인 유사도 구하기"""
+    cossim_values = cosine_similarity(a.values, b.values)
+    cossim_df = pd.DataFrame(data=cossim_values, columns = a.index.values, index=a.index)
+    return cossim_df
+
+
+def item_sparse_matrix(ratings_df):
+    """아이템 기반 협업 필터링"""
+    sparse_matrix = ratings_df.groupby('movieId').apply(lambda x: pd.Series(x['rating'].values, index=x['userId'])).unstack()
+    sparse_matrix.index.name = 'movieId'
+
+    item_sparse_matrix = sparse_matrix.fillna(0)
+    item_cossim_df = cossim_matrix(item_sparse_matrix, item_sparse_matrix)
+
+    userId_grouped = ratings_df.groupby('userId')
+    item_prediction_result_df = pd.DataFrame(index=list(userId_grouped.indices.keys()), columns=item_sparse_matrix.index)
+
+    for userId, group in userId_grouped:
+        # user가 rating한 movieId * 전체 movieId
+        user_sim = item_cossim_df.loc[group['movieId']]
+        # user가 rating한 movieId * 1
+        user_rating = group['rating']
+        # 전체 movieId * 1
+        sim_sum = user_sim.sum(axis=0)
+        # userId의 전체 rating predictions (8938 * 1)
+        pred_ratings = np.matmul(user_sim.T.to_numpy(), user_rating) / (sim_sum+1)
+        item_prediction_result_df.loc[userId] = pred_ratings
+        
+    return item_prediction_result_df
+
 def movie_recommend_top_10(emotion, userId) -> dict:
     """영화 추천 top 10 추출"""
     global movie_df
@@ -78,6 +110,8 @@ def movie_recommend_top_10(emotion, userId) -> dict:
                           & (~movie_df["genres"].str.contains("Fantasy")) & (~movie_df["genres"].str.contains("Drama"))]
     else:
         sample_df = movie_df.copy()
+    
+    item_pred = item_sparse_matrix(ratings_df)
     
     item = item_pred.loc[userId].reset_index()
     item.columns = ["movieId","pred_rate"]
