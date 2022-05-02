@@ -38,9 +38,21 @@
         </div>
       </div>
     </div>
+    <div class="col-half">
+      <h4>성별</h4>
+      <div class="input-group">
+      <select name='fruits'>
+        <option value='' selected>-- 선택 --</option>
+        <option value='comedy'>코미디</option>
+        <option value='romance'>로맨스</option>
+        <option value='adventure'>어드벤쳐</option>
+      </select>
     <div class="row">
       <h4>약관 동의</h4>
-      <div class="input-group">
+      <div class="input-group">약관동의
+        <textarea class="form-control" rows="8" style="resize:none">
+       ........................................................................................
+        </textarea>
         <input id="terms" type="checkbox" />
         <label for="terms">약관에 동의하십니까?</label>
       </div>
@@ -58,8 +70,8 @@
     let userName = $('#writeUserName').val();
     window.location.href="/signup?user="+userName;
   } {% endcomment %}
-  axios.POST(
+  {% comment %} axios.POST(
     gender: document.isChecked
-  )
+  ) {% endcomment %}
 </script>
 {%endblock%}

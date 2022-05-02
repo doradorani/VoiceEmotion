@@ -1,5 +1,5 @@
 {% load static %}
-<meta name="viewport" content="width=device-width,initial-scale=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 <link
   rel="stylesheet"
   href="{% static 'css/base.css' %}? after"
@@ -21,11 +21,15 @@
       <ul class="login">
         {% if user.is_authenticated %}
         <li><a href="{% url 'member:logout' %}">logout</a></li>
+        <li></li>
         {% else %}
         <li><a href="{% url 'member:login' %}">login</a></li>
         <li><a href="{% url 'member:signup' %}">Signup</a></li>
         {% endif%}
       </ul>
+      <button class="more-btn">
+        <i class="icon"></i>
+      <button>
     </div>
   </div>
           {% block content %} {% endblock %}

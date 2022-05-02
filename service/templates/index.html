@@ -1,9 +1,30 @@
-<!DOCTYPE html>
 {% extends "base.html"%}
 {% load static %} {% block content %}
-    <script src="{% static 'js/index.js' %}" type="text/javascript"></script>
-    <p>
-      <button id="recordStart">START RECORDING</button>
-    </p>
-  {%endblock%}
-
+<link rel="stylesheet" href="{% static 'css\voicebot.css' %}? after" type="text/css" />
+<script src="{% static 'js/index.js' %}" type="text/javascript"></script>
+<script src="{% static 'js/voicebot.js' %}" type="text/javascript"></script>
+<div class=wrapper>
+  <div class="container">
+    <button id="recordStart"><svg class="mic" height="40" viewBox="0 0 40 40" width="40"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="m27.3945 15.8945c-.566 0-1.026.459-1.026 1.026v3.764c0 3.4-2.757 6.157-6.158 6.157s-6.158-2.757-6.158-6.157v-3.764c0-.567-.459-1.026-1.026-1.026s-1.027.459-1.027 1.026v3.764c.002 4.136 3.081 7.625 7.185 8.142v2.121h-2.737c-.567 0-1.027.46-1.027 1.026 0 .567.46 1.026 1.027 1.026h7.526c.567 0 1.026-.459 1.026-1.026 0-.566-.459-1.026-1.026-1.026h-2.736v-2.121c4.103-.517 7.181-4.006 7.183-8.142v-3.764c0-.567-.459-1.026-1.026-1.026m-7.184-8.895c2.267 0 4.105 1.838 4.105 4.106v9.579c0 2.267-1.838 4.105-4.105 4.105s-4.105-1.838-4.105-4.105v-9.579c0-2.268 1.838-4.106 4.105-4.106"
+          fill="#00c0ed" fill-rule="evenodd" />
+      </svg>
+    </button>
+    <div class="content">
+      <div id="chat-contents">
+      </div>
+      <div class="chat-box"><input type="text" id="chat-message-value" autocomplete="off"
+          placeholder="Type a message"><button id="submit-chat"><svg width="15" height="20" viewBox="0 0 30 21">
+            <path d="M4,11V13H16L10.5,18.5L11.92,19.92L19.84,12L11.92,4.08L10.5,5.5L16,11H4Z"></path>
+          </svg></button></div>
+      <div class="feeling-result">
+        <div class="result-chat">
+        <p id="result"></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+{%endblock%}

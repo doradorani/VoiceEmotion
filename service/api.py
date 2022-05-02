@@ -28,9 +28,9 @@ def run_quickstart():
     # 오디오 파일 분석
     response = client.recognize(config=config, audio=audio)
 
+    
     for result in response.results:
         print('Transcript: {}'.format(result.alternatives[0].transcript))
-
 
 if __name__ == '__main__':
     run_quickstart()
