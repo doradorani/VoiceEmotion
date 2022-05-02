@@ -1,31 +1,43 @@
 import os
 import warnings
-
+import pandas as pd
 import joblib
 import librosa
 import numpy as np
 from flask_cors import CORS
-from flask import Flask, jsonify, render_template, request
+from flask import Flask, jsonify, render_template, request, url_for, redirect
 from flask.wrappers import Response
 from sklearn.preprocessing import scale
 from werkzeug.utils import secure_filename
 from pydub import AudioSegment
-
+from pathlib import Path
 warnings.filterwarnings('ignore')
+import pymysql 
+from sklearn.metrics.pairwise import cosine_similarity
 
-MODEL = joblib.load(open('../model/saved_model/model_lgbm.pkl', 'rb'))
+
+BASE_DIR = Path(__file__).resolve().parent.parent
+
+# ---data 불러오기------------------------------------------------------------------------------------------------------------------
+db = pymysql.connect(user = 'root', host = '192.18.138.86', passwd = '5631jjyy', port = 3306, db = 'jango_db')
+cursor = db.cursor(pymysql.cursors.DictCursor)
+sql = "SELECT * FROM movie"
+cursor.execute(sql)
+movie_df = pd.DataFrame(data=cursor.fetchall(), columns=['movieId', 'title', 'genres'])
+cursor = db.cursor(pymysql.cursors.DictCursor)
+sql = "SELECT * FROM ratings"
+cursor.execute(sql)
+ratings_df = pd.DataFrame(data=cursor.fetchall(), columns=['idx', 'userId', 'movieId', 'rating', 'ts'])
+movie_df_copy = movie_df.copy()
+# ----------------------------------------------------------------------------------------------------------------------------------
+
+
+# ---model 불러오기------------------------------------------------------------------------------------------------------------------
+MODEL = joblib.load(open(os.path.join(BASE_DIR,'model/saved_model/model_lgbm.pkl'), 'rb'))
 Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
+# ----------------------------------------------------------------------------------------------------------------------------------
 
-# TODO Seperate File loc audio
-UPLOAD_DIRECTORY = './tmp/'
-TEMP_DIRECTORY = './temp/'
-
-if not os.path.exists(UPLOAD_DIRECTORY):
-    os.mkdir(UPLOAD_DIRECTORY)
-
-app = Flask(__name__)
-CORS(app=app, resources={r'*': {'origins': '*'}})
-
+# ---사용자 정의 함수-----------------------------------------------------------------------------------------------------------------
 
 def audio_preprocessing(filename: str) -> list:
     """오디오 전처리"""
@@ -38,9 +50,79 @@ def audio_preprocessing(filename: str) -> list:
     xf, _ = librosa.load(file_full)
     mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=5, n_fft=400, hop_length=160)
     mfcc_1 = scale(mfcc_1, axis=1)
-    feature = np.mean(mfcc_1.T, axis=0)
-
+    feature = np.mean(mfcc_1.T, axis=0) 
+    
     return [feature]
+
+def cossim_matrix(a, b):
+    """코사인 유사도 구하기"""
+    cossim_values = cosine_similarity(a.values, b.values)
+    cossim_df = pd.DataFrame(data=cossim_values, columns = a.index.values, index=a.index)
+    return cossim_df
+
+
+def item_sparse_matrix(ratings_df):
+    """아이템 기반 협업 필터링"""
+    sparse_matrix = ratings_df.groupby('movieId').apply(lambda x: pd.Series(x['rating'].values, index=x['userId'])).unstack()
+    sparse_matrix.index.name = 'movieId'
+
+    item_sparse_matrix = sparse_matrix.fillna(0)
+    item_cossim_df = cossim_matrix(item_sparse_matrix, item_sparse_matrix)
+
+    userId_grouped = ratings_df.groupby('userId')
+    item_prediction_result_df = pd.DataFrame(index=list(userId_grouped.indices.keys()), columns=item_sparse_matrix.index)
+
+    for userId, group in userId_grouped:
+        # user가 rating한 movieId * 전체 movieId
+        user_sim = item_cossim_df.loc[group['movieId']]
+        # user가 rating한 movieId * 1
+        user_rating = group['rating']
+        # 전체 movieId * 1
+        sim_sum = user_sim.sum(axis=0)
+        # userId의 전체 rating predictions (8938 * 1)
+        pred_ratings = np.matmul(user_sim.T.to_numpy(), user_rating) / (sim_sum+1)
+        item_prediction_result_df.loc[userId] = pred_ratings
+        
+    return item_prediction_result_df
+
+def movie_recommend_top_10(emotion, userId) -> dict:
+    """영화 추천 top 10 추출"""
+    global movie_df
+    movie_df = movie_df_copy.copy()
+    seen_movie = list(ratings_df[ratings_df["userId"] == userId]["movieId"].unique())
+    movie_df.set_index("movieId", inplace=True)
+    movie_df.drop(seen_movie, inplace=True)
+    movie_df.reset_index(inplace=True)
+    if emotion == 'anger':
+        '''
+        포함 : 코미디
+        미포함 : 스릴러
+        '''
+        sample_df = movie_df[movie_df["genres"].str.contains("Comedy") & (~movie_df["genres"].str.contains("Thriller"))
+                            & (~movie_df["genres"].str.contains("Horror")) & (~movie_df["genres"].str.contains("Crime"))
+                            & (~movie_df["genres"].str.contains("Mystery")) & (~movie_df["genres"].str.contains("War"))]
+    elif emotion == 'sad':
+        '''
+        포함 : 코미디, 액션 (참고. 범죄영화도 우울을 해소시키는 경향이 나타났지만 포함시키지 않은게 좋다고 판단하여 뺌)
+        미포함 : 판타지, 드라마
+        '''
+        sample_df = movie_df[movie_df["genres"].str.contains("Comedy") & (movie_df["genres"].str.contains("Action"))
+                          & (~movie_df["genres"].str.contains("Fantasy")) & (~movie_df["genres"].str.contains("Drama"))]
+    else:
+        sample_df = movie_df.copy()
+    
+    item_pred = item_sparse_matrix(ratings_df)
+    
+    item = item_pred.loc[userId].reset_index()
+    item.columns = ["movieId","pred_rate"]
+    item["movieId"] = item["movieId"].astype('int64')
+    
+    sample_df = sample_df.reset_index()
+    result = pd.merge(sample_df, item, on="movieId")
+    
+    top10_movie = result.sort_values(by="pred_rate", ascending=False)[:10].reset_index(drop=True)
+       
+    return top10_movie.to_dict('index')
 
 
 # TODO 파일을 저장하고 불러와서 다시 변환하고 삭제하는 형태이기에 저장장치에 무리를 줌
@@ -66,13 +148,27 @@ def webm_2_wav(filename: str) -> str:
 def audio_predict(x) -> int:
     """결과값 예측"""
     result = MODEL.predict(x)
-
+    
     return result[0].tolist()
 
+# ----------------------------------------------------------------------------------------------------------------------------------
+
+
+UPLOAD_DIRECTORY = './tmp/'
+TEMP_DIRECTORY = './temp/'
+
+if not os.path.exists(UPLOAD_DIRECTORY):
+    os.mkdir(UPLOAD_DIRECTORY)
+
+app = Flask(__name__)
+CORS(app=app, resources={r'*': {'origins': '*'}})
 
 # NOTE How about using `fs` save on ram and then convert?
 @app.route('/receive', methods=['POST'])
 def form() -> Response:
+    # 여기는 나중에 userid 세션으로 받아야함
+    userId = 2
+    
     """Get wav file"""
     file = request.files['file']
 
@@ -81,8 +177,9 @@ def form() -> Response:
         file.save(os.path.join(UPLOAD_DIRECTORY, filename))
         _x_val = audio_preprocessing(file.filename)
         predict_result = audio_predict(_x_val)
-
-        return jsonify({'status': 'success', 'result': Label[predict_result]})
+        top10 = movie_recommend_top_10(Label[predict_result],userId)
+        
+        return jsonify({'status': 'success', 'result': Label[predict_result], 'top10' : top10})
     else:
         return jsonify({'status': 'fail'})
 
