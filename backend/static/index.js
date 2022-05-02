@@ -11,7 +11,7 @@
  post_data - post data to flask api
  *********************************/
 let post_address = "/receive";
-let delay = 2000;
+let delay = 8000;
 let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
 

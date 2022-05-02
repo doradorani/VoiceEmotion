@@ -14,8 +14,10 @@ from pathlib import Path
 warnings.filterwarnings('ignore')
 import pymysql 
 from sklearn.metrics.pairwise import cosine_similarity
+import io
+from google.cloud import speech
 
-
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/User/Downloads/aivlebigproject-348610-27ad2f7a9168.json"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---data 불러오기------------------------------------------------------------------------------------------------------------------
@@ -31,13 +33,47 @@ ratings_df = pd.DataFrame(data=cursor.fetchall(), columns=['idx', 'userId', 'mov
 movie_df_copy = movie_df.copy()
 # ----------------------------------------------------------------------------------------------------------------------------------
 
-
 # ---model 불러오기------------------------------------------------------------------------------------------------------------------
 MODEL = joblib.load(open(os.path.join(BASE_DIR,'model/saved_model/model_lgbm.pkl'), 'rb'))
 Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 # ---사용자 정의 함수-----------------------------------------------------------------------------------------------------------------
+
+def stt(file_name):
+    """stt 변환해서 제대로 말했는지 확인"""
+    # 클라이언트 인스턴스화
+    client = speech.SpeechClient()
+    
+    # # 오디오 파일 이름
+    # file_name = UPLOAD_DIRECTORY + filename
+    # 오디오 파일 불러오기
+    with io.open(file_name, 'rb') as audio_file:
+        content = audio_file.read()
+        audio_file.close()
+    
+    audio = speech.RecognitionAudio(content=content)
+    config = speech.RecognitionConfig(
+        encoding=speech.RecognitionConfig.AudioEncoding.LINEAR16,
+        sample_rate_hertz=48000,
+        language_code='ko-KR')
+
+    # 오디오 파일 분석
+    response = client.recognize(config=config, audio=audio)
+    print("result:",response.results)
+    
+    # 응답 언어가 있는지 여부 판단
+    if response.results == []:
+        var = False
+    else:
+        for result in response.results:
+            script = result.alternatives[0].transcript    
+            print(script) 
+        # 영화 추천 포함 여부 판단
+        var = "영화 추천" in script
+    
+    return var
+
 
 def audio_preprocessing(filename: str) -> list:
     """오디오 전처리"""
@@ -52,7 +88,7 @@ def audio_preprocessing(filename: str) -> list:
     mfcc_1 = scale(mfcc_1, axis=1)
     feature = np.mean(mfcc_1.T, axis=0) 
     
-    return [feature]
+    return [feature,new_file_path]
 
 def cossim_matrix(a, b):
     """코사인 유사도 구하기"""
@@ -175,11 +211,16 @@ def form() -> Response:
     if file.filename is not None:
         filename = secure_filename(filename=file.filename)
         file.save(os.path.join(UPLOAD_DIRECTORY, filename))
-        _x_val = audio_preprocessing(file.filename)
-        predict_result = audio_predict(_x_val)
-        top10 = movie_recommend_top_10(Label[predict_result],userId)
-        
-        return jsonify({'status': 'success', 'result': Label[predict_result], 'top10' : top10})
+        # 영화추천을 포함해서 제대로 말했다면
+        _x_val, new_file_path = audio_preprocessing(file.filename)
+        print("new_file_path", new_file_path)
+        print("file.filename", file.filename)
+        if stt(new_file_path):
+            predict_result = audio_predict([_x_val])
+            top10 = movie_recommend_top_10(Label[predict_result],userId)
+            return jsonify({'status': 'success', 'result': Label[predict_result], 'top10' : top10})
+        else:
+            return jsonify({'status': 'fail'})
     else:
         return jsonify({'status': 'fail'})
 
