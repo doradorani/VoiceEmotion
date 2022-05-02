@@ -5,7 +5,7 @@ import joblib
 import librosa
 import numpy as np
 from flask_cors import CORS
-from flask import Flask, jsonify, render_template, request, url_for, redirect
+from flask import Flask, jsonify, render_template, request, url_for, redirect, session, escape
 from flask.wrappers import Response
 from sklearn.preprocessing import scale
 from werkzeug.utils import secure_filename
@@ -167,7 +167,7 @@ CORS(app=app, resources={r'*': {'origins': '*'}})
 @app.route('/receive', methods=['POST'])
 def form() -> Response:
     # 여기는 나중에 userid 세션으로 받아야함
-    userId = 2
+    userId = session['username']
     
     """Get wav file"""
     file = request.files['file']
