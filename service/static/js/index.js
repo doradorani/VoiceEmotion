@@ -72,15 +72,11 @@ navigator.mediaDevices
   .catch(function (err) {
     console.log(err.name, err.message);
   });
-<<<<<<< HEAD
 function getCookie(name) {
   var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
   return value? value[2] : null;
-} 
-=======
-
+}
 //blob 데이터 post, 받은 데이터로 감정 띄우기
->>>>>>> 4c0457b10baff485f326ceb994fc1fff3f1aae8e
 function post_data(blob) {
   const fd = new FormData();
   const xhr = new XMLHttpRequest();
