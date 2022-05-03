@@ -16,6 +16,7 @@ let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
 var postJson;
 
+//마이크 사용 가능한 기기 여부 확인
 if (navigator.mediaDevices === undefined) {
   navigator.mediaDevices = {};
   navigator.mediaDevices.getUserMedia = function (constraintObj) {
@@ -43,6 +44,7 @@ if (navigator.mediaDevices === undefined) {
     });
 }
 
+// 마이크로 녹음
 navigator.mediaDevices
   .getUserMedia(constraintObj)
   .then(function (mediaStreamObj) {
@@ -72,6 +74,7 @@ navigator.mediaDevices
     console.log(err.name, err.message);
   });
 
+//blob 데이터 post, 받은 데이터로 감정 띄우기
 function post_data(blob) {
   const fd = new FormData();
   const xhr = new XMLHttpRequest();
@@ -112,6 +115,7 @@ function post_data(blob) {
   return labels;
 }
 
+//지정된 챗봇 답변
 function displayMessage(type, number){
   var initialMessages = ["안녕하세요 니모션입니다."]
   var responseMessages = ["잠시만 기다려주세요", "현재 감정이 맞나요?", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라주세요", "다시 말씀해주세요"]
@@ -141,6 +145,7 @@ function displayMessage(type, number){
   messages.appendChild(newDiv);
 }
 
+//text값 있을때 버튼 active
 function arrowSubmit(){
   console.log("here")
   button = document.getElementById("submit-chat");
@@ -152,6 +157,7 @@ function arrowSubmit(){
   }
 }
 
+//타이핑한 text값 띄우기
 function submitMessage(){
   var text = document.getElementById("chat-message-value").value;
   if(text == ""){
@@ -188,6 +194,8 @@ function submitMessage(){
   return text;
 }
 
+
+//해당 감정의 영화 추천 메시지
 function feelingmessages(text){
   if(text == "네" || text == "맞아" || text == "맞습니다" || text == "sp"){
     for(i=0; i<10; i++){
@@ -221,6 +229,7 @@ function feelingmessages(text){
   
 }
 
+//버튼 눌렸을때 text값 보내기
 function addHandlers(){
   document.getElementById("submit-chat").addEventListener("click", submitMessage);
   document.onkeypress = function (e){
