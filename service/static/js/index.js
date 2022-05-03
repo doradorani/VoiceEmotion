@@ -14,6 +14,7 @@ let post_address = "http://127.0.0.1:5000/receive"; // TODO 포트지정 필요
 let delay = 5000;
 let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
+var postJson;
 
 if (navigator.mediaDevices === undefined) {
   navigator.mediaDevices = {};
@@ -63,7 +64,7 @@ navigator.mediaDevices
     };
     mediaRecorder.onstop = () => {
       let blob = new Blob(chunks, { type: "audio/wav;" });
-      post_data(blob);
+      postJson = post_data(blob);
       chunks = [];
     };
   })
@@ -192,11 +193,11 @@ function feelingmessages(text){
   newImg.className = "bot image";
   var newP = document.createElement("p");
 
-  newDiv.appendChild(newImg)
+  newDiv.appendChild(newImg);
   newDiv.appendChild(newP);
-  
+
   if(text == "네" || text == "맞아" || text == "맞습니다"){
-    newP.innerHTML += labels.top10[0].title;
+    newP.innerHTML += postJson.top10[0].title;
   }
 
   var messages = document.getElementById("chat-contents");
