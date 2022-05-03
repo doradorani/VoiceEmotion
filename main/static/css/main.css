@@ -17,7 +17,7 @@ body {
 
 #n_1 {
   right: 4px;
-  top: 328px;
+  top: 35%;
   position: absolute;
   font-family: "Jua", sans-serif;
   font-size: 124px;
@@ -26,7 +26,7 @@ body {
 
 #n_2 {
   right: 4px;
-  top: 463px;
+  top: 53%;
   position: absolute;
   width: 548px;
   text-align: right;
@@ -44,7 +44,7 @@ body {
 }
 
 #n_3 {
-  top: 520px;
+  top: 61%;
   right: 4px;
   position: absolute;
   font-weight: bold;
@@ -62,7 +62,7 @@ body {
 
 #NETFLIXlogo {
   position: absolute;
-  top: 109%;
+  top: 110%;
   right: 46%;
   width: 295px;
   height: 92px;
@@ -70,7 +70,7 @@ body {
 
 #t_1 {
   position: absolute;
-  top: 107%;
+  top: 108%;
   right: 30%;
   width: 292px;
   height: 117px;
@@ -148,7 +148,7 @@ body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
 @media screen and (max-width:768px) {
   .wrapper{
     left:-50%;
-    width: 200%;
+    width: 219%;
   }
   .middlebackground-form{
     width: 100%;
@@ -158,7 +158,22 @@ body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
     bottom: 20px;
   }
   #n_1{
-    font-size: 36px;
+    font-size: 75px;
+    top: 147%;
+  }
+  #n_2{
+    top: 161%;
+    font-size: 34px;
+  }
+  #m_char > img{
+    width: 44px;
+    left: 175%;
+    position: absolute;
+    top: 24%;
+  }
+  #n_3{
+    top: 169%;
+    font-size: 20px;
   }
   .container{
     
