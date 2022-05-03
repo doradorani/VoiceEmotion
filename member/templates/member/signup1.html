@@ -1,10 +1,6 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
-<link
-  rel="stylesheet"
-  href="{% static 'css/signup.css' %}? after"
-  type="text/css"
-/>
+<link rel="stylesheet" href="{% static 'css/signup.css' %}? after" type="text/css" />
 <div class="container">
   <form method="post" class="post-form">
     <div class="row">
@@ -12,7 +8,7 @@
       {% csrf_token %} {% include "form_errors.html" %}
       <div class="username"><input type="text" name='username' placeholder="아이디" /></div>
       <div class="password1">
-        <input type="password" name= password placeholder="비밀번호" />
+        <input type="password" name=password placeholder="비밀번호" />
       </div>
       <div class="password2">
         <input type="password" placeholder="비밀번호 확인" />
@@ -23,9 +19,9 @@
       <div class="col-half">
         <h4>생년월일</h4>
         <div class="input-group">
-          <div class="col-third"><input type="text" placeholder="DD" /></div>
-          <div class="col-third"><input type="text" placeholder="MM" /></div>
-          <div class="col-third"><input type="text" placeholder="YYYY" /></div>
+          <div class="col-third"><input type="text" name="day" placeholder="DD" /></div>
+          <div class="col-third"><input type="text" name="month" placeholder="MM" /></div>
+          <div class="col-third"><input type="text" name="year" placeholder="YYYY" /></div>
         </div>
       </div>
       <div class="col-half">
@@ -39,14 +35,16 @@
       </div>
     </div>
     <div class="col-half">
-      <h4>성별</h4>
+      <h4>선호하는 장르</h4>
       <div class="input-group">
-      <select name='fruits'>
-        <option value='' selected>-- 선택 --</option>
-        <option value='comedy'>코미디</option>
-        <option value='romance'>로맨스</option>
-        <option value='adventure'>어드벤쳐</option>
-      </select>
+        <select name='genre'>
+          <option value='' selected>-- 선택 --</option>
+          <option value='comedy'>코미디</option>
+          <option value='romance'>로맨스</option>
+          <option value='adventure'>어드벤쳐</option>
+        </select>
+      </div>
+    </div>
     <div class="row">
       <h4>약관 동의</h4>
       <div class="input-group">약관동의
@@ -57,18 +55,15 @@
         <label for="terms">약관에 동의하십니까?</label>
       </div>
     </div>
-    <button
-      type="button"
-      class="btn-next"
-      onclick="action='./signup2.html';submit()">
-      다음
+    <button type="submit" class="btn-next">
+      회원가입
     </button>
   </form>
 </div>
 <script>
-  {% comment %} function sendName(){
+  {% comment %} function sendName() {
     let userName = $('#writeUserName').val();
-    window.location.href="/signup?user="+userName;
+    window.location.href = "/signup?user=" + userName;
   } {% endcomment %}
   {% comment %} axios.POST(
     gender: document.isChecked

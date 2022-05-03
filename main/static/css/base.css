@@ -93,10 +93,12 @@ div.footer ul li::after {
 div.footer ul li:last-child::after {
   display: none;
 }
-
+.more-btn{
+  display: none;
+}
 
 @media screen and (max-width:768px) {
-  a {
+  a{
     text-decoration: none;
     font-family: "Jua", sans-serif;
     color: #222;
@@ -104,38 +106,55 @@ div.footer ul li:last-child::after {
   .more-btn{
     display: block;
     position: absolute;
-    right:12px;
-    top: 8px;
+    right:0;
+    top: 0;
     width: 40px;
     height: 40px;
+    border: none;
+    background: transparent;
   }
   .more-btn .icon{  
     display: block;
     width: 24px;
     height: 24px;
     margin: 0 auto;
-    background: url("C:/aivlebigproject/VoiceEmotion/main/static/more-button.png") no-repeat center;
+    background: url(../more-button.png) no-repeat center;
     background-size: contain;
   }
   .nav-wrap{
     display: block ! important;
     top:0;
     left: 0;
-    padding: 10% 35%;
-    width: 100%;
-    height: 100vh;
     background-color:#8ca8fa;
   }
+
+  div.nav-wrap ul.gnb {
+    display:none;
+    text-align: center;
+}
+  div.nav-wrap ul.login{
+    display: none;
+    text-align: center;
+}
+
+  .on{
+    display:block !important;
+    margin: 0 30%;
+  }
+
   .nav-wrap ul > li{
     display: block !important;
     margin-bottom: 8px;
     padding: 12px;
   }
   .more-btn.active .icon{
-    background: none;
-    border: hidden;
-    background: url('/static/more-button.png') no-repeat center;
-    background-size: contain
+    display: block !important;
+    width: 24px;
+    height: 24px;
+    margin: 0 auto;
+    background: url(../more-button2.png) no-repeat center;
+    background-size: contain;
+    background:transparent
   }
   #navigation{
     padding: 0;
@@ -145,9 +164,12 @@ div.footer ul li:last-child::after {
     top: 20px;
     height: 16px;
   }
-  .gnb{
+  /* .gnb{
     display: inline-block !important;
-  }
+  } */
+  /* div.nav-wrap ul.login{
+    display:block;
+  } */
 }
 
 

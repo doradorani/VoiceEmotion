@@ -5,20 +5,22 @@
   href="{% static 'css/base.css' %}? after"
   type="text/css"
 />
+<script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+<script src="{% static 'js/base.js' %}" type="text/javascript"></script>
 
 <div class="wrap">
   <div id="navgation">
     <div class="logo">
-      <a href="{% url 'main:main' %}"><img src='{% static "\logo.png" %}' /></a>
+      <a href="{% url 'main:main' %}"><img src='{% static "\logo.png" %}'/></a>
     </div>
     <div class="nav-wrap">
-      <ul class="gnb">
+      <ul class="gnb" id="gnb">
         <li><a href="{% url 'main:main' %}">Home</a></li>
         <li><a href="{% url 'service:service' %}">Service</a></li>
         <li><a href="{% url 'board:notice' %}">Notice</a></li>
         <li><a href="{% url 'board:mypage' %}">MyPage</a></li>
       </ul>
-      <ul class="login">
+      <ul class="login" id="login">
         {% if user.is_authenticated %}
         <li><a href="{% url 'member:logout' %}">logout</a></li>
         <li></li>
@@ -29,7 +31,7 @@
       </ul>
       <button class="more-btn">
         <i class="icon"></i>
-      <button>
+      </button>
     </div>
   </div>
           {% block content %} {% endblock %}

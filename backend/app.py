@@ -167,7 +167,7 @@ CORS(app=app, resources={r'*': {'origins': '*'}})
 @app.route('/receive', methods=['POST'])
 def form() -> Response:
     # 여기는 나중에 userid 세션으로 받아야함
-    userId = session['username']
+    userId = 2
     
     """Get wav file"""
     file = request.files['file']

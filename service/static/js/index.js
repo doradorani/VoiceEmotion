@@ -15,41 +15,6 @@ let delay = 5000;
 let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
 
-function displayMessage(type){
-  var initialMessages = ["안녕하세요 니모션입니다."]
-  var responseMessages = ["영화를 추천해드릴게요"]
-  
-  var newDiv = document.createElement("div");
-  newDiv.className = "chat-bubble";
-  var newImg = document.createElement("img");
-  newImg.className = "bot image";
-  var newP = document.createElement("p");
-  newP.innerHTML =  type == "initial" ? initialMessages[Math.floor(Math.random() * Math.floor(initialMessages.length))] : responseMessages[Math.floor(Math.random() * Math.floor(responseMessages.length))];
-  newDiv.appendChild(newImg)
-  newDiv.appendChild(newP);
-  
-  
-  var messages = document.getElementById("chat-contents");
-  messages.appendChild(newDiv);
-}
-
-function arrowSubmit(){
-  console.log("here")
-  text = document.getElementById("chat-message-value");
-  if( label.value == " "){
-    button.classList = "active";
-  }else{
-    button.classList.remove("active");
-  }
-}
-
-function addHandlers(){
-  setTimeout(function(){displayMessage("initial")}, 1500);
-  document.getElementById("chat-message-value").addEventListener("input", arrowSubmit);
-}
-
-window.addEventListener("load", addHandlers);
-
 if (navigator.mediaDevices === undefined) {
   navigator.mediaDevices = {};
   navigator.mediaDevices.getUserMedia = function (constraintObj) {
@@ -87,6 +52,7 @@ navigator.mediaDevices
     start.addEventListener("click", () => {
       mediaRecorder.start();
       console.log(mediaRecorder.state);
+      setTimeout(function(){displayMessage("response", 1)}, 0);
       setTimeout(() => {
         mediaRecorder.stop();
         console.log(mediaRecorder.state);
@@ -114,73 +80,139 @@ function post_data(blob) {
   fd.append("file", blob, save_file_format);
   xhr.send(fd);
 
-  var label = JSON.parse(xhr.responseText);
+  var labels = JSON.parse(xhr.responseText);
   var newDiv = document.createElement("div");
   newDiv.className = "chat-bubble";
   var newImg = document.createElement("img");
-  newImg.className = "user image";
+  newImg.className = "bot image";
   var newP = document.createElement("p");
-  if(label.result == "happiness"){
+  if(labels.result == "happiness"){
     newP.innerHTML = ("기쁘신가봐요")
-  } else if(label.result == "anger" ){
+  } else if(labels.result == "anger" ){
     newP.innerHTML = ("화가 나셨나봐요")
-  } else if(label.result == "angry"){
-    newP.innerHTML = ("화가 나셨나봐요")
-  } else if(label.result == "disgust"){
-    newP.innerHTML = ("역겨우시네요")
-  } else if(label.result == "fear"){
-    newP.innerHTML = ("무서우신가봐요")
-  } else if(label.result == "neutral"){
-    newP.innerHTML = ("평범한 상태시군요")
-  } else if(label.result == "sad"){
+  } else if(labels.result == "sad"){
     newP.innerHTML = ("슬프시네요")
-  } else if(label.result == "surprise"){
-    newP.innerHTML = ("놀라셨네요")
   } else{
     newP.innerHTML = ("다시 말씀해주세요")
   }
-  newDiv.appendChild(newImg);
+  newDiv.appendChild(newImg)
   newDiv.appendChild(newP);
   
   var messages = document.getElementById("chat-contents");
   messages.appendChild(newDiv);
-  setTimeout(function(){displayMessage("response")}, 3000);
+  setTimeout(function(){displayMessage("response", 2)}, 3000);
 
   console.log(xhr.responseText);
+  console.log(labels.top10[0].title);
+  return labels;
 
   // result.innerHTML += label.top10;
 }
 
-function submitMessage(){  
+function displayMessage(type, number){
+  var initialMessages = ["안녕하세요 니모션입니다."]
+  var responseMessages = ["잠시만 기다려주세요", "현재 감정이 맞나요?", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라주세요", "다시 말씀해주세요"]
+  
+  var newDiv = document.createElement("div");
+  newDiv.className = "chat-bubble";
+  var newImg = document.createElement("img");
+  newImg.className = "bot image";
+  var newP = document.createElement("p");
+  if(type == "initial") {
+    newP.innerHTML = initialMessages[Math.floor(Math.random() * Math.floor(initialMessages.length))]
+  } else if(number == 1){
+    newP.innerHTML = responseMessages[0];
+  } else if(number == 2){
+    newP.innerHTML = responseMessages[1];
+  } else if(number == 3){
+    newP.innerHTML = responseMessages[2];
+  } else if(number == 4){
+    newP.innerHTML = responseMessages[3];
+  } else if(number == 5){
+    newP.innerHTML = responseMessages[4];
+  }
+  newDiv.appendChild(newImg)
+  newDiv.appendChild(newP);
+    
+  var messages = document.getElementById("chat-contents");
+  messages.appendChild(newDiv);
+}
+
+function arrowSubmit(){
+  console.log("here")
+  button = document.getElementById("submit-chat");
+  text = document.getElementById("chat-message-value");
+  if( text.value != ""){
+    button.classList = "active";
+  }else{
+    button.classList.remove("active");
+  }
+}
+
+function submitMessage(){
+  var text = document.getElementById("chat-message-value").value;
+  if(text == ""){
+    return
+  }
+  document.getElementById("chat-message-value").value = "";
+  
   var newDiv = document.createElement("div");
   newDiv.className = "chat-bubble";
   var newImg = document.createElement("img");
   newImg.className = "user image";
   var newP = document.createElement("p");
-  if(label.result == "happiness"){
-    newP.innerHTML = ("기쁘신가봐요")
-  } else if(label.result == "anger" ){
-    newP.innerHTML = ("화가 나셨나봐요")
-  } else if(label.result == "angry"){
-    newP.innerHTML = ("화가 나셨나봐요")
-  } else if(label.result == "disgust"){
-    newP.innerHTML = ("역겨우시네요")
-  } else if(label.result == "fear"){
-    newP.innerHTML = ("무서우신가봐요")
-  } else if(label.result == "neutral"){
-    newP.innerHTML = ("평범한 상태시군요")
-  } else if(label.result == "sad"){
-    newP.innerHTML = ("슬프시네요")
-  } else if(label.result == "surprise"){
-    newP.innerHTML = ("놀라셨네요")
-  } else{
-    newP.innerHTML = ("다시 말씀해주세요")
-  }
-  newDiv.appendChild(newImg);
+  newP.innerHTML = text;
+  newDiv.appendChild(newImg)
   newDiv.appendChild(newP);
   
   var messages = document.getElementById("chat-contents");
   messages.appendChild(newDiv);
-  setTimeout(function(){displayMessage("response")}, 3000);
-
+  document.getElementById("submit-chat").classList.remove("active");
+  if(text == "네" || text == "맞아" || text == "맞습니다"){
+    setTimeout(function(){displayMessage("response", 3)},1000);
+    setTimeout(function(){feelingmessages(text)},1000);
+  } else if(text == "아니" || text == "아니야" || text == "아닙니다"){
+    setTimeout(function(){displayMessage("response", 4)},1000);
+  } else if(text == "화남" || text == "화가 나요" ){
+    setTimeout(function(){displayMessage("response", 1)},1000);
+  } else if(text == "기쁨" || text == "아니야" || text == "아닙니다"){
+    setTimeout(function(){displayMessage("response", 1)},1000);
+  } else if(text == "슬픔" || text == "슬퍼" || text == "눈물"){
+    setTimeout(function(){displayMessage("response", 1)},1000);
+  } else{
+    setTimeout(function(){displayMessage("response", 5)}, 1000);
+  }
+  return text;
 }
+
+function feelingmessages(text){
+  var newDiv = document.createElement("div");
+  newDiv.className = "chat-bubble";
+  var newImg = document.createElement("img");
+  newImg.className = "bot image";
+  var newP = document.createElement("p");
+
+  newDiv.appendChild(newImg)
+  newDiv.appendChild(newP);
+  
+  if(text == "네" || text == "맞아" || text == "맞습니다"){
+    newP.innerHTML += labels.top10[0].title;
+  }
+
+  var messages = document.getElementById("chat-contents");
+  messages.appendChild(newDiv);
+}
+
+function addHandlers(){
+  document.getElementById("submit-chat").addEventListener("click", submitMessage);
+  document.onkeypress = function (e){
+    if( e.keyCode == 13 ){
+      document.getElementById("submit-chat").click();
+    }
+  };
+  setTimeout(function(){displayMessage("initial")}, 0);
+  document.getElementById("chat-message-value").addEventListener("input", arrowSubmit);
+}
+
+window.addEventListener("load", addHandlers);
+
