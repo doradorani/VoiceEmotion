@@ -126,6 +126,7 @@ div.footer ul li:last-child::after {
     top:0;
     left: 0;
     background-color:#8ca8fa;
+    z-index: 1;
   }
 
   div.nav-wrap ul.gnb {
@@ -148,13 +149,17 @@ div.footer ul li:last-child::after {
     padding: 12px;
   }
   .more-btn.active .icon{
-    display: block !important;
+    display: block;
     width: 24px;
     height: 24px;
     margin: 0 auto;
+    border: hidden;
     background: url(../more-button2.png) no-repeat center;
     background-size: contain;
-    background:transparent
+  }
+  
+  #gnb{
+    margin: 5% 30% 0% 30%;
   }
   #navigation{
     padding: 0;
