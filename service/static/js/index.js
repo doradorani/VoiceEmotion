@@ -89,10 +89,13 @@ function post_data(blob) {
   var newP = document.createElement("p");
   if(labels.result == "happiness"){
     newP.innerHTML = ("기쁘신가봐요")
+    setTimeout(function(){displayMessage("response", 2)}, 3000);
   } else if(labels.result == "anger" ){
     newP.innerHTML = ("화가 나셨나봐요")
+    setTimeout(function(){displayMessage("response", 2)}, 3000);
   } else if(labels.result == "sad"){
     newP.innerHTML = ("슬프시네요")
+    setTimeout(function(){displayMessage("response", 2)}, 3000);
   } else{
     newP.innerHTML = ("다시 말씀해주세요")
   }
@@ -101,13 +104,12 @@ function post_data(blob) {
   
   var messages = document.getElementById("chat-contents");
   messages.appendChild(newDiv);
-  setTimeout(function(){displayMessage("response", 2)}, 3000);
+  
 
   console.log(xhr.responseText);
   console.log(labels.top10[0].title);
-  return labels;
 
-  // result.innerHTML += label.top10;
+  return labels;
 }
 
 function displayMessage(type, number){
@@ -169,10 +171,10 @@ function submitMessage(){
   var messages = document.getElementById("chat-contents");
   messages.appendChild(newDiv);
   document.getElementById("submit-chat").classList.remove("active");
-  if(text == "네" || text == "맞아" || text == "맞습니다"){
+  if(text == "네" || text == "맞아" || text == "맞습니다" || text == "sp"){
     setTimeout(function(){displayMessage("response", 3)},1000);
     setTimeout(function(){feelingmessages(text)},1000);
-  } else if(text == "아니" || text == "아니야" || text == "아닙니다"){
+  } else if(text == "아니" || text == "아니야" || text == "아닙니다" || text == "dksl"){
     setTimeout(function(){displayMessage("response", 4)},1000);
   } else if(text == "화남" || text == "화가 나요" ){
     setTimeout(function(){displayMessage("response", 1)},1000);
@@ -187,21 +189,36 @@ function submitMessage(){
 }
 
 function feelingmessages(text){
-  var newDiv = document.createElement("div");
-  newDiv.className = "chat-bubble";
-  var newImg = document.createElement("img");
-  newImg.className = "bot image";
-  var newP = document.createElement("p");
-
-  newDiv.appendChild(newImg);
-  newDiv.appendChild(newP);
-
-  if(text == "네" || text == "맞아" || text == "맞습니다"){
-    newP.innerHTML += postJson.top10[0].title;
+  if(text == "네" || text == "맞아" || text == "맞습니다" || text == "sp"){
+    for(i=0; i<10; i++){
+      var newDiv = document.createElement("div");
+      newDiv.className = "chat-bubble";
+      var newImg = document.createElement("img");
+      newImg.className = "bot image";
+      var newP = document.createElement("p");
+      var messages = document.getElementById("chat-contents");
+      newDiv.appendChild(newImg);
+      newDiv.appendChild(newP);
+      newP.innerHTML = '제목: ';
+      newP.innerHTML += postJson.top10[i].title;
+      newP.innerHTML += '<br/>';
+      newP.innerHTML += '장르: ';
+      newP.innerHTML += postJson.top10[i].genres;
+      messages.appendChild(newDiv);
+    }
+    var newDiv = document.createElement("div");
+      newDiv.className = "chat-bubble";
+      var newImg = document.createElement("img");
+      newImg.className = "bot image";
+      var newP = document.createElement("p");
+      var messages = document.getElementById("chat-contents");
+      newDiv.appendChild(newImg);
+      newDiv.appendChild(newP);
+      newP.innerHTML = '이 영화들을 추천드려요';
+      messages.appendChild(newDiv);
   }
 
-  var messages = document.getElementById("chat-contents");
-  messages.appendChild(newDiv);
+  
 }
 
 function addHandlers(){
