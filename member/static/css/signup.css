@@ -28,7 +28,7 @@ select {
 }
 input:focus {
   outline: 0;
-  border-color: #bd8200;
+  border-color: #8ca8fa;
 }
 input:focus + .input-icon i {
   color: #211e3f;
@@ -62,9 +62,9 @@ input[type="radio"]:checked + label,
 input:checked + label:before,
 select:focus,
 select:active {
-  background-color: #f0a500;
+  background-color: #8ca8fa;
   color: #fff;
-  border-color: #bd8200;
+  border-color: #8ca8fa;
 }
 input[type="checkbox"] {
   display: none;
@@ -114,7 +114,7 @@ select:active {
   outline: 0;
 }
 select option {
-  background-color: #f0a500;
+  background-color: #8ca8fa;
   color: #fff;
 }
 .input-group {
