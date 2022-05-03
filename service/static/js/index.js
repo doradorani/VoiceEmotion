@@ -48,7 +48,6 @@ navigator.mediaDevices
     let start = document.getElementById("recordStart");
     let mediaRecorder = new MediaRecorder(mediaStreamObj);
     let chunks = [];
-
     start.addEventListener("click", () => {
       mediaRecorder.start();
       console.log(mediaRecorder.state);
@@ -70,12 +69,16 @@ navigator.mediaDevices
   .catch(function (err) {
     console.log(err.name, err.message);
   });
-
+function getCookie(name) {
+  var value = document.cookie.match('(^|;) ?' + name + '=([^;]*)(;|$)');
+  return value? value[2] : null;
+} 
 function post_data(blob) {
   const fd = new FormData();
   const xhr = new XMLHttpRequest();
   var result = document.getElementById("result");
-
+  var username = getCookie('username');
+  
   xhr.open("POST", post_address, false);
   fd.append("file", blob, save_file_format);
   xhr.send(fd);

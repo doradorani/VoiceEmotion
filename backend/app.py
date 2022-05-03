@@ -15,9 +15,9 @@ warnings.filterwarnings('ignore')
 import pymysql 
 from sklearn.metrics.pairwise import cosine_similarity
 import io
-from google.cloud import speech
+# from google.cloud import speech
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/User/Downloads/aivlebigproject-348610-27ad2f7a9168.json"
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/User/Downloads/aivlebigproject-348610-27ad2f7a9168.json"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---data 불러오기------------------------------------------------------------------------------------------------------------------
