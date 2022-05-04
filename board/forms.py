@@ -20,3 +20,12 @@ class CommentForm(forms.ModelForm):
         labels = {
             'content': '댓글내용',
         }
+
+class BoardEditForm(forms.ModelForm):
+    class Meta:
+        model = Board
+        fields = (
+            'title',
+            'content',
+            'image',
+        )

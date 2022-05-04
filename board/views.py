@@ -6,8 +6,9 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
+from sympy import re
 
-from .forms import BoardWriteForm, CommentForm
+from .forms import BoardWriteForm, CommentForm, BoardEditForm
 from .models import Board, Comment, Notice
 
 
@@ -101,13 +102,16 @@ def board_edit(request, pk) -> HttpResponse:
     """TODO Expect as Edit private board"""
     board = Board.objects.get(id=pk)
     if request.method == 'POST':
-        board.title = request.POST['title']
-        board.content = request.POST['content']
-        board.save()
-        return redirect('board:board')
+        form = BoardEditForm(request.POST)
+        if form.is_valid():
+            board.title = request.POST['title']
+            board.content = request.POST['content']
+            board.save()
+            return redirect('board:board_detail',pk)
     else:
-        boardForm = BoardWriteForm
-        return render(request, 'board/edit.html', {'boardForm': boardForm})
+        form = BoardWriteForm(instance=board)
+
+        return render(request, 'board/edit.html', {'form':form})
 
 
 @csrf_exempt
@@ -182,3 +186,9 @@ def withdraw(request):
             return redirect('/main/')
 
     return render(request, 'board/withdraw.html')
+
+@login_required
+def board_delete(request,pk):
+    board = get_object_or_404(Board, pk=pk)
+    board.delete()
+    return redirect('board:mypage')

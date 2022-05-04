@@ -13,4 +13,5 @@ urlpatterns = [
     path('mypage/', views.mypage, name='mypage'),
     path('withdraw/', views.withdraw, name='withdraw'),
     path('change_password/', views.change_password, name='change_password'),
+    path('detail/delete/<int:pk>/',views.board_delete,name='delete'),
 ]
