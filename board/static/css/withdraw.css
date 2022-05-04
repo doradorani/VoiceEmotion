@@ -59,7 +59,8 @@
 
 .sidebar > ul > li:nth-child(1),
 .sidebar > ul > li:nth-child(2),
-.sidebar > ul > li:nth-child(3){
+.sidebar > ul > li:nth-child(3),
+.sidebar > ul > li:nth-child(4){
     padding: 10% 0;
 }
 

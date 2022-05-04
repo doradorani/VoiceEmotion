@@ -7,7 +7,10 @@
     <h2>Mypage</h2>
     <ul>
       <li>
-        <a href="{% url 'board:change_password' %}"><i class="nav-link"></i>회원정보수정</a>
+        <a href="{% url 'board:mypage' %}"><i class="nav-link"></i>나의 문의사항</a>
+      </li>
+      <li>
+        <a href="{% url 'board:change_password' %}"><i class="nav-link"></i>비밀번호 수정</a>
       </li>
       <li>
         <a href="{#}"><i class="nav-link"></i>내가 본 영화 목록</a>
@@ -19,6 +22,7 @@
   </div>
   <div class="main_content">
     <div class="container">
+      <h1>나의 문의사항</h1>
       <div class="table-responsive">
         <table class="table">
           <thead>
