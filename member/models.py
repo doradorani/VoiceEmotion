@@ -3,5 +3,7 @@ from django.db import models
 
 
 class User(AbstractUser):
-    favorite = models.CharField(max_length=50)
-    genre = models.CharField(max_length=50)
+    GENDER_CHOICES = (('male', 'mail'), ('female', 'female'))
+
+    genres = models.CharField(max_length=50)
+    gender = models.CharField(default='male',max_length=10, choices=GENDER_CHOICES)
