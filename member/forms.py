@@ -6,6 +6,12 @@ User = get_user_model()
 
 
 class UserForm(UserCreationForm):
-    class Meta(UserCreationForm):
+    class Meta:
         model = User
-        fields = UserCreationForm.Meta.fields + ('genres','gender',)
+        fields = (
+            'username',
+            'password1',
+            'password2',
+            'email',
+            'genres',
+            'gender',)
