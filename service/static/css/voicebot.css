@@ -166,3 +166,8 @@
 #recordStart > svg > path{
   fill: #9cb6ff;
 }
+
+.poster{
+  width: 71%;
+  height: auto;
+}

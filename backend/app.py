@@ -17,15 +17,15 @@ from sklearn.metrics.pairwise import cosine_similarity
 import io
 from google.cloud import speech
 
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/User/Downloads/aivlebigproject-348610-27ad2f7a9168.json"
+# os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/User/Downloads/aivlebigproject-348610-27ad2f7a9168.json"
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # ---data 불러오기------------------------------------------------------------------------------------------------------------------
 db = pymysql.connect(user = 'root', host = '192.18.138.86', passwd = '5631jjyy', port = 3306, db = 'jango_db')
 cursor = db.cursor(pymysql.cursors.DictCursor)
-sql = "SELECT * FROM movie"
+sql = "SELECT * FROM movies"
 cursor.execute(sql)
-movie_df = pd.DataFrame(data=cursor.fetchall(), columns=['movieId', 'title', 'genres'])
+movie_df = pd.DataFrame(data=cursor.fetchall(), columns=['movieId', 'title', 'genres', 'img'])
 cursor = db.cursor(pymysql.cursors.DictCursor)
 sql = "SELECT * FROM ratings"
 cursor.execute(sql)
