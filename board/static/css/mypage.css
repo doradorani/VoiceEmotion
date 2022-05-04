@@ -11,7 +11,7 @@
 }
 
 .main_content > div > div > table{
-    padding: 4% 4% 4% 10%;
+    padding: 0% 4% 4% 10%;
     font-size: 20px;
     width: 100%;
 }
@@ -61,4 +61,8 @@
 .sidebar > ul > li:nth-child(2),
 .sidebar > ul > li:nth-child(3){
     padding: 10% 0;
+}
+
+.main_content > div > h1{
+  text-align: center;
 }

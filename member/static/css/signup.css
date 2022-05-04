@@ -249,7 +249,7 @@ select option {
   width: 100%;
 }
 
-.container > form > div:nth-child(4) > div,
-.container > form > div:nth-child(5) > div{
+.container > form > div:nth-child(2) > div,
+.container > form > div:nth-child(3) > div{
   display: grid;
 }

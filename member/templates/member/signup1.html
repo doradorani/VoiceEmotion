@@ -7,60 +7,6 @@
   <form method="post" class="post-form" name="join_form">
     <div class="row">
       <h4>회원 가입</h4>
-      {% csrf_token %} {% include "form_errors.html" %}
-      <div class="username"><input type="text" name='username' placeholder="아이디" /></div>
-      <div class="password1">
-        <input type="password" name=password1 placeholder="비밀번호" value="{{ form.password1.value | default_if_none:'' }}">
-      </div>
-      <div class="password2">
-        <input type="password" name=password2 placeholder="비밀번호 확인" value="{{ form.password2.value | default_if_none:'' }}">
-      </div>
-      <div class="email"><input type="text" placeholder="이메일" /></div>
-    </div>
-    <div class="row">
-      <div class="col-half">
-        <h4>생년월일</h4>
-        <div class="input-group">
-          <div class="col-third"><input type="text" name="year" placeholder="YYYY" /></div>
-          <div class="col-third"><input type="text" name="month" placeholder="MM" /></div>
-          <div class="col-third"><input type="text" name="day" placeholder="DD" /></div>
-        </div>
-      </div>
-      <div class="col-half">
-        <h4>성별</h4>
-        <div class="input-group">
-          <input id="gender-male" type="radio" name="gender" value="male" />
-          <label for="gender-male">남</label>
-          <input id="gender-female" type="radio" name="gender" value="female" />
-          <label for="gender-female">여</label>
-        </div>
-      </div>
-    </div>
-    <div class="row">
-      <h4>선호하는 장르</h4>
-      <div class="input-group">
-        <select name='genres'>
-          <option value='' selected>-- 선택 --</option>
-          <option value='Comedy'>코미디</option>
-          <option value='Romance'>로맨스</option>
-          <option value='Adventure'>어드벤쳐</option>
-          <option value='thriller'>스릴러</option>
-          <option value='Drama'>드라마</option>
-          <option value='Crime'>범죄</option>
-          <option value='Animation'>애니메이션</option>
-          <option value='Musical'>뮤지컬</option>
-          <option value='Sci-Fi'>공상과학</option>
-          <option value='Action'>액션</option>
-          <option value='Documentary'>다큐</option>
-          <option value='Mystery'>미스테리</option>
-          <option value='War'>전쟁</option>
-          <option value='Film-Noir'>누아르</option>
-          <option value='Children'>아동용</option>
-          <option value='Horror'>호러</option>
-          <option value='Fantasy'>판타지</option>
-          <option value='Western'>서부</option>
-        </select>
-      </div>
     </div>
     <div class="row">
       <h4>약관 동의</h4>
@@ -336,6 +282,63 @@ o 로그 기록
         </textarea>
         <input id="terms2" type="checkbox" />
         <label for="terms2">동의합니다</label>
+      </div>
+    </div>
+    <div class="row">
+      {% csrf_token %} {% include "form_errors.html" %}
+      <h4>기본 정보</h4>
+      <div class="username"><input type="text" name='username' placeholder="아이디" /></div>
+      <div class="password1">
+        <input type="password" name=password1 placeholder="비밀번호" value="{{ form.password1.value | default_if_none:'' }}">
+      </div>
+      <div class="password2">
+        <input type="password" name=password2 placeholder="비밀번호 확인" value="{{ form.password2.value | default_if_none:'' }}">
+      </div>
+      <div class="email"><input type="text" placeholder="이메일" /></div>
+    </div>
+    <div class="row">
+      <div class="col-half">
+        <h4>생년월일</h4>
+        <div class="input-group">
+          <div class="col-third"><input type="text" name="year" placeholder="YYYY" /></div>
+          <div class="col-third"><input type="text" name="month" placeholder="MM" /></div>
+          <div class="col-third"><input type="text" name="day" placeholder="DD" /></div>
+        </div>
+      </div>
+      <div class="col-half">
+        <h4>성별</h4>
+        <div class="input-group">
+          <input id="gender-male" type="radio" name="gender" value="male" />
+          <label for="gender-male">남</label>
+          <input id="gender-female" type="radio" name="gender" value="female" />
+          <label for="gender-female">여</label>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <h4>선호하는 장르</h4>
+      <div class="input-group">
+        <select name='genres'>
+          <option value='' selected>-- 선택 --</option>
+          <option value='Comedy'>코미디</option>
+          <option value='Romance'>로맨스</option>
+          <option value='Adventure'>어드벤쳐</option>
+          <option value='thriller'>스릴러</option>
+          <option value='Drama'>드라마</option>
+          <option value='Crime'>범죄</option>
+          <option value='Animation'>애니메이션</option>
+          <option value='Musical'>뮤지컬</option>
+          <option value='Sci-Fi'>공상과학</option>
+          <option value='Action'>액션</option>
+          <option value='Documentary'>다큐</option>
+          <option value='Mystery'>미스테리</option>
+          <option value='War'>전쟁</option>
+          <option value='Film-Noir'>누아르</option>
+          <option value='Children'>아동용</option>
+          <option value='Horror'>호러</option>
+          <option value='Fantasy'>판타지</option>
+          <option value='Western'>서부</option>
+        </select>
       </div>
     </div>
     <button type="button" class="btn-next" onclick="joinform_check();">
