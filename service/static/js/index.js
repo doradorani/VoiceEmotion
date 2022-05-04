@@ -162,6 +162,7 @@ function arrowSubmit(){
 
 //타이핑한 text값 띄우기
 function submitMessage(){
+  const xhr = new XMLHttpRequest();
   var text = document.getElementById("chat-message-value").value;
   if(text == ""){
     return
@@ -187,13 +188,19 @@ function submitMessage(){
     setTimeout(function(){displayMessage("response", 4)},1000);
   } else if(text == "화남" || text == "화가 나요" ){
     setTimeout(function(){displayMessage("response", 1)},1000);
+    // sender = JSON.stringify({'emotion': 'anger'});
   } else if(text == "기쁨" || text == "아니야" || text == "아닙니다"){
     setTimeout(function(){displayMessage("response", 1)},1000);
+    // sender = JSON.stringify({'emotion': 'happiness'});
   } else if(text == "슬픔" || text == "슬퍼" || text == "눈물"){
     setTimeout(function(){displayMessage("response", 1)},1000);
+    // sender = JSON.stringify({'emotion': 'sad'});
   } else{
     setTimeout(function(){displayMessage("response", 5)}, 1000);
   }
+
+  // xhr.open('POST', post_address);
+  // xhr.send(sender);
   return text;
 }
 

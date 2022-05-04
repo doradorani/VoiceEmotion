@@ -1,6 +1,7 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 
 <link rel="stylesheet" href="{% static 'css/signup.css' %}? after" type="text/css" />
+<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css"/>
 <div class="container">
   <form method="post" class="post-form">
     <div class="row">
@@ -19,9 +20,9 @@
       <div class="col-half">
         <h4>생년월일</h4>
         <div class="input-group">
-          <div class="col-third"><input type="text" name="day" placeholder="DD" /></div>
-          <div class="col-third"><input type="text" name="month" placeholder="MM" /></div>
           <div class="col-third"><input type="text" name="year" placeholder="YYYY" /></div>
+          <div class="col-third"><input type="text" name="month" placeholder="MM" /></div>
+          <div class="col-third"><input type="text" name="day" placeholder="DD" /></div>
         </div>
       </div>
       <div class="col-half">
@@ -276,8 +277,8 @@
 
 부 칙(시행일) 이 약관은 2019년 6월 5일부터 시행합니다.
         </textarea>
-        <input id="terms" type="checkbox" />
-        <label for="terms">약관에 동의하십니까?</label>
+        <input id="terms1" type="checkbox" />
+        <label for="terms1">동의합니다</label>
       </div>
     </div>
     <div class="row">
@@ -286,15 +287,15 @@
         <textarea class="form-control" rows="8" style="resize:none">
 1. 개인정보 수집목적 및 이용목적
 
-가. 서비스 제공에 관한 계약 이행 및 서비스 제공에 따른 요금정산
+가. 서비스 제공에 관한 계약 이행
 
-콘텐츠 제공 , 구매 및 요금 결제 , 물품배송 또는 청구지 등 발송 , 금융거래 본인 인증 및 금융 서비스
+콘텐츠 제공 
 
 나. 회원 관리
 
 회원제 서비스 이용에 따른 본인확인 , 개인 식별 , 불량회원의 부정 이용 방지와 비인가 사용 방지 , 가입 의사 확인 , 연령확인 , 만14세 미만 아동 개인정보 수집 시 법정 대리인 동의여부 확인, 불만처리 등 민원처리 , 고지사항 전달
 
-2. 수집하는 개인정보 항목 : 이름 , 생년월일 , 성별 , 로그인ID , 비밀번호 , 자택 전화번호 , 휴대전화번호 , 이메일 , 14세미만 가입자의 경우 법정대리인의 정보
+2. 수집하는 개인정보 항목 : 생년월일 , 성별 , 로그인ID , 비밀번호 , 이메일 , 목소리 정보
 
 3. 개인정보의 보유기간 및 이용기간
 
@@ -332,8 +333,8 @@ o 로그 기록
 
 ※ 동의를 거부할 수 있으나 거부시 회원 가입이 불가능합니다.
         </textarea>
-        <input id="terms" type="checkbox" />
-        <label for="terms">약관에 동의하십니까?</label>
+        <input id="terms2" type="checkbox" />
+        <label for="terms2">동의합니다</label>
       </div>
     </div>
     <button type="submit" class="btn-next">
