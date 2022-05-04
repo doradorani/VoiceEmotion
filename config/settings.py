@@ -27,7 +27,7 @@ SECRET_KEY = 'django-insecure-=3$qgnm$rae#^4o0cavyo=2$t2(k+ng$mapb$nf^tk7sxbx$v%
 DEBUG = True
 
 # ALLOWED_HOSTS = []
-
+LOGIN_URL = "/member/login"
 
 # Application definition
 
