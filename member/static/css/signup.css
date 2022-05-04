@@ -246,3 +246,12 @@ select option {
   text-align: center;
   font-size: 40px;
 }
+
+.form-control{
+  width: 100%;
+}
+
+.container > form > div:nth-child(4) > div,
+.container > form > div:nth-child(5) > div{
+  display: grid;
+}
