@@ -14,10 +14,29 @@
     padding: 0% 4% 4% 10%;
     font-size: 20px;
     width: 100%;
+    border-spacing: 0;
 }
 
-.main_content > div > div > table > tbody{
+.table > thead {
+  background: #5d6a8fc2;
+  height: 45px;
+}
+.table > thead > tr > th {
+  color: #f6f7ff;
+  font-family: "Jua", sans-serif;
+  font-weight: 100 !important;
+  font-size: 20px;
+}
+
+.table > thead > tr > th:nth-child(4) {
+  border-radius: 0px 15px 0px 0px;
+}
+.table > thead > tr > th:nth-child(1) {
+  border-radius: 15px 0px 0px 0px;
+}
+.table > tbody{
     text-align: center;
+    background: #d4dfff42;
 }
 
 .main_content > div > div > table > thead > tr > th:nth-child(4){
@@ -66,4 +85,10 @@
 
 .main_content > div > h1{
   text-align: center;
+}
+.main_content > div > nav > a{
+  font-size: 21px;
+    background: #9bb3db;
+    border-radius: 8px;
+    padding: 5px 20px;
 }
