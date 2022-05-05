@@ -95,13 +95,13 @@ function post_data(blob) {
   var newP = document.createElement("p");
   if(labels.result == "happiness"){
     newP.innerHTML = ("기쁘신가봐요")
-    setTimeout(function(){displayMessage("response", 2)}, 3000);
+    setTimeout(function(){displayMessage("response", 2)}, 1500);
   } else if(labels.result == "anger" ){
     newP.innerHTML = ("화가 나셨나봐요")
-    setTimeout(function(){displayMessage("response", 2)}, 3000);
+    setTimeout(function(){displayMessage("response", 2)}, 1500);
   } else if(labels.result == "sad"){
     newP.innerHTML = ("슬프시네요")
-    setTimeout(function(){displayMessage("response", 2)}, 3000);
+    setTimeout(function(){displayMessage("response", 2)}, 1500);
   } else{
     newP.innerHTML = ("다시 말씀해주세요")
   }
@@ -183,7 +183,7 @@ function submitMessage(){
   document.getElementById("submit-chat").classList.remove("active");
   if(text == "네" || text == "맞아" || text == "맞습니다" || text == "sp"){
     setTimeout(function(){displayMessage("response", 3)},1000);
-    setTimeout(function(){feelingmessages(text)},1000);
+    setTimeout(function(){feelingmessages(text)},2000);
   } else if(text == "아니" || text == "아니야" || text == "아닙니다" || text == "dksl"){
     setTimeout(function(){displayMessage("response", 4)},1000);
   } else if(text == "화남" || text == "화가 나요" ){
