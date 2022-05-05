@@ -200,11 +200,8 @@ app = Flask(__name__)
 CORS(app=app, resources={r'*': {'origins': '*'}})
 
 # NOTE How about using `fs` save on ram and then convert?
-@app.route('/receive', methods=['POST'])
-def form() -> Response:
-    # 여기는 나중에 userid 세션으로 받아야함
-    userId = 2
-    
+@app.route('/receive/emotion', methods=['POST'])
+def emotion() -> Response:
     """Get wav file"""
     file = request.files['file']
 
@@ -217,12 +214,21 @@ def form() -> Response:
         print("file.filename", file.filename)
         if stt(new_file_path):
             predict_result = audio_predict([_x_val])
-            top10 = movie_recommend_top_10(Label[predict_result],userId)
-            return jsonify({'status': 'success', 'result': Label[predict_result], 'top10' : top10})
+            return jsonify({'status': 'success', 'result': Label[predict_result]})
         else:
             return jsonify({'status': 'fail'})
     else:
         return jsonify({'status': 'fail'})
+    
+    
+@app.route('/receive/movie', methods=['POST'])
+def movie() -> Response:
+    "감정 정보로 영화 추천"
+    emotion = request.form["emotion"]
+    user_id = request.form["user_id"]
+    print(emotion, user_id)
+    top10 = movie_recommend_top_10(emotion,int(user_id))
+    return jsonify({'status': 'success', 'top10': top10})
 
 
 # NOTE This page is not need
