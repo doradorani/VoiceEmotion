@@ -80,7 +80,6 @@ function getCookie(name) {
 function post_data(blob) {
   const fd = new FormData();
   const xhr = new XMLHttpRequest();
-  var result = document.getElementById("result");
   var user_id = getCookie('user_id');
   
   xhr.open("POST", post_address, false);
@@ -95,13 +94,13 @@ function post_data(blob) {
   var newP = document.createElement("p");
   if(labels.result == "happiness"){
     newP.innerHTML = ("기쁘신가봐요")
-    setTimeout(function(){displayMessage("response", 2)}, 3000);
+    setTimeout(function(){displayMessage("response", 2)}, 1500);
   } else if(labels.result == "anger" ){
     newP.innerHTML = ("화가 나셨나봐요")
-    setTimeout(function(){displayMessage("response", 2)}, 3000);
+    setTimeout(function(){displayMessage("response", 2)}, 1500);
   } else if(labels.result == "sad"){
     newP.innerHTML = ("슬프시네요")
-    setTimeout(function(){displayMessage("response", 2)}, 3000);
+    setTimeout(function(){displayMessage("response", 2)}, 1500);
   } else{
     newP.innerHTML = ("다시 말씀해주세요")
   }
@@ -120,7 +119,7 @@ function post_data(blob) {
 
 //지정된 챗봇 답변
 function displayMessage(type, number){
-  var initialMessages = ["안녕하세요 니모션입니다."]
+  var initialMessages = ["안녕하세요 니모션입니다.", '"니모션, 영화 추천해 줘"라고 말씀해주세요']
   var responseMessages = ["잠시만 기다려주세요", "현재 감정이 맞나요?", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라주세요", "다시 말씀해주세요"]
   
   var newDiv = document.createElement("div");
@@ -129,7 +128,9 @@ function displayMessage(type, number){
   newImg.className = "bot image";
   var newP = document.createElement("p");
   if(type == "initial") {
-    newP.innerHTML = initialMessages[Math.floor(Math.random() * Math.floor(initialMessages.length))]
+    newP.innerHTML = initialMessages[0];
+    newP.innerHTML += "<br/>";
+    newP.innerHTML += initialMessages[1];
   } else if(number == 1){
     newP.innerHTML = responseMessages[0];
   } else if(number == 2){
@@ -170,7 +171,7 @@ function submitMessage(){
   document.getElementById("chat-message-value").value = "";
   
   var newDiv = document.createElement("div");
-  newDiv.className = "chat-bubble";
+  newDiv.className = "chat-bubble2";
   var newImg = document.createElement("img");
   newImg.className = "user image";
   var newP = document.createElement("p");
@@ -183,7 +184,7 @@ function submitMessage(){
   document.getElementById("submit-chat").classList.remove("active");
   if(text == "네" || text == "맞아" || text == "맞습니다" || text == "sp"){
     setTimeout(function(){displayMessage("response", 3)},1000);
-    setTimeout(function(){feelingmessages(text)},1000);
+    setTimeout(function(){feelingmessages(text)},2000);
   } else if(text == "아니" || text == "아니야" || text == "아닙니다" || text == "dksl"){
     setTimeout(function(){displayMessage("response", 4)},1000);
   } else if(text == "화남" || text == "화가 나요" ){
