@@ -102,31 +102,44 @@
 }
 
 .chat-bubble{
-  width: 400px;
+  width: fit-content;
   box-shadow: 1px 2px 10px -3px rgba(0,0,0,0.5);
   background-color: white;
   border-radius: 30px;
-	padding: 20px;
-  margin: 20px;
+	padding: 2%;
+  margin: 7%;
+  animation: wiggle 1s ease-in-out;
+}
+
+.chat-bubble2{
+  width: fit-content;
+  box-shadow: 1px 2px 10px -3px rgba(0,0,0,0.5);
+  background-color: white;
+  border-radius: 30px;
+	padding: 2%;
+  margin: 0% 0% 0% 77%;
   animation: wiggle 1s ease-in-out;
 }
 
 .chat-bubble p{
+  display: table-row;
+  margin: 0;
+}
+.chat-bubble2 p{
   margin: 0;
 }
 
-.chat-bubble .image{
- 
+.chat-bubble2 .image{
   object-fit: cover;
 }
 
-.chat-bubble .image.user{
+.chat-bubble2 .image.user{
     content: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZPhHNfZexB5B2SGcucNjrw-4LgcBNH-s_KlRb__cZnOMu1nJ58A);
     float: right;
     width: 48px;
     height: 48px;
-    margin-right: -7%;
-    margin-top: -6%;
+    margin-right: -89%;
+    margin-top: -61%;
     border-radius: 100%;
     border: 3px solid white;
 }
@@ -134,10 +147,9 @@
 .chat-bubble .image.bot{
   content: url(../character.png);
   float: left;
-  width: 15%;
   height: auto;
-  margin-left: -10%;
-  margin-top: -7%;
+  margin-left: -35px;
+  margin-top: -40px;
   margin-right: 10%;
 }
 
@@ -161,13 +173,20 @@
 
 #chat-contents{
   overflow-y: scroll;
+  -ms-overflow-style: none;
+  width: 54%;
 }
+
+#chat-contents::-webkit-scrollbar{
+  display:none;
+}
+
 
 #recordStart > svg > path{
   fill: #9cb6ff;
 }
 
 .poster{
-  width: 71%;
+  width: 273px;
   height: auto;
 }

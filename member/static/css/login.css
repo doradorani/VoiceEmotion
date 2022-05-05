@@ -4,6 +4,7 @@
   height: auto;
   min-height: 100vh;
   padding-bottom: 0 10px;
+  background: #8CA8FA;
 }
 
 #loginform {
@@ -22,7 +23,7 @@ body {
   font-family: "Jua", sans-serif;
   position: absolute;
   width: 20%;
-  height: atuo;
+  height: auto;
   right: 10%;
   top: 23%;
   overflow: visible;
