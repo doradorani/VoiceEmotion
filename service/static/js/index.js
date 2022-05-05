@@ -81,7 +81,7 @@ function post_data(blob) {
   const fd = new FormData();
   const xhr = new XMLHttpRequest();
   var result = document.getElementById("result");
-  var username = getCookie('username');
+  var user_id = getCookie('user_id');
   
   xhr.open("POST", post_address, false);
   fd.append("file", blob, save_file_format);
