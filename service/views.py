@@ -6,8 +6,8 @@ from django.contrib.auth.decorators import login_required
 
 @login_required
 def service(request) -> HttpResponse:
-    user_id = request.user.id
+    username = request.user
     response = render(request, "index.html", {})
-    response.set_cookie('user_id',user_id)
+    response.set_cookie('username',username)
     return response
     

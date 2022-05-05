@@ -1,10 +1,10 @@
 from django.contrib.auth import authenticate, login
 from django.shortcuts import HttpResponse, redirect, render
 from django.views.decorators.csrf import csrf_exempt
+from sympy import re
 
 from .forms import UserForm
-
-
+from .models import User
 @csrf_exempt
 def signup(request) -> HttpResponse:
     if request.method == 'POST':
@@ -21,3 +21,27 @@ def signup(request) -> HttpResponse:
     else:
         form = UserForm()
     return render(request, 'member/signup1.html', {'form': form})
+
+@csrf_exempt
+def findId(request) -> HttpResponse:
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        try:
+            m = User.objects.get(email = email)
+        except User.DoesNotExist as e:
+            return HttpResponse('아이디 없음')
+        return HttpResponse(m.username)
+    else:
+        return render(request, 'member/findId.html')
+@csrf_exempt
+def findPwd(request) -> HttpResponse:
+    if request.method == 'POST':
+        email = request.POST.get('email')
+        username = request.POST.get('username')
+        try:
+            m = User.objects.get(email = email,username=username)
+        except User.DoesNotExist as e:
+            return HttpResponse('올바른 아이디가 아닙니다.')
+        return HttpResponse(m.password)
+    else:
+        return render(request, 'member/findPwd.html')
