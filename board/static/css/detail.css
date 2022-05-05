@@ -43,9 +43,10 @@
     font-weight: 200;
     font-size: 32px;
 }
-.text > a{
-    right: 6%;
-    position: absolute;
+.text > div:nth-child(4){
+  position: absolute;
+    left: 87%;
+    padding: 2% 0%;
 }
 
 .text > div:nth-child(7){
@@ -75,4 +76,11 @@
     bottom: 3%;
     right: 5%;
     position: absolute;
+    
 }
+
+.card-body{
+  background: #fff !important;
+  border-radius: 3%;
+}
+

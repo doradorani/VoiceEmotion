@@ -113,7 +113,7 @@ function post_data(blob) {
   
 
   console.log(xhr.responseText);
-  console.log(labels.top10[0].title);
+  console.log(labels.top10[0].img);
 
   return labels;
 }
@@ -214,9 +214,13 @@ function feelingmessages(text){
       var newImg = document.createElement("img");
       newImg.className = "bot image";
       var newP = document.createElement("p");
+      var newImg2 = document.createElement("img");
       var messages = document.getElementById("chat-contents");
       newDiv.appendChild(newImg);
+      newDiv.appendChild(newImg2);
       newDiv.appendChild(newP);
+      newImg2.className = "poster";
+      newImg2.src = postJson.top10[i].img;
       newP.innerHTML = '제목: ';
       newP.innerHTML += postJson.top10[i].title;
       newP.innerHTML += '<br/>';

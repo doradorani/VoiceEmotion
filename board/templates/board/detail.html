@@ -34,8 +34,8 @@
               <div class="card-text" >{{ board.content }}</div>
             </div>
           </div>
-          <a href="{% url 'board:edit' board.id %}" class="btn btn-primary" type="submit">수정</a>
           <div>
+          <a href="{% url 'board:edit' board.id %}" class="btn btn-primary" type="submit">수정</a>
           <a href="{% url 'board:delete' board.id %}" class="btn btn-primary" type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a>
           </div>
           <div>
