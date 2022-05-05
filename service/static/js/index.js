@@ -80,7 +80,7 @@ function getCookie(name) {
 function post_data(blob) {
   const fd = new FormData();
   const xhr = new XMLHttpRequest();
-  var user_id = getCookie('user_id');
+  
   
   xhr.open("POST", post_address, false);
   fd.append("file", blob, save_file_format);
@@ -170,6 +170,7 @@ function submitMessage(){
   }
   document.getElementById("chat-message-value").value = "";
   
+  var username = getCookie('username');
   var newDiv = document.createElement("div");
   newDiv.className = "chat-bubble2";
   var newImg = document.createElement("img");
