@@ -10,7 +10,7 @@ from sympy import re
 
 from .forms import BoardWriteForm, CommentForm, BoardEditForm
 from .models import Board, Comment, Notice
-
+from member.models import User
 @csrf_exempt
 @login_required
 def board_write(request) -> HttpResponse:
@@ -66,6 +66,7 @@ def comment(request, board_id) -> HttpResponse:
         form = CommentForm(request.POST)
         if form.is_valid():
             _comment = form.save(commit=False)
+            _comment.username = request.user
             _comment.board = board
             _comment.save()
             return redirect('board:detail', board_id=board_id)
