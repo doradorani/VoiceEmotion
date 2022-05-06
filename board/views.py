@@ -106,6 +106,7 @@ def board_edit(request, pk) -> HttpResponse:
         if form.is_valid():
             board.title = request.POST['title']
             board.content = request.POST['content']
+            board.image = request.FILES['image']
             board.save()
             return redirect('board:board_detail',pk)
     else:
