@@ -6,7 +6,7 @@
 }
 
 .container{
-  width: 80%;
+  width: 50%;
   min-height: 100%;
   border-radius: 59px 59px 26px 26px;
   background: #F6F7FF;
@@ -48,7 +48,7 @@
 .mic{
   width: 30px;
   height: 34px;
-  margin: -22px -133%;
+  margin: -22px 48%;
   position: absolute;
 }
 
@@ -117,7 +117,7 @@
   background-color: white;
   border-radius: 30px;
 	padding: 2%;
-  margin: 0% 0% 0% 77%;
+  margin: 0% 0% 0% 71%;
   animation: wiggle 1s ease-in-out;
 }
 
@@ -126,7 +126,7 @@
   margin: 0;
 }
 .chat-bubble2 p{
-  margin: 0;
+  margin: 0 13%;
 }
 
 .chat-bubble2 .image{
