@@ -86,7 +86,6 @@ function getCookie(name) {
 function post_data(blob) {
   const fd = new FormData();
   const xhr = new XMLHttpRequest();
-  var result = document.getElementById("result");
   
   xhr.open("POST", post_address1, false);
   fd.append("file", blob, save_file_format);
@@ -99,16 +98,16 @@ function post_data(blob) {
   newImg.className = "bot image";
   var newP = document.createElement("p");
   if(labels.result == "happiness"){
-    newP.innerHTML = ("기쁘신가봐요")
-    setTimeout(function(){displayMessage("response", 2)}, 1500);
+    newP.innerHTML = ("기쁘신가봐요");
+    setTimeout(function(){displayMessage("response", 2)}, 500);
   } else if(labels.result == "anger" ){
-    newP.innerHTML = ("화가 나셨나봐요")
-    setTimeout(function(){displayMessage("response", 2)}, 1500);
+    newP.innerHTML = ("화가 나셨나봐요");
+    setTimeout(function(){displayMessage("response", 2)}, 500);
   } else if(labels.result == "sad"){
-    newP.innerHTML = ("슬프시네요")
-    setTimeout(function(){displayMessage("response", 2)}, 1500);
+    newP.innerHTML = ("슬프시네요");
+    setTimeout(function(){displayMessage("response", 2)}, 500);
   } else{
-    newP.innerHTML = ("다시 말씀해주세요")
+    newP.innerHTML = ("다시 말씀해주세요");
   }
   newDiv.appendChild(newImg)
   newDiv.appendChild(newP);
@@ -117,7 +116,6 @@ function post_data(blob) {
   messages.appendChild(newDiv);
   
   console.log(xhr.responseText);
-  // console.log(labels.top10[0].img);
 
   return labels;
 }
@@ -125,7 +123,7 @@ function post_data(blob) {
 //지정된 챗봇 답변
 function displayMessage(type, number){
   var initialMessages = ["안녕하세요 니모션입니다.", '"니모션, 영화 추천해 줘"라고 말씀해주세요']
-  var responseMessages = ["잠시만 기다려주세요", "현재 감정이 맞나요?", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라주세요", "다시 말씀해주세요"]
+  var responseMessages = ["잠시만 기다려주세요", "현재 감정이 맞나요?", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라주세요", "다시 말씀해주세요", '네 아니오로 입력해주세요']
   
   var newDiv = document.createElement("div");
   newDiv.className = "chat-bubble";
@@ -140,6 +138,8 @@ function displayMessage(type, number){
     newP.innerHTML = responseMessages[0];
   } else if(number == 2){
     newP.innerHTML = responseMessages[1];
+    newP.innerHTML += "<br/>";
+    newP.innerHTML += responseMessages[5];
   } else if(number == 3){
     newP.innerHTML = responseMessages[2];
   } else if(number == 4){
@@ -203,7 +203,7 @@ function submitMessage(){
     data.append('emotion', 'anger');
     data.append('user_id', user_id);
   }
-   else if(text == "기쁨" || text == "아니야" || text == "아닙니다"){
+   else if(text == "기쁨" || text == "기뻐요" || text == "기쁩니다"){
     setTimeout(function(){displayMessage("response", 1)},1000);
     data.append('emotion', 'happiness');
     data.append('user_id', user_id);
@@ -224,10 +224,7 @@ function submitMessage(){
     var movie = JSON.parse(this.responseText);
     console.log(movie);
     setTimeout(function(){feelingmessages(movie)},2000);
-
   }
-
-  return movie;
 }
 
 
