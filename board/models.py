@@ -14,7 +14,7 @@ class Board(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     title = models.CharField(max_length=256, null=False)
     content = models.TextField(null=False)
-    image = models.FileField(null=True, blank=True, upload_to='img/')
+    image = models.FileField(null=True, blank=True, upload_to='img/%y/%m/%d')
     date = models.DateTimeField(default=now, editable=False, null=False)
     response = models.CharField(default='no', max_length=5, choices=RESPONSE_CHOICES)
 

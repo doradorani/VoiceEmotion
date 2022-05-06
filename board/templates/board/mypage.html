@@ -27,19 +27,19 @@
         <table class="table">
           <thead>
             <tr>
-              <th>순번</th>
               <th>제목</th>
               <th>작성자</th>
               <th>작성일</th>
+              <th>응답여부</th>
             </tr>
           </thead>
           <tbody>
             {% for data in info %}
             <tr>
-              <td>{{ data.id}}</td>
               <td><a href="../detail/{{ data.id}}">{{ data.title}}</a></td>
               <td>{{ data.user}}</td>
               <td>{{ data.date | date:'Y년 m월 d일 a H:i'}}</td>
+              <td>{{ data.response}}</td>
             </tr>
             {% endfor%}
           </tbody>
@@ -52,7 +52,7 @@
           </li>
           {% for i in page_range %}
           <li class="page-item">
-            <a class="page-link" href='{% url "board:board" %}?page={{ i }}'>{{ i }}</a>
+            <a class="page-link" href='{% url "board:mypage" %}?page={{ i }}'>{{ i }}</a>
           </li>
           {% endfor %}
           <li class="page-item">
