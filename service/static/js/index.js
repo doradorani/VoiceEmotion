@@ -201,21 +201,22 @@ function submitMessage(){
    else if(text == "화남" || text == "화가 나요" ){
     setTimeout(function(){displayMessage("response", 1)},1000);
     data.append('emotion', 'anger');
-    data.append('user_id', user_id);
   }
    else if(text == "기쁨" || text == "기뻐요" || text == "기쁩니다"){
     setTimeout(function(){displayMessage("response", 1)},1000);
     data.append('emotion', 'happiness');
-    data.append('user_id', user_id);
   }
    else if(text == "슬픔" || text == "슬퍼" || text == "눈물"){
     setTimeout(function(){displayMessage("response", 1)},1000);
     data.append('emotion', 'sad');
-    data.append('user_id', user_id);
   }
    else{
     setTimeout(function(){displayMessage("response", 5)}, 1000);
   }
+
+  
+  data.append('user_id', user_id);
+  data.append('audio_name', postJson.audio_name);
 
   console.log(user_id);
   xhr.open('POST', post_address2);
