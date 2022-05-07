@@ -10,7 +10,7 @@
           <h1 class="text-center">{{ board.title }}</h1>
           <!-- Start: Date and Author -->
           <p class="text-center">
-            <span class="date"> {{ board.date }} </span>
+            <span class="date"> {{ board.date | date:'Y년 m월 d일 a H:i' }} </span>
           </p>
           <!-- End: Date and Author -->
           <div style="text-align: center">
@@ -45,9 +45,9 @@
           <div class="cardmy-3">
             <div class="card-body">
               <div class="card-text" >
-                <span>작성자 : {{ comment.user }} </span>
+                <span>작성자 : {{ comment.author }} </span>
+                <span>작성일 : {{ comment.date| date:'Y년 m월 d일 a H:i' }} </span><br>
                 <span>내용 : {{ comment.content }} </span>
-                <span>작성일 : {{ comment.date }} </span>
               </div>
             </div>
           </div>

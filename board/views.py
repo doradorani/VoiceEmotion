@@ -66,7 +66,7 @@ def comment(request, board_id) -> HttpResponse:
         form = CommentForm(request.POST)
         if form.is_valid():
             _comment = form.save(commit=False)
-            _comment.username = request.user
+            _comment.author = request.user
             _comment.board = board
             _comment.save()
             return redirect('board:detail', board_id=board_id)
@@ -89,7 +89,6 @@ def board_edit(request, pk) -> HttpResponse:
         if form.is_valid():
             board.title = request.POST['title']
             board.content = request.POST['content']
-            board.image = request.FILES['image']
             board.save()
             return redirect('board:board_detail',pk)
     else:

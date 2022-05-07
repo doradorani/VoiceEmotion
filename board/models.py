@@ -23,7 +23,7 @@ class Board(models.Model):
 
 
 class Comment(models.Model):
-    username = models.CharField(default='익명의 니모션',max_length=10,null=False)
+    author = models.CharField(default='익명의 니모션',max_length=10,null=False)
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     date = models.DateTimeField(default=now, editable=False, null=False)
     content = models.TextField()
