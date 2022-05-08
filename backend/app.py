@@ -187,7 +187,7 @@ def audio_predict(x) -> int:
     print(result)
     return result
 
-
+# 실제 서비스할 때는 감정 분석 결과를 db에 저장하기를 권장
 def save_result_audio(audio_name, emotion):
     """오디오 감정분석 결과 저장"""
     audio_result = pd.read_csv(os.path.join(BASE_DIR,'model/audio_result.csv'))
@@ -238,7 +238,7 @@ def movie() -> Response:
     audio_name = request.form["audio_name"]
     print(emotion, user_id, audio_name)
     top10 = movie_recommend_top_10(emotion,user_id)
-    save_result_audio(audio_name, emotion)
+    # save_result_audio(audio_name, emotion)
     return jsonify({'status': 'success', 'top10': top10})
 
 
