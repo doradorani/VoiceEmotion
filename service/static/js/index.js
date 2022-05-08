@@ -224,7 +224,7 @@ function submitMessage(){
 
   
   data.append('user_id', user_id);
-  data.append('audio_name', postJson.audio_name);
+  // data.append('audio_name', postJson.audio_name);
 
   console.log(user_id);
   xhr.open('POST', post_address2);
