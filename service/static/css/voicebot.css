@@ -148,7 +148,7 @@
   content: url(../character.png);
   height: auto;
   margin-left: -39px;
-  margin-top: -52px;
+  margin-top: -44px;
   margin-bottom: 3%;
   width: 66px;
 }
@@ -189,4 +189,32 @@
 .poster{
   width: 273px;
   height: auto;
+}
+
+
+@media screen and (max-width:800px) {
+  .chat-bubble p{
+    font-size: 15px;
+  }
+  .chat-bubble .image.bot{
+    margin-left: -23px;
+    margin-top: -27px;
+    margin-bottom: 5%;
+    width:45px;
+  }
+  .mic{
+    margin: -22px 3%;
+  }
+  .chat-box input[type=text] {
+    width: 296px;
+  }
+}
+@media screen and (max-width:800px) {
+  .chat-bubble .image.bot {
+    margin-left: -15px;
+    margin-top: -16px;
+  }
+  .mic {
+    margin: -22px 77%;
+}
 }

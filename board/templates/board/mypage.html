@@ -34,11 +34,12 @@
             <tr>
               <td><a href="../detail/{{ data.id}}">{{ data.title}}</a></td>
               <td>{{ data.date | date:'Y년 m월 d일 a H:i'}}</td>
-              {% if data.user != 'admin' %}
-                <td>아니오</td>
-              {% else %}
+              {% comment %} {% if data.user == 'admin' %}
                 <td>예</td>
-              {% endif %}
+              {% else %}
+                <td>아니오</td>
+              {% endif %} {% endcomment %}
+              <td>{{data.user}}</td>
             </tr>
             {% endfor%}
           </tbody>

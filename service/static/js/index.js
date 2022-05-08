@@ -17,7 +17,8 @@ let delay = 5000;
 let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
 var postJson;
-var id = getCookie('user_id');
+
+
 
 //마이크 사용 가능한 기기 여부 확인
 if (navigator.mediaDevices === undefined) {
@@ -99,14 +100,13 @@ function post_data(blob) {
   newImg.className = "bot image";
   var newP = document.createElement("p");
   if(labels.result == "happiness"){
-    newP.innerHTML = id;
-    newP.innerHTML += ("님 기쁘신가봐요");
+    newP.innerHTML += ("기쁘신가봐요");
     setTimeout(function(){displayMessage("response", 2)}, 500);
   } else if(labels.result == "anger" ){
-    newP.innerHTML = ("화가 나셨나봐요");
+    newP.innerHTML += ("화가 나셨나봐요");
     setTimeout(function(){displayMessage("response", 2)}, 500);
   } else if(labels.result == "sad"){
-    newP.innerHTML = ("슬프시네요");
+    newP.innerHTML += ("슬프시네요");
     setTimeout(function(){displayMessage("response", 2)}, 500);
   } else{
     newP.innerHTML = ("다시 말씀해주세요");
@@ -122,8 +122,10 @@ function post_data(blob) {
   return labels;
 }
 
+
 //지정된 챗봇 답변
 function displayMessage(type, number){
+  
   var initialMessages = ["안녕하세요 니모션입니다.", '마이크를 누르고', '"니모션, 영화 추천해 줘"라고 말씀해주세요']
   var responseMessages = ["감정을 분석중입니다. 잠시만 기다려주세요", "현재 감정이 맞으신지", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라", "다시 말씀해주세요", '아래 입력창으로 니모션에게 알려주세요', '영화를 추천해드릴게요']
   
@@ -153,13 +155,14 @@ function displayMessage(type, number){
   } else if(number == 5){
     newP.innerHTML = responseMessages[4];
   } else if(number == 6){
-    newP.innerHTML = responseMessages[5];
+    newP.innerHTML = responseMessages[6];
   }
   newDiv.appendChild(newImg)
   newDiv.appendChild(newP);
     
   var messages = document.getElementById("chat-contents");
   messages.appendChild(newDiv);
+  
 }
 
 //text값 있을때 버튼 active
@@ -200,7 +203,6 @@ function submitMessage(){
   if(text == "네" || text == "맞아" || text == "맞습니다" || text == "sp"){
     setTimeout(function(){displayMessage("response", 3)},1000);
     data.append('emotion', postJson.result);
-    data.append('user_id', user_id);
   }
    else if(text == "아니" || text == "아니야" || text == "아닙니다" || text == "dksl" || text == "아니오"){
     setTimeout(function(){displayMessage("response", 4)},1000); 
@@ -295,7 +297,7 @@ window.addEventListener("load", addHandlers);
 // }
 // function loading_ed(postJson) {
 //   var ta = document.getElementById('loading_layer');
-//   if (postJson =''){
+//   if (postJson.result =='success' || posJson.result == ){
 //   ta.style.display = 'none';
 //   }
 // }
