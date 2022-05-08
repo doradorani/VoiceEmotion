@@ -9,3 +9,4 @@ scikit-learn~=1.0.2
 lightgbm~=3.3.2
 pydub~=0.25.1
 flask_cors~=3.0.10
+xgboost==0.90

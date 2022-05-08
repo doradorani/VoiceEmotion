@@ -31,11 +31,12 @@ sql = "SELECT * FROM rating"
 cursor.execute(sql)
 ratings_df = pd.DataFrame(data=cursor.fetchall(), columns=['idx', 'userId', 'movieId', 'rating', 'ts'])
 movie_df_copy = movie_df.copy()
+
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 # ---model 불러오기------------------------------------------------------------------------------------------------------------------
-MODEL = joblib.load(open(os.path.join(BASE_DIR,'model/saved_model/model_lgbm.pkl'), 'rb'))
-Label = ['anger', 'angry', 'disgust', 'fear', 'happiness', 'neutral', 'sad', 'surprise']
+MODEL = joblib.load(os.path.join(BASE_DIR,'model/saved_model/2022-05-07_18_48_model_xgb.pkl'))
+Label = ['anger','happiness', 'sad']
 # ----------------------------------------------------------------------------------------------------------------------------------
 
 # ---사용자 정의 함수-----------------------------------------------------------------------------------------------------------------
@@ -82,12 +83,11 @@ def audio_preprocessing(filename: str) -> list:
     audioSegment = audioSegment.set_sample_width(sample_width=2)
     new_file_path = file_full.replace('webm', 'wav')
     audioSegment.export(new_file_path, format='wav', bitrate = '16k')
-    print(audioSegment.sample_width)
     xf, _ = librosa.load(file_full)
-    mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=5, n_fft=400, hop_length=160)
+    mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=26, n_fft=400, hop_length=160)
     mfcc_1 = scale(mfcc_1, axis=1)
     feature = np.mean(mfcc_1.T, axis=0) 
-    
+    print(feature)
     return [feature,new_file_path]
 
 def cossim_matrix(a, b):
@@ -184,8 +184,16 @@ def webm_2_wav(filename: str) -> str:
 def audio_predict(x) -> int:
     """결과값 예측"""
     result = MODEL.predict(x)
-    
-    return result[0].tolist()
+    print(result)
+    return result
+
+
+def save_result_audio(audio_name, emotion):
+    """오디오 감정분석 결과 저장"""
+    audio_result = pd.read_csv(os.path.join(BASE_DIR,'model/audio_result.csv'))
+    audio_result = audio_result.append({'audio_name':audio_name,
+                         'emotion':emotion}, ignore_index=True)
+    audio_result.to_csv(os.path.join(BASE_DIR,'model/audio_result.csv'), index=False, encoding="utf-8-sig")
 
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -212,9 +220,10 @@ def emotion() -> Response:
         _x_val, new_file_path = audio_preprocessing(file.filename)
         print("new_file_path", new_file_path)
         print("file.filename", file.filename)
+        print("_x_val", _x_val)
         if stt(new_file_path):
             predict_result = audio_predict([_x_val])
-            return jsonify({'status': 'success', 'result': Label[predict_result]})
+            return jsonify({'status': 'success', 'result': predict_result[0], 'audio_name' : new_file_path})
         else:
             return jsonify({'status': 'fail'})
     else:
@@ -226,8 +235,10 @@ def movie() -> Response:
     "감정 정보로 영화 추천"
     emotion = request.form["emotion"]
     user_id = request.form["user_id"]
-    print(emotion, user_id)
-    top10 = movie_recommend_top_10(emotion,int(user_id))
+    audio_name = request.form["audio_name"]
+    print(emotion, user_id, audio_name)
+    top10 = movie_recommend_top_10(emotion,user_id)
+    save_result_audio(audio_name, emotion)
     return jsonify({'status': 'success', 'top10': top10})
 
 

@@ -10,8 +10,8 @@
  TypeError - audio: false, video: false
  post_data - post data to flask api
  *********************************/
-let post_address = "/receive";
-let delay = 8000;
+let post_address = "/receive/emotion";
+let delay = 7000;
 let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
 
