@@ -35,14 +35,6 @@ body {
   color: rgba(46, 45, 105, 1);
 }
 
-#m_char {
-  position: absolute;
-  top: -12px;
-  left: 116px;
-  width: 66px;
-  height: 49px;
-}
-
 #n_3 {
   top: 61%;
   right: 4px;
@@ -145,7 +137,7 @@ body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
 }
 
 
-@media screen and (max-width:769px) {
+@media screen and (max-width:800px) {
   .wrapper{
     left:-50%;
     width: 219%;
@@ -165,12 +157,6 @@ body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
     top: 161%;
     font-size: 34px;
   }
-  #m_char > img{
-    width: 44px;
-    left: 175%;
-    position: absolute;
-    top: 24%;
-  }
   #n_3{
     top: 169%;
     font-size: 20px;
@@ -184,6 +170,16 @@ body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
   }
   .scroll > div > div > div > div{
     width:90px;
+  }
+  #t_1 {
+    position: absolute;
+    top: 178.2%;
+    right: 11%;
+    width: 292px;
+    height: 117px;
+    font-family: "Jua", sans-serif;
+    font-style: normal;
+    font-size: 40px;
   }
 }
 

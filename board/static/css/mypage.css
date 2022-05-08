@@ -11,7 +11,7 @@
 }
 
 .main_content > div > div > table{
-    padding: 0% 4% 4% 10%;
+    padding: 0% 6% 4% 7%;
     font-size: 20px;
     width: 100%;
     border-spacing: 0;
@@ -28,7 +28,7 @@
   font-size: 20px;
 }
 
-.table > thead > tr > th:nth-child(4) {
+.table > thead > tr > th:nth-child(3) {
   border-radius: 0px 15px 0px 0px;
 }
 .table > thead > tr > th:nth-child(1) {

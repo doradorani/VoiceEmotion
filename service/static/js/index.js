@@ -123,7 +123,7 @@ function post_data(blob) {
 //지정된 챗봇 답변
 function displayMessage(type, number){
   var initialMessages = ["안녕하세요 니모션입니다.", '"니모션, 영화 추천해 줘"라고 말씀해주세요']
-  var responseMessages = ["잠시만 기다려주세요", "현재 감정이 맞나요?", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라주세요", "다시 말씀해주세요", '네 아니오로 입력해주세요']
+  var responseMessages = ["감정을 분석중입니다. 잠시만 기다려주세요", "현재 감정이 맞으신가요?", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라주세요", "다시 말씀해주세요", '(네, 아니오)']
   
   var newDiv = document.createElement("div");
   newDiv.className = "chat-bubble";
@@ -194,7 +194,7 @@ function submitMessage(){
     data.append('emotion', postJson.result);
     data.append('user_id', user_id);
   }
-   else if(text == "아니" || text == "아니야" || text == "아닙니다" || text == "dksl"){
+   else if(text == "아니" || text == "아니야" || text == "아닙니다" || text == "dksl" || text == "아니오"){
     setTimeout(function(){displayMessage("response", 4)},1000); 
     submitMessage()
   }
@@ -278,3 +278,16 @@ function addHandlers(){
 
 window.addEventListener("load", addHandlers);
 
+
+// function loading_st() {
+//   var ct_left = (parseInt(window.screen.width) - 450) / 2;
+//   var ct_top = (parseInt(window.screen.height)) / 3;
+//   layer_str = "<div id='loading_layer' style='position:absolute; background-color:; font-size:15px; left:" + ct_left + "px; top:" + ct_top + "px; width:400px; height:; padding:50px; text-align:center; vertical-align:middle; z-index:1000; font-weight: bold;'>감정을 분석중입니다. 잠시만 기다려주세요</div>"
+//   document.write(layer_str);
+// }
+// function loading_ed(postJson) {
+//   var ta = document.getElementById('loading_layer');
+//   if (postJson =''){
+//   ta.style.display = 'none';
+//   }
+// }

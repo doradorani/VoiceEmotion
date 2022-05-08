@@ -27,7 +27,7 @@ sql = "SELECT * FROM movies"
 cursor.execute(sql)
 movie_df = pd.DataFrame(data=cursor.fetchall(), columns=['movieId', 'title', 'genres', 'img'])
 cursor = db.cursor(pymysql.cursors.DictCursor)
-sql = "SELECT * FROM ratings"
+sql = "SELECT * FROM rating"
 cursor.execute(sql)
 ratings_df = pd.DataFrame(data=cursor.fetchall(), columns=['idx', 'userId', 'movieId', 'rating', 'ts'])
 movie_df_copy = movie_df.copy()

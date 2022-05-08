@@ -6,7 +6,7 @@
 }
 
 .container{
-  width: 50%;
+  width: 80%;
   min-height: 100%;
   border-radius: 59px 59px 26px 26px;
   background: #F6F7FF;
@@ -48,7 +48,7 @@
 .mic{
   width: 30px;
   height: 34px;
-  margin: -22px 48%;
+  margin: -22px -91%;
   position: absolute;
 }
 
