@@ -146,11 +146,11 @@
 
 .chat-bubble .image.bot{
   content: url(../character.png);
-  float: left;
   height: auto;
-  margin-left: -35px;
-  margin-top: -40px;
-  margin-right: 10%;
+  margin-left: -39px;
+  margin-top: -52px;
+  margin-bottom: 3%;
+  width: 66px;
 }
 
 @keyframes wiggle {

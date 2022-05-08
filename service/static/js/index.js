@@ -17,6 +17,7 @@ let delay = 5000;
 let save_file_format = `${new Date().getTime()}.webm`;
 let constraintObj = { audio: true };
 var postJson;
+var id = getCookie('user_id');
 
 //마이크 사용 가능한 기기 여부 확인
 if (navigator.mediaDevices === undefined) {
@@ -56,7 +57,7 @@ navigator.mediaDevices
     start.addEventListener("click", () => {
       mediaRecorder.start();
       console.log(mediaRecorder.state);
-      setTimeout(function(){displayMessage("response", 1)}, 0);
+      setTimeout(function(){displayMessage("response", 1)}, 4800);
       setTimeout(() => {
         mediaRecorder.stop();
         console.log(mediaRecorder.state);
@@ -98,7 +99,8 @@ function post_data(blob) {
   newImg.className = "bot image";
   var newP = document.createElement("p");
   if(labels.result == "happiness"){
-    newP.innerHTML = ("기쁘신가봐요");
+    newP.innerHTML = id;
+    newP.innerHTML += ("님 기쁘신가봐요");
     setTimeout(function(){displayMessage("response", 2)}, 500);
   } else if(labels.result == "anger" ){
     newP.innerHTML = ("화가 나셨나봐요");
@@ -122,8 +124,8 @@ function post_data(blob) {
 
 //지정된 챗봇 답변
 function displayMessage(type, number){
-  var initialMessages = ["안녕하세요 니모션입니다.", '"니모션, 영화 추천해 줘"라고 말씀해주세요']
-  var responseMessages = ["감정을 분석중입니다. 잠시만 기다려주세요", "현재 감정이 맞으신가요?", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라주세요", "다시 말씀해주세요", '(네, 아니오)']
+  var initialMessages = ["안녕하세요 니모션입니다.", '마이크를 누르고', '"니모션, 영화 추천해 줘"라고 말씀해주세요']
+  var responseMessages = ["감정을 분석중입니다. 잠시만 기다려주세요", "현재 감정이 맞으신지", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라", "다시 말씀해주세요", '아래 입력창으로 니모션에게 알려주세요', '영화를 추천해드릴게요']
   
   var newDiv = document.createElement("div");
   newDiv.className = "chat-bubble";
@@ -134,6 +136,8 @@ function displayMessage(type, number){
     newP.innerHTML = initialMessages[0];
     newP.innerHTML += "<br/>";
     newP.innerHTML += initialMessages[1];
+    newP.innerHTML += "<br/>";
+    newP.innerHTML += initialMessages[2];
   } else if(number == 1){
     newP.innerHTML = responseMessages[0];
   } else if(number == 2){
@@ -144,8 +148,12 @@ function displayMessage(type, number){
     newP.innerHTML = responseMessages[2];
   } else if(number == 4){
     newP.innerHTML = responseMessages[3];
+    newP.innerHTML += "<br/>";
+    newP.innerHTML += responseMessages[5];
   } else if(number == 5){
     newP.innerHTML = responseMessages[4];
+  } else if(number == 6){
+    newP.innerHTML = responseMessages[5];
   }
   newDiv.appendChild(newImg)
   newDiv.appendChild(newP);
@@ -169,7 +177,7 @@ function arrowSubmit(){
 //타이핑한 text값 띄우기
 function submitMessage(){
   const xhr = new XMLHttpRequest();
-  var user_id = getCookie('user_id');
+  var user_id = getCookie(user_id);
   var text = document.getElementById("chat-message-value").value;
   if(text == ""){
     return
@@ -199,15 +207,15 @@ function submitMessage(){
     submitMessage()
   }
    else if(text == "화남" || text == "화가 나요" ){
-    setTimeout(function(){displayMessage("response", 1)},1000);
+    setTimeout(function(){displayMessage("response", 6)},1000);
     data.append('emotion', 'anger');
   }
    else if(text == "기쁨" || text == "기뻐요" || text == "기쁩니다"){
-    setTimeout(function(){displayMessage("response", 1)},1000);
+    setTimeout(function(){displayMessage("response", 6)},1000);
     data.append('emotion', 'happiness');
   }
    else if(text == "슬픔" || text == "슬퍼" || text == "눈물"){
-    setTimeout(function(){displayMessage("response", 1)},1000);
+    setTimeout(function(){displayMessage("response", 6)},1000);
     data.append('emotion', 'sad');
   }
    else{

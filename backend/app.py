@@ -214,7 +214,7 @@ def emotion() -> Response:
         print("file.filename", file.filename)
         if stt(new_file_path):
             predict_result = audio_predict([_x_val])
-            return jsonify({'status': 'success', 'result': Label[predict_result]})
+            return jsonify({'status': 'success', 'result': Label[predict_result]}, 'audio_name' : file.filename)
         else:
             return jsonify({'status': 'fail'})
     else:
