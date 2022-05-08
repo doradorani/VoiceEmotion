@@ -10,7 +10,7 @@
           <h1 class="text-center">{{ board.title }}</h1>
           <!-- Start: Date and Author -->
           <p class="text-center">
-            <span class="date"> {{ board.date }} </span>
+            <span class="date"> {{ board.date | date:'Y년 m월 d일 a H:i' }} </span>
           </p>
           <!-- End: Date and Author -->
           <div style="text-align: center">
@@ -39,15 +39,15 @@
           <a href="{% url 'board:delete' board.id %}" class="btn btn-primary" type="submit" onclick="return confirm('정말 삭제하시겠습니까?')">삭제</a>
           </div>
           <div>
-            <p><b>댓글</b></p>
+            <p>댓글</p>
           </div>
           {% for comment in comments %}
           <div class="cardmy-3">
             <div class="card-body">
               <div class="card-text" >
-                <span>작성자 : {{ comment.user }} </span>
+                <span>작성자 : {{ comment.author }} </span>
+                <span>작성일 : {{ comment.date| date:'Y년 m월 d일 a H:i' }} </span><br>
                 <span>내용 : {{ comment.content }} </span>
-                <span>작성일 : {{ comment.date }} </span>
               </div>
             </div>
           </div>
@@ -55,7 +55,7 @@
           <form method="POST" class="my-3">
             {% csrf_token %} {% include "form_errors.html" %}
             <div>
-              내용
+              <p>내용</p>
               <textarea name="content" size="160" placeholder="내용을 입력하세요"></textarea>
             </div>
             <input type="submit" value="댓글등록" class="btn btn-primary" />

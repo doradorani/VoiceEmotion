@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.timezone import now
-
+from member.models import User
 # Create your models here.
 
 User = get_user_model()
@@ -23,6 +23,7 @@ class Board(models.Model):
 
 
 class Comment(models.Model):
+    author = models.CharField(default='익명의 니모션',max_length=10,null=False)
     board = models.ForeignKey(Board, on_delete=models.CASCADE)
     date = models.DateTimeField(default=now, editable=False, null=False)
     content = models.TextField()

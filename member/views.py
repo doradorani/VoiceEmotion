@@ -45,3 +45,13 @@ def findPwd(request) -> HttpResponse:
         return HttpResponse(m.password)
     else:
         return render(request, 'member/findPwd.html')
+
+
+# moviedict = {
+#         'image': movie.image
+#     }
+#     movieJson = json.dumps(moviedict)
+#     return render(request, 'signup2.html', {'movieJson': movieJson})   
+
+def rating(request) -> HttpResponse:
+    return render(request, 'member/rating.html', {})

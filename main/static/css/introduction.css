@@ -1,0 +1,16 @@
+@import url("https://fonts.googleapis.com/css2?family=Jua&display=swap");
+
+.wrapper {
+  height: auto;
+  min-height: 100%;
+}
+
+.masthead {
+  width: 100%;
+  height: auto;
+}
+
+body {
+  background: #8ca8fa 0% 0% no-repeat padding-box;
+  background-size: cover;
+}

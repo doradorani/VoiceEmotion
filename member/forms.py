@@ -15,4 +15,8 @@ class UserForm(UserCreationForm):
             'password2',
             'email',
             'genres',
-            'gender',)
+            'gender',
+            'year',
+            'month',
+            'day',
+            )
