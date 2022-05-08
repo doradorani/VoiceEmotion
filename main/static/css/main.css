@@ -54,7 +54,7 @@ body {
 
 #NETFLIXlogo {
   position: absolute;
-  top: 108.6%;
+  top: 1015px;
     right: 45.5%;
   width: 295px;
   height: 92px;
@@ -62,7 +62,7 @@ body {
 
 #t_1 {
   position: absolute;
-  top: 107%;
+  top: 1002px;
   right: 30%;
   width: 292px;
   height: 117px;
@@ -139,14 +139,14 @@ body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
 @media screen and (max-width:1770px) {
   #NETFLIXlogo{
   position: absolute;
-  top: 113%;
+  top: 875px;
   right: 51%;
   width: 295px;
   height: 92px;
   }
   #t_1{
   position: absolute;
-  top: 111.2%;
+  top: 861px;
     right: 32%;
   width: 292px;
   height: 117px;

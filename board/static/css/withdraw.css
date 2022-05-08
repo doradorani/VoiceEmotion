@@ -78,8 +78,9 @@
     padding: 2%;
 }
 
-.main_content > div > section > h2{
+.main_content > div > section > h1{
     text-align: center;
+    margin-top: 6%;
 }
 
 body > div > div.wrapper > div.main_content > div > section > form{
@@ -91,6 +92,10 @@ body > div > div.wrapper > div.main_content > div > section > form{
 .main_content > div > section > form > div:nth-child(7) > button{
     position: absolute;
     margin: 4% 0% 0% 17%;
+      border: none;
+      font-family: "Jua", sans-serif;
+      background: #8ca8fa;
+      border-radius: 4px;    
 }
 
 .main_content > div > section > form > ul > li{

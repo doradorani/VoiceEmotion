@@ -111,3 +111,25 @@
     font-size: 14px;
   }
 }
+
+@media screen and (max-width:480px) {
+  .table-responsive {
+    min-height: 60%;
+  }
+  .main_content > div > div > table {
+    font-size: 15px;
+  }
+  .main_content > div > div > table > thead > tr > th:nth-child(1),
+  .main_content > div > div > table > thead > tr > th:nth-child(2),
+  .main_content > div > div > table > thead > tr > th:nth-child(3){
+    font-size: 15px;
+  }
+  .main_content > div > nav > a{
+    font-size: 12px;
+    margin: 0% 80%;
+  }
+  .sidebar > ul{
+    font-size: 14px;
+  }
+}
+

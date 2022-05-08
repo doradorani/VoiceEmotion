@@ -126,7 +126,7 @@ function post_data(blob) {
 function displayMessage(type, number){
   
   var initialMessages = ["안녕하세요 니모션입니다.", '마이크를 누르고', '"니모션, 영화 추천해 줘"라고 말씀해주세요']
-  var responseMessages = ["감정을 분석중입니다. 잠시만 기다려주세요", "현재 감정이 맞으신지", "맞으시군요, 잠시만 기다려주세요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라", "다시 말씀해주세요", '아래 입력창으로 니모션에게 알려주세요', '니모션이 영화를 찾고 있어요']
+  var responseMessages = ["감정을 분석중입니다. 잠시만 기다려주세요", "현재 감정이 맞으신지", "맞으시군요", "아니시군요 어떠한 감정이신지 화남, 기쁨, 슬픔 중에서 골라", "다시 말씀해주세요", '아래 입력창으로 니모션에게 알려주세요', '잠시만 기다려주세요', '니모션이 영화를 찾고 있어요']
   
   var newDiv = document.createElement("div");
   newDiv.className = "chat-bubble";
@@ -147,13 +147,17 @@ function displayMessage(type, number){
     newP.innerHTML += responseMessages[5];
   } else if(number == 3){
     newP.innerHTML = responseMessages[2];
+    setTimeout(function(){displayMessage("response", 6)}, 1000);
   } else if(number == 4){
     newP.innerHTML = responseMessages[3];
-    displayMessage("response", 7);
+    newP.innerHTML += "<br/>";
+    newP.innerHTML += responseMessages[5];
   } else if(number == 5){
     newP.innerHTML = responseMessages[4];
   } else if(number == 6){
     newP.innerHTML = responseMessages[6];
+    newP.innerHTML += "<br/>";
+    newP.innerHTML += responseMessages[7];
   } else if(number == 7){
     newP.innerHTML = responseMessages[5];
   }
@@ -243,19 +247,16 @@ function submitMessage(){
 //해당 감정의 영화 추천 메시지
 function feelingmessages(movie){
   for(i=0; i<10; i++){
-    var newDiv1 = document.createElement("div");
-    newDiv1.className = "chat-bubble3";
-    var newDiv2 = document.createElement("div");
-    newDiv2.className = "chat-bubble";
+    var newDiv = document.createElement("div");
+    newDiv.className = "chat-bubble3";
     var newImg = document.createElement("img");
     newImg.className = "bot image";
     var newP = document.createElement("p");
     var newImg2 = document.createElement("img");
     var messages = document.getElementById("chat-contents");
-    newDiv2.appendChild(newImg);
-    newDiv2.appendChild(newImg2);
-    newDiv2.appendChild(newP);
-    newDiv1.appendChild(newDiv2);
+    newDiv.appendChild(newImg);
+    newDiv.appendChild(newImg2);
+    newDiv.appendChild(newP);
     newImg2.className = "poster";
     newImg2.src = movie.top10[i].img;
     newP.innerHTML = '제목: ';
@@ -263,7 +264,7 @@ function feelingmessages(movie){
     newP.innerHTML += '<br/>';
     newP.innerHTML += '장르: ';
     newP.innerHTML += movie.top10[i].genres;
-    messages.appendChild(newDiv1);
+    messages.appendChild(newDiv);
   }
   var newDiv = document.createElement("div");
     newDiv.className = "chat-bubble";

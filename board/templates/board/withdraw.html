@@ -3,7 +3,8 @@
 <!-- End: Navigation Clean -->
 <div class="wrapper" style="flex-wrap: wrap">
   <div class="sidebar">
-    <h2>Mypage</h2>
+    <h2>My</h2>
+    <h2>Page</h2>
     <ul>
       <li>
         <a href="{% url 'board:mypage' %}"><i class="nav-link"></i>나의 문의사항</a>
@@ -20,7 +21,7 @@
     <div class="container">
       <!-- Start: Login Form Clean -->
       <section class="login-clean">
-        <h2 class="visually-hidden">회원 탈퇴</h2>
+        <h1 class="visually-hidden">회원 탈퇴</h1>
         <form method="post">
           {% csrf_token %} {% include "form_errors.html" %}
           <div class="illustration"><i class="icon ion-ios-navigate"></i></div>
