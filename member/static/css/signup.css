@@ -260,6 +260,10 @@ select option {
 
 .btn-next{
   margin: 0% 0% 0% 86%;
+  border: none;
+  font-family: "Jua", sans-serif;
+  background: #8ca8fa;
+  border-radius: 4px;
 }
 
 

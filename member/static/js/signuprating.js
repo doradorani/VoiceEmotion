@@ -1,10 +1,10 @@
-// var user_id
-
+// var image = JSON.parse("{{ movieJson|escapejs }}");
 
 // document.addEventListener("DOMContentLoaded", function(){
 //     var user_id = getCookie('user_id');
-//     var image = JSON.parse("{{ movieJson|escapejs }}");
-    
+// });
+
+// function poster(image){
 //     for(i=0;i<20;i++){
 //         var newDiv = document.createElement("div");
 //         newDiv.className = "poster-rating";
@@ -14,6 +14,8 @@
 //         newH5.className = "title";
 //         var newSelect = document.createElement("select");
 //         newSelect.classname= "select";
+//         var newOption0 = document.createElement("option");
+//         newOption0.classname= "stars";
 //         var newOption1 = document.createElement("option");
 //         newOption1.classname= "stars";
 //         var newOption2 = document.createElement("option");
@@ -27,6 +29,7 @@
 
 //         newDiv.appendChild(newImg)
 //         newDiv.appendChild(newSelect)
+//         newSelect.appendChild(newOption0)
 //         newSelect.appendChild(newOption1)
 //         newSelect.appendChild(newOption2)
 //         newSelect.appendChild(newOption3)
@@ -35,6 +38,8 @@
 
 //         newImg.src = image.image;
 //         newSelect.name = "rating"
+//         newOption1.value = 0;
+//         newOption1.innerHTML = "☆☆☆☆☆";
 //         newOption1.value = 1;
 //         newOption1.innerHTML = "★☆☆☆☆";
 //         newOption2.value = 2;
@@ -49,7 +54,4 @@
 //         var ratings = document.getElementById("ratings");
 //         ratings.appendChild(newDiv);
 //     }
-
-//     return user_id
-// });
-
+// }

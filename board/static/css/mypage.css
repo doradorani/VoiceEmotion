@@ -38,7 +38,9 @@
     text-align: center;
     background: #d4dfff42;
 }
-
+.table-responsive{
+  min-height: 70%;
+}
 .main_content > div > div > table > thead > tr > th:nth-child(4){
     width: 50%;
 }
@@ -51,11 +53,6 @@
     transform: translateX(-100%);
 }
 
-.main_content > div > nav > a{
-    position: absolute;
-    left: 79%;
-    bottom: 7%;
-}
 
 .sidebar{
     background: #F6F7FF;
@@ -91,4 +88,26 @@
     background: #9bb3db;
     border-radius: 8px;
     padding: 5px 20px;
+    margin: 0% 85%;
+}
+
+@media screen and (max-width:780px) {
+  .table-responsive {
+    min-height: 60%;
+  }
+  .main_content > div > div > table {
+    font-size: 15px;
+  }
+  .main_content > div > div > table > thead > tr > th:nth-child(1),
+  .main_content > div > div > table > thead > tr > th:nth-child(2),
+  .main_content > div > div > table > thead > tr > th:nth-child(3){
+    font-size: 15px;
+  }
+  .main_content > div > nav > a{
+    font-size: 12px;
+    margin: 0% 80%;
+  }
+  .sidebar > ul{
+    font-size: 14px;
+  }
 }

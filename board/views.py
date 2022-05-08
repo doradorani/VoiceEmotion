@@ -11,6 +11,7 @@ from sympy import re
 from .forms import BoardWriteForm, CommentForm, BoardEditForm
 from .models import Board, Comment, Notice
 from member.models import User
+
 @csrf_exempt
 @login_required
 def board_write(request) -> HttpResponse:
