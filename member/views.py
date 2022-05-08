@@ -1,10 +1,14 @@
+import json
 from django.contrib.auth import authenticate, login
+from django.http import JsonResponse
 from django.shortcuts import HttpResponse, redirect, render
 from django.views.decorators.csrf import csrf_exempt
-from sympy import re
 
+from sympy import re
+import pymysql
 from .forms import UserForm
 from .models import User
+
 @csrf_exempt
 def signup(request) -> HttpResponse:
     if request.method == 'POST':
@@ -53,5 +57,12 @@ def findPwd(request) -> HttpResponse:
 #     movieJson = json.dumps(moviedict)
 #     return render(request, 'signup2.html', {'movieJson': movieJson})   
 
+
 def rating(request) -> HttpResponse:
-    return render(request, 'member/rating.html', {})
+    db = pymysql.connect(user = 'root', host = '192.18.138.86', passwd = '5631jjyy', port = 3306, db = 'jango_db')
+    cursor = db.cursor(pymysql.cursors.DictCursor)
+    sql = "SELECT movieId, img FROM movies"
+    cursor.execute(sql)
+    data = json.dumps(cursor.fetchall())
+    return JsonResponse(data,safe=False)
+    # return render(request, 'member/rating.html', {})
