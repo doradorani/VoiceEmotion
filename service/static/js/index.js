@@ -192,9 +192,8 @@ function submitMessage(){
   if(text == "네" || text == "맞아" || text == "맞습니다" || text == "sp"){
     setTimeout(function(){displayMessage("response", 3)},1000);
     data.append('emotion', postJson.result);
-    data.append('user_id', user_id);
   }
-   else if(text == "아니" || text == "아니야" || text == "아닙니다" || text == "dksl"){
+   else if(text == "아니오" || text == "아니야" || text == "아닙니다" || text == "dksl"){
     setTimeout(function(){displayMessage("response", 4)},1000); 
     submitMessage()
   }
@@ -222,6 +221,7 @@ function submitMessage(){
   xhr.open('POST', post_address2);
   xhr.send(data);
   xhr.onload = function() {
+    console.log(data)
     var movie = JSON.parse(this.responseText);
     console.log(movie);
     setTimeout(function(){feelingmessages(movie)},2000);
