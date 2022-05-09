@@ -26,17 +26,43 @@
     </div>
     <nav class="paginator">
       <ul class="pagination">
+        {% if info.has_previous %}
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+          <a class="page-link" href="?page={{ info.previous_page_number }}" aria-label="Previous"><span aria-hidden="true">«</span></a>
         </li>
-        {% for i in page_range %}
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-label="Previous"><span aria-hidden="true">«</span></a>
+        </li>
+        {% endif %}
+        {% comment %} {% for i in page_range %}
         <li class="page-item">
           <a class="page-link" href='{% url "board:review" %}?page={{ i }}'>{{ i }}</a>
         </li>
+        {% endfor %} {% endcomment %}
+        {% for page_number in info.paginator.page_range %}
+        {% if page_number >= info.number|add:-5 and page_number <= info.number|add:5 %}
+          {%if page_number == question_list.number %}
+          <li class="page-item active" aria-current="page">
+            <a class="page-link" href="?page={{ page_number  }}">{{ page_number}}</a>
+          </li>
+          {% else %}
+          <li class="page-item">
+            <a class="page-link" href="?page={{ page_number  }}">{{ page_number}}</a>
+          </li>
+          {% endif %}
+        {% endif %}
         {% endfor %}
+        {% if info.has_next %}
         <li class="page-item">
-          <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
+          <a class="page-link" href="?page={{ info.next_page_number }}" aria-label="Next"><span aria-hidden="true">»</span></a>
         </li>
+        {% else %}
+        <li class="page-item disabled">
+          <a class="page-link" href="#" tabindex="-1" aria-label="Next"><span aria-hidden="true">»</span></a>
+        </li>
+        {% endif %}
+        
       </ul>
     </nav>
   </div>
