@@ -1,0 +1,43 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<link rel="stylesheet" href="{% static 'css/board.css' %}? after" type="text/css" />
+<div class="wrapper">
+  <div class="wrapper-box">
+    <div class="table-responsive">
+      <table class="table">
+        <thead>
+          <tr>
+            <th>NO</th>
+            <th>제목</th>
+            <th>작성일자</th>
+            <th>답변 여부</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for data in info %}
+          <tr>
+            <td>{{ data.movieId }}</td>
+            <td><a href="../review/detail/{{ data.movieId }}">{{ data.title }}</a></td>
+            <td>{{ data.genres }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+    <nav class="paginator">
+      <ul class="pagination">
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Previous"><span aria-hidden="true">«</span></a>
+        </li>
+        {% for i in page_range %}
+        <li class="page-item">
+          <a class="page-link" href='{% url "board:review" %}?page={{ i }}'>{{ i }}</a>
+        </li>
+        {% endfor %}
+        <li class="page-item">
+          <a class="page-link" href="#" aria-label="Next"><span aria-hidden="true">»</span></a>
+        </li>
+      </ul>
+    </nav>
+  </div>
+</div>
+{% endblock %}
