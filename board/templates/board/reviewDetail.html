@@ -23,12 +23,12 @@
           <div>
             <p>별점</p>
           </div>
-          {% for comment in comments %}
+          {% for rating in ratings %}
           <div class="cardmy-3">
             <div class="card-body">
               <div class="card-text" >
-                <span>작성자 : {{ comment.author }} </span>
-                <span>별점 : {{ comment.rating }} </span>
+                <span>작성자 : {{ rating.userid }} </span>
+                <span>별점 : {{rating.rating }} </span>
               </div>
             </div>
           </div>
