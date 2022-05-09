@@ -56,7 +56,7 @@ body {
   background: #F5C518;
     border-radius: 10px;
     position: absolute;
-    top: 1002px;
+    top: 108%;
     right: 46%;
     font-family: "Jua", sans-serif;
     font-style: normal;
@@ -66,7 +66,7 @@ body {
 
 #t_1 {
   position: absolute;
-  top: 1002px;
+  top: 108%;
   right: 30%;
   width: 292px;
   height: 117px;
@@ -89,11 +89,11 @@ a {
   text-decoration: none !important;
 }
 
-.TOP10-form .scrollcard {
+.scroll .scrollcard {
   display: relative;
 }
 
-.TOP10-form .scrollcard .card {
+.scroll .scrollcard .card {
   font-family: "Jua", sans-serif;
   display: inline-block;
   padding: 15px;
@@ -104,7 +104,7 @@ a {
   top: 1500px;
 }
 
-.TOP10-form .scrollcard .card > img {
+.scroll .scrollcard .card > img {
   width: 150px;
   height: auto;
   border-radius: 8px;
@@ -112,32 +112,33 @@ a {
   margin: 0 auto;
 }
 
-.TOP10-form .scrollcard .card h1 {
+.scroll .scrollcard .card h1 {
   font-size: 24px;
   color: #f16822;
   text-align: center;
 }
 
-.TOP10-form .scrollcard .card p {
+.scroll .scrollcard .card p {
   font-size: 16px;
   color: #000;
   text-align: center;
 }
 
-body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > button.slick-prev.slick-arrow {
+.scroll > div > button.slick-prev.slick-arrow {
   display: none !important;
 }
 
-body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > button.slick-next.slick-arrow {
+.scroll > div > button.slick-next.slick-arrow {
   display: none !important;
 }
 
-body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > div {
+.scroll > div > div {
   transform: translateY(172px);
 }
 
-body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
-  min-height: 600px;
+
+.scrollwrapper{
+  margin-top: 13%;
 }
 
 
