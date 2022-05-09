@@ -1,0 +1,58 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<!-- Start: Article Clean -->
+<link rel="stylesheet" href="{% static 'css/detail.css' %}? after" type="text/css" />
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="content">
+        <!-- Start: Intro -->
+        <div class="intro">
+          <h1 class="text-center">{{ movie.title }}</h1>
+          <!-- Start: Date and Author -->
+          <!-- End: Date and Author -->
+          <div style="text-align: center">
+            {% if movie.img.url is not None %}
+            <img src="{{ movie.img.url }}" />
+            <br />
+            <br />
+            {% endif %}
+          </div>
+        </div>
+        <!-- End: Intro -->
+        <!-- Start: Text -->
+          <div>
+            <p>별점</p>
+          </div>
+          {% for comment in comments %}
+          <div class="cardmy-3">
+            <div class="card-body">
+              <div class="card-text" >
+                <span>작성자 : {{ comment.author }} </span>
+                <span>별점 : {{ comment.rating }} </span>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+          <form method="POST" class="my-3">
+            {% csrf_token %} {% include "form_errors.html" %}
+            <div>
+              <select name="rating">
+                <option value='' selected>-- 별점 --</option>
+                <option value=0>☆☆☆☆☆</option>
+                <option value=1>★☆☆☆☆</option>
+                <option value=2>★★☆☆☆</option>
+                <option value=3>★★★☆☆</option>
+                <option value=4>★★★★☆</option>
+                <option value=5>★★★★★</option>
+              </select>
+            </div>
+            <input type="submit" value="등록" class="btn btn-primary" />
+          </form>
+        </div>
+        <!-- End: Text -->
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End: Article Clean -->
+{% endblock %}

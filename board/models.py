@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.timezone import now
+from pymysql import NULL
 from member.models import User
 # Create your models here.
 
@@ -40,3 +41,18 @@ class Notice(models.Model):
 
     class Meta:
         db_table = 'notice'
+class Movie(models.Model):
+    movieId = models.IntegerField(primary_key=True,null=False)
+    title = models.CharField(max_length=1000,null=True,default=NULL)
+    genres = models.CharField(max_length=1000,null=True,default=NULL)
+    img = models.TextField(null=True,default=NULL)
+
+    class Meta:
+        db_table = 'movie_s'
+class Ratings(models.Model):
+    userid = models.CharField(max_length=150,default=NULL,null=True)
+    movieId = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    rating = models.FloatField(default=NULL,null=True)
+    
+    class Meta:
+        db_table = 'rating_s'

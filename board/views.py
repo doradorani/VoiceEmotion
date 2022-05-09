@@ -6,10 +6,12 @@ from django.core.paginator import Paginator
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
+from matplotlib.style import context
 from sympy import re
+import pymysql
 
-from .forms import BoardWriteForm, CommentForm, BoardEditForm
-from .models import Board, Comment, Notice
+from .forms import BoardWriteForm, CommentForm, BoardEditForm,RatingForm
+from .models import Board, Comment, Notice,Movie,Ratings
 from member.models import User
 
 @csrf_exempt
@@ -176,3 +178,63 @@ def board_delete(request,pk):
     board = get_object_or_404(Board, pk=pk)
     board.delete()
     return redirect('board:mypage')
+
+def movieReview(request) -> HttpResponse:
+    """Simple Board Paging."""
+    now_page = request.GET.get('page', 1)
+    datas = Movie.objects.order_by('-movieId')
+
+    p = Paginator(datas, 10)
+    info = p.get_page(now_page)
+    start_page = (int(now_page) - 1) // 10 * 10 + 1
+    end_page = start_page + 9
+
+    if end_page > p.num_pages:
+        end_page = p.num_pages
+    context = {'info': info, 'page_range': range(start_page, end_page + 1)}
+    return render(request,'board/review.html',context)
+
+@csrf_exempt
+def reviewDetail(request, pk) -> HttpResponse:
+    """TODO board detail???"""
+    movie = get_object_or_404(Movie, pk=pk)
+    ratings = Ratings.objects.filter(movieId=pk)
+
+    if request.method == 'POST':
+        form = RatingForm(request.POST)
+
+        if form.is_valid():
+            _rating = form.save(commit=False)
+            _rating.movieId = movie
+            _rating.userid = request.user
+            _rating.save()
+
+            return redirect('board:reviewDetail', pk)
+    else:
+        form = RatingForm()
+
+    context = {'form': form, 'movie': movie, 'ratings': ratings, 'pk': pk}
+    movie.save()
+
+    return render(request, 'board/reviewDetail.html', context)
+
+@csrf_exempt
+@login_required
+def comment(request, movie_id) -> HttpResponse:
+    """Excpect as Comment"""
+    movie = get_object_or_404(Movie, pk=movie_id)
+    if request.method == 'POST':
+        form = RatingForm(request.POST)
+
+        if form.is_valid():
+            _rating = form.save(commit=False)
+            _rating.userid = request.user
+            _rating.movieId = movie
+            _rating.save()
+            return redirect('board:reviewDetail', movie_id=movie_id)
+    else:
+        form = RatingForm()
+
+    context = {'movie': movie, 'form': form}
+
+    return render(request, 'board:reviewDetail', context)

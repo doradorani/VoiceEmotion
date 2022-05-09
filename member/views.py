@@ -61,8 +61,10 @@ def findPwd(request) -> HttpResponse:
 def rating(request) -> HttpResponse:
     db = pymysql.connect(user = 'root', host = '192.18.138.86', passwd = '5631jjyy', port = 3306, db = 'jango_db')
     cursor = db.cursor(pymysql.cursors.DictCursor)
-    sql = "SELECT movieId, img FROM movies"
+    sql = "SELECT img FROM movies"
     cursor.execute(sql)
-    data = json.dumps(cursor.fetchall())
-    return JsonResponse(data,safe=False)
-    # return render(request, 'member/rating.html', {})
+    movieJson = json.dumps(cursor.fetchall())
+    username = request.user.id
+    response = render(request, 'member/rating.html', {'movieJson':movieJson})
+    response.set_cookie('user_id',username)
+    return response
