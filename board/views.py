@@ -182,7 +182,7 @@ def board_delete(request,pk):
 def movieReview(request) -> HttpResponse:
     """Simple Board Paging."""
     now_page = request.GET.get('page', 1)
-    datas = Movie.objects.order_by('-movieId')
+    datas = Movie.objects.order_by('movieId')
 
     p = Paginator(datas, 10)
     info = p.get_page(now_page)
