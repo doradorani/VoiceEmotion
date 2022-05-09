@@ -1,6 +1,6 @@
 {% extends "base.html" %} {% load static %} {% block content %}
 <!-- Start: Article Clean -->
-<link rel="stylesheet" href="{% static 'css/detail.css' %}? after" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/reviewdetail.css' %}? after" type="text/css" />
 <div class="wrapper">
   <div class="container">
     <div class="row">
@@ -11,8 +11,8 @@
           <!-- Start: Date and Author -->
           <!-- End: Date and Author -->
           <div style="text-align: center">
-            {% if movie.img.url is not None %}
-            <img src="{{ movie.img.url }}" />
+            {% if movie.img is not None %}
+            <img src={{ movie.img }}>
             <br />
             <br />
             {% endif %}
@@ -53,6 +53,5 @@
       </div>
     </div>
   </div>
-</div>
 <!-- End: Article Clean -->
 {% endblock %}

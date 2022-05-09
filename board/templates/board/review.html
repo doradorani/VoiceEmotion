@@ -1,5 +1,5 @@
 {% extends "base.html" %} {% load static %} {% block content %}
-<link rel="stylesheet" href="{% static 'css/board.css' %}? after" type="text/css" />
+<link rel="stylesheet" href="{% static 'css/review.css' %}? after" type="text/css" />
 <div class="wrapper">
   <div class="wrapper-box">
     <div class="table-responsive">
@@ -7,15 +7,16 @@
         <thead>
           <tr>
             <th>NO</th>
+            <th>사진</th>
             <th>제목</th>
             <th>작성일자</th>
-            <th>답변 여부</th>
           </tr>
         </thead>
         <tbody>
           {% for data in info %}
           <tr>
             <td>{{ data.movieId }}</td>
+            <td><a href="../review/detail/{{ data.movieId }}"><img src= {{ data.img }}></a></td>
             <td><a href="../review/detail/{{ data.movieId }}">{{ data.title }}</a></td>
             <td>{{ data.genres }}</td>
           </tr>
