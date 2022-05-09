@@ -35,7 +35,7 @@ class Comment(models.Model):
 
 class Notice(models.Model):
     title = models.CharField(max_length=45)
-    content = models.CharField(max_length=400)
+    content = models.TextField(null=False)
     date = models.DateTimeField(default=now, editable=False, null=False)
     username = models.CharField(max_length=45, default='관리자')
 
@@ -51,7 +51,7 @@ class Movie(models.Model):
         db_table = 'movie_s'
 class Ratings(models.Model):
     userid = models.CharField(max_length=150,default=NULL,null=True)
-    movieId = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    movieId = models.IntegerField(null=False)
     rating = models.FloatField(default=NULL,null=True)
     
     class Meta:
