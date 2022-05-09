@@ -57,7 +57,7 @@ body {
     border-radius: 10px;
     position: absolute;
     top: 108%;
-    right: 46%;
+    margin-left: 37%;
     font-family: "Jua", sans-serif;
     font-style: normal;
     font-size: 100px;
@@ -67,9 +67,7 @@ body {
 #t_1 {
   position: absolute;
   top: 108%;
-  right: 30%;
-  width: 292px;
-  height: 117px;
+  margin-left:52%;
   font-family: "Jua", sans-serif;
   font-style: normal;
   font-size: 100px;
