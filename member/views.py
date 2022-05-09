@@ -21,7 +21,7 @@ def signup(request) -> HttpResponse:
 
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('main:main')
+            return redirect('board:review')
     else:
         form = UserForm()
     return render(request, 'member/signup1.html', {'form': form})
