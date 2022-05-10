@@ -85,10 +85,11 @@ def board_edit(request, pk) -> HttpResponse:
     """TODO Expect as Edit private board"""
     board = Board.objects.get(id=pk)
     if request.method == 'POST':
-        form = BoardEditForm(request.POST)
+        form = BoardWriteForm(request.POST , request.FILES)
         if form.is_valid():
             board.title = request.POST['title']
             board.content = request.POST['content']
+            board.image = request.FILES['image']
             board.save()
             return redirect('board:board_detail',pk)
     else:
