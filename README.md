@@ -6,8 +6,9 @@
 >
 > ## 프로젝트 기간
 > 2022.04.11 ~ 2022.05.11
+<br/>
+<br/>
 
----
 - [실행](#1-실행)
 - [개요](#2-개요)
   - [주제](#주제)
@@ -15,7 +16,8 @@
   - [주요기술](#주요기술)
   - [UI](#UI)
 - [환경 및 버전](#3-환경-및-버전)
-
+<br/>
+<br/>
 
 # 1. 실행
 ---
@@ -25,7 +27,7 @@
 ```bash
 pip install -r requirements.txt
 ```
----
+<br/>
 - [Backend](backend/) 실행하기
 
   Root directory 에서 실행됨
@@ -34,7 +36,7 @@ pip install -r requirements.txt
   2. using *sh (bash, zsh, ash, sh) `cd backend && python app.py`
   3. Powershell `cd backend; python app.py`
 
----
+<br/>
 - django 실행하기
   
   1. pip install -r requirements.txt
@@ -43,7 +45,8 @@ pip install -r requirements.txt
   4. python manage.py inspectdb
   5. python manage.py runserver
 
----
+<br/>
+<br/>
 
 # 2. 개요
 ---
@@ -94,8 +97,9 @@ CNN
 > UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a5654f1-dc04/?fullscreen
 ![메인화면](https://user-images.githubusercontent.com/96163167/167738410-f34e647d-6204-4872-ac94-06f42f450066.png)
 
+<br/>
+<br/>
 
----
 # 3. 환경 및 버전
 ---
 
@@ -115,11 +119,12 @@ CNN
 - librosa
 
 ## Contributors
-![프로젝트 소개](https://user-images.githubusercontent.com/96163167/167740554-dba9db93-a288-4eec-ac20-837baba7ac5e.png)
+> ![프로젝트 소개](https://user-images.githubusercontent.com/96163167/167740554-dba9db93-a288-4eec-ac20-837baba7ac5e.png)
 
 | 이름                                        | 담당 직무                              |
-| ------------------------------------------- | -------------------------------------- |
-| [권윤경](https://github.com/yoonkyeongkwon) | ML / AI Modeling                       |
+| ------------------------------------------- | --------------------------------------|
+| [권윤경](https://github.com/yoonkyeongkwon) | ML / AI Modeling                      
+|
 | [김란희](https://github.com/doradorani)     | Frontend / UI/UX Design 
 |         
 | [배성훈](https://github.com/fish895623)     | Additional Manpower
