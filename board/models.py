@@ -55,4 +55,10 @@ class Ratings(models.Model):
     rating = models.FloatField(default=NULL,null=True)
     
     class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["userid","movieId"],
+                name="unique rating"
+            ),
+        ]
         db_table = 'rating_s'
