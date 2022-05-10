@@ -1,20 +1,20 @@
 import os
+import io
 import warnings
 import pandas as pd
-import joblib
 import librosa
 import numpy as np
+import pymysql 
 from flask_cors import CORS
-from flask import Flask, jsonify, render_template, request, url_for, redirect, session, escape
+from flask import Flask, jsonify, render_template, request
 from flask.wrappers import Response
-from sklearn.preprocessing import scale
 from werkzeug.utils import secure_filename
 from pydub import AudioSegment
 from pathlib import Path
 warnings.filterwarnings('ignore')
-import pymysql 
+
 from sklearn.metrics.pairwise import cosine_similarity
-import io
+
 from google.cloud import speech
 
 # os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/User/Downloads/aivlebigproject-348610-27ad2f7a9168.json"

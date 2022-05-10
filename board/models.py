@@ -2,7 +2,6 @@ from django.contrib.auth import get_user_model
 from django.db import models
 from django.utils.timezone import now
 from pymysql import NULL
-from member.models import User
 # Create your models here.
 
 User = get_user_model()

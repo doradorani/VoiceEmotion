@@ -1,7 +1,5 @@
 from django import forms
-
 from .models import Board, Comment, Ratings
-
 
 class BoardWriteForm(forms.ModelForm):
     class Meta:
@@ -21,6 +19,7 @@ class CommentForm(forms.ModelForm):
             'content': '댓글내용',
         }
 
+
 class BoardEditForm(forms.ModelForm):
     class Meta:
         model = Board
@@ -29,9 +28,12 @@ class BoardEditForm(forms.ModelForm):
             'content',
             'image',
         )
+
+
 class RatingForm(forms.ModelForm):
-    class Meta:
+    class Meta: 
         model = Ratings
         fields = (
             'rating',
         )
+
