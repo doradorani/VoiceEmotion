@@ -51,12 +51,12 @@ body {
   width: 100%;
   height: auto;
 }
-
+s
 #NETFLIXlogo {
   background: #F5C518;
     border-radius: 10px;
     position: absolute;
-    top: 108%;
+    top: 110%;
     margin-left: 37%;
     font-family: "Jua", sans-serif;
     font-style: normal;
@@ -66,7 +66,7 @@ body {
 
 #t_1 {
   position: absolute;
-  top: 108%;
+  top: 110%;
   margin-left: 53%;
   font-family: "Jua", sans-serif;
   font-style: normal;
