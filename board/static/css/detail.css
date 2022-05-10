@@ -122,3 +122,6 @@
       margin: 0 -16%;
 }
 
+.wrapper > div > div > div > div.intro > div > a{
+  display: none;
+}
