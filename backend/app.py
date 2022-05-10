@@ -12,12 +12,11 @@ from werkzeug.utils import secure_filename
 from pydub import AudioSegment
 from pathlib import Path
 warnings.filterwarnings('ignore')
-
 from sklearn.metrics.pairwise import cosine_similarity
-
 from google.cloud import speech
+import tensorflow as tf
+from tensorflow.keras.models import load_model
 
-# os.environ["GOOGLE_APPLICATION_CREDENTIALS"]="C:/Users/User/Downloads/aivlebigproject-348610-27ad2f7a9168.json"
 BASE_DIR = Path(__file__).resolve().parent.parent
 # ---data 불러오기------------------------------------------------------------------------------------------------------------------
 db = pymysql.connect(user = 'root', host = '192.18.138.86', passwd = '5631jjyy', port = 3306, db = 'jango_db')
@@ -32,22 +31,8 @@ ratings_df = pd.DataFrame(data=cursor.fetchall(), columns=['idx', 'userId', 'mov
 movie_df_copy = movie_df.copy()
 
 # ----------------------------------------------------------------------------------------------------------------------------------
-import tensorflow as tf
 # ---model 불러오기------------------------------------------------------------------------------------------------------------------
-from tensorflow.keras.models import load_model
 MODEL = load_model('../model/saved_model/model2022-05-08_18_57_CNNModel_v1.0.h5')
-# x11 = np.array([[-728.43805,    137.54262,     32.912483,    35.09984,     26.470541,
-#    -2.1974354,    2.5854757,   -5.3943257,   -7.8861628,   -4.4748945,
-#    -5.0116286,  -11.226084,    -7.836911,    -2.2781668,   -6.982722,
-#    -2.4404294,   -4.376008,    -2.2354066,   -5.482168,    -1.5101151,
-#    -7.254887,    -2.2843063,   -3.8397841,   -2.69889,     -2.695017,
-#    -2.1617126]])
-
-# x11 = x11.reshape(1, 26, 1)
-# print(x11.shape)
-# outtt = MODEL(x11)
-# print(outtt)
-# # C:\Users\User\BP\VoiceEmotion\model\saved_model\model2022-05-08_18_57_CNNModel_v1.0.h5
 Label =np.array(["anger","happiness","sad"])
 # ----------------------------------------------------------------------------------------------------------------------------------
 
@@ -73,7 +58,6 @@ def stt(file_name):
 
     # 오디오 파일 분석
     response = client.recognize(config=config, audio=audio)
-    print("result:",response.results)
     
     # 응답 언어가 있는지 여부 판단
     if response.results == []:
@@ -98,7 +82,6 @@ def audio_preprocessing(filename: str) -> list:
     xf, _ = librosa.load(file_full)
     mfcc_1 = librosa.feature.mfcc(y=xf, sr=16000, n_mfcc=26, n_fft=400, hop_length=160)
     feature = np.mean(mfcc_1.T, axis=0) 
-    print(feature)
     return [feature,new_file_path]
 
 def cossim_matrix(a, b):
@@ -198,9 +181,7 @@ def audio_predict(x) -> int:
     x = x.reshape(1, 26, 1)
     result = MODEL.predict(x)
     result = np.argmax(MODEL.predict(x), axis=-1)
-    print("result",result)
     y_pred2 = Label[result]
-    print("y_pred",y_pred2)
     return y_pred2
 
 # 실제 서비스할 때는 감정 분석 결과를 db에 저장하기를 권장
@@ -235,8 +216,6 @@ def emotion() -> Response:
         # 영화추천을 포함해서 제대로 말했다면
         _x_val, new_file_path = audio_preprocessing(file.filename)
         print("new_file_path", new_file_path)
-        print("file.filename", file.filename)
-        print("_x_val", _x_val)
         if stt(new_file_path):
             predict_result = audio_predict([_x_val])
             return jsonify({'status': 'success', 'result': predict_result[0], 'audio_name' : new_file_path})
