@@ -3,7 +3,7 @@ from django.shortcuts import render
 from board.models import Movie
 
 def main(request) -> HttpResponse:
-    movie = Movie.objects.order_by('movieId')
+    movie = Movie.objects.order_by('movieId')[:10]
     context = {'movie':movie}
     return render(request, 'main.html', context)
 
