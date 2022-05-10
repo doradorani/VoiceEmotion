@@ -40,7 +40,7 @@ pip install -r requirements.txt
   1. pip install -r requirements.txt
   2. python manage.py makemigrations
   3. python manage.py migrate
-  4. python manage.py inspetdb
+  4. python manage.py inspectdb
   5. python manage.py runserver
 
 ---
@@ -58,8 +58,7 @@ pip install -r requirements.txt
 ## 선정배경 및 기대효과
 - 전 세계 감정 분석 시장은 2018년 20억 9020만 달러에서 연평균 성장률 17.05%로 증가하여, 2023년에는 45억 9330만 달러에 이를 것으로 전망
 - 그 중 음성 분석은 2019년 4억 9700만 달러에서 연평균 성장률 14.9%로 증가하여, 2024년에는 9억 9300만 달러에 이를 것으로 전망
-<br/>
-![시장 규모](https://user-images.githubusercontent.com/96163167/167738929-4742fbc3-0321-4df9-9d9f-2d038dd4e08e.jpg)
+> ![시장 규모](https://user-images.githubusercontent.com/96163167/167738929-4742fbc3-0321-4df9-9d9f-2d038dd4e08e.jpg)
 
 - 넷플릭스, 왓차와 같은 플랫폼에서는 현재 인기가 많은 영화나 사용자가 봤던 영화를 기반으로 추천을 해주는 서비스를 제공
 - 감정기반 서비스를 확대하여 음악, 도서, 광고, 쇼핑, 여행, 음악과 같은 다양한 컨텐츠에 추천 시스템을 적용가능
@@ -72,22 +71,22 @@ STT
 
 MFCC
  - 오디오 신호에서 추출할 수 있는 Feature
- 1. 오디오 신호를 프레임 별로 나누어 FFT를 적용해 Spectrum 구하기
- 2. Spectrum에 Mel Filter Bank를 적용해 Mel Spectrum 구하기
- 3. Mel Spectrum Cepstral 분석을 적용해 MFCC 구하기
+  1. 오디오 신호를 프레임 별로 나누어 FFT를 적용해 Spectrum 구하기
+  2. Spectrum에 Mel Filter Bank를 적용해 Mel Spectrum 구하기
+  3. Mel Spectrum Cepstral 분석을 적용해 MFCC 구하기
 
 
 CNN
  - 인간의 시신경 구조를 모방한 기술
- 1. 특징 추출: Convolution Layer와 Pooling Layer를 여러 겹 쌓는 형태
- 2. 특징 추출과 클래스 분류 사이에 배열 형태로 만들어 주는 Flatten Layer 추가
- 3. 클래스 분류 : Fully Connected Layer 추가
+  1. 특징 추출: Convolution Layer와 Pooling Layer를 여러 겹 쌓는 형태
+  2. 특징 추출과 클래스 분류 사이에 배열 형태로 만들어 주는 Flatten Layer 추가
+  3. 클래스 분류 : Fully Connected Layer 추가
 
 
 협업 기반 필터링
  - 많은 유저들로부터 모은 취향 정보들을 기반으로 하여 예측
- 1. Item-based: 아이템과 아이템 간의 유사도를 기준
- 2. User-based: 두 사용자 간의 유사도를 기준
+  1. Item-based: 아이템과 아이템 간의 유사도를 기준
+  2. User-based: 두 사용자 간의 유사도를 기준
 <br/>
 <br/>
 
