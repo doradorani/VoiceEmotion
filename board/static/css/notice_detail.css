@@ -15,16 +15,13 @@
     position: relative;
 }
 
-.intro > h1{
-    text-align: center;
-    padding: 5%;
-    font-size: 50px;
+.intro > h1{    text-align: center;
+  padding: 5% 5% 0% 5%;
+  font-size: 50px;
 }
 
 .intro > p{
-    position: absolute;
-    left: 78%;
-    top: 15%;
+  margin-left: 74%;
     font-size: 20px;
 }
 .text > div:nth-child(3) > div > div{
@@ -51,4 +48,8 @@
 
 .text > div{
     padding: 0 5%;
+}
+
+body > div > section > div > div > div > div.text > div > p{
+  text-align: justify;
 }
