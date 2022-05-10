@@ -7,6 +7,19 @@
 > ## 프로젝트 기간
 > 2022.04.11 ~ 2022.05.11
 
+---
+- [실행](#1-실행)
+- [개요](#2-개요)
+  - [주제](#주제)
+  - [선정배경 및 기대효과](#선정배경-및-기대효과)
+  - [주요기술](#주요기술)
+  - [UI](#UI)
+- [환경 및 버전](#3-환경-및-버전)
+
+
+# 1. 실행
+---
+
 - requirements.txt 적용법
 
 ```bash
@@ -22,16 +35,17 @@ pip install -r requirements.txt
   3. Powershell `cd backend; python app.py`
 
 ---
+- django 실행하기
+  
+  1. pip install -r requirements.txt
+  2. python manage.py makemigrations
+  3. python manage.py migrate
+  4. python manage.py inspetdb
+  5. python manage.py runserver
 
-- [개요](#1-개요)
-    - [주제](#주제)
-    - [선정배경 및 기대효과](#선정배경-및-기대효과)
-    - [주요기술](#주요기술)
-    - [UI](#UI)
-    - 
+---
 
-
-# 1. 개요
+# 2. 개요
 ---
 ## 주제
 - 오늘 무슨 영화를 보고 싶은지 결정을 못하셨다면 니모션에게 '영화 추천해줘' 한 마디만 말해보세요.
@@ -44,7 +58,9 @@ pip install -r requirements.txt
 ## 선정배경 및 기대효과
 - 전 세계 감정 분석 시장은 2018년 20억 9020만 달러에서 연평균 성장률 17.05%로 증가하여, 2023년에는 45억 9330만 달러에 이를 것으로 전망
 - 그 중 음성 분석은 2019년 4억 9700만 달러에서 연평균 성장률 14.9%로 증가하여, 2024년에는 9억 9300만 달러에 이를 것으로 전망
+<br/>
 ![시장 규모](https://user-images.githubusercontent.com/96163167/167738929-4742fbc3-0321-4df9-9d9f-2d038dd4e08e.jpg)
+
 - 넷플릭스, 왓차와 같은 플랫폼에서는 현재 인기가 많은 영화나 사용자가 봤던 영화를 기반으로 추천을 해주는 서비스를 제공
 - 감정기반 서비스를 확대하여 음악, 도서, 광고, 쇼핑, 여행, 음악과 같은 다양한 컨텐츠에 추천 시스템을 적용가능
 <br/>
@@ -72,19 +88,18 @@ CNN
  - 많은 유저들로부터 모은 취향 정보들을 기반으로 하여 예측
  1. Item-based: 아이템과 아이템 간의 유사도를 기준
  2. User-based: 두 사용자 간의 유사도를 기준
+<br/>
+<br/>
 
-## UI
-> UI 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a5654f1-dc04/?fullscreen
+## UI/UX
+> UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a5654f1-dc04/?fullscreen
 ![메인화면](https://user-images.githubusercontent.com/96163167/167738410-f34e647d-6204-4872-ac94-06f42f450066.png)
 
 
-
-- django 실행하기 ( TODO )
-
-
+---
+# 3. 환경 및 버전
 ---
 
-MFCC를 이용하여 사용자의 기분을 파악한 후 현재 기분을 풀기 위해 알맞는 미디어 추천
 
 ## Environment
 
@@ -101,6 +116,7 @@ MFCC를 이용하여 사용자의 기분을 파악한 후 현재 기분을 풀�
 - librosa
 
 ## Contributors
+![프로젝트 소개](https://user-images.githubusercontent.com/96163167/167740554-dba9db93-a288-4eec-ac20-837baba7ac5e.png)
 
 | 이름                                        | 담당 직무                              |
 | ------------------------------------------- | -------------------------------------- |
