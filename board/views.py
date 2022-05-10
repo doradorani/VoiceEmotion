@@ -1,3 +1,4 @@
+from django.db.models import Avg
 from django.contrib.auth import update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
@@ -8,7 +9,6 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.views.decorators.csrf import csrf_exempt
 from matplotlib.style import context
 from sympy import re
-import pymysql
 
 from .forms import BoardWriteForm, CommentForm, BoardEditForm,RatingForm
 from .models import Board, Comment, Notice,Movie,Ratings
@@ -199,7 +199,7 @@ def reviewDetail(request, pk) -> HttpResponse:
     """TODO board detail???"""
     movie = get_object_or_404(Movie, pk=pk)
     ratings = Ratings.objects.filter(movieId=pk)
-
+    rating_avg = Ratings.objects.filter(movieId=pk).aggregate(Avg('rating'))
     if request.method == 'POST':
         form = RatingForm(request.POST)
 
@@ -213,7 +213,7 @@ def reviewDetail(request, pk) -> HttpResponse:
     else:
         form = RatingForm()
 
-    context = {'form': form, 'movie': movie, 'ratings': ratings, 'pk': pk}
+    context = {'form': form, 'movie': movie, 'ratings': ratings, 'pk': pk ,'rating_avg':rating_avg}
     movie.save()
 
     return render(request, 'board/reviewDetail.html', context)

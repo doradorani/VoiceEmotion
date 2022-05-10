@@ -9,6 +9,9 @@
         <div class="intro">
           <h1 class="text-center">{{ movie.title }}</h1>
           <!-- Start: Date and Author -->
+          <p class="text-center">
+            <span class="text"> 평점 : {{ rating_avg.rating__avg |floatformat:-1  }} / 5.0 </span>
+          </p>
           <!-- End: Date and Author -->
           <div style="text-align: center">
             {% if movie.img is not None %}
@@ -23,16 +26,6 @@
           <div>
             <p>별점</p>
           </div>
-          {% for rating in ratings %}
-          <div class="cardmy-3">
-            <div class="card-body">
-              <div class="card-text" >
-                <span>작성자 : {{ rating.userid }} </span>
-                <span>별점 : {{rating.rating }} </span>
-              </div>
-            </div>
-          </div>
-          {% endfor %}
           <form method="POST" class="my-3">
             {% csrf_token %} {% include "form_errors.html" %}
             <div>
