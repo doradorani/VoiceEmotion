@@ -206,7 +206,7 @@ def reviewDetail(request, pk) -> HttpResponse:
             _rating.userid = request.user
             _rating.save()
 
-            return redirect('board:reviewDetail', pk)
+            return redirect('board:review')
     else:
         form = RatingForm()
 
