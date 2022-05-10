@@ -205,7 +205,7 @@ def reviewDetail(request, pk) -> HttpResponse:
 
         if form.is_valid():
             _rating = form.save(commit=False)
-            _rating.movieId = movie
+            _rating.movieId = movie.movieId
             _rating.userid = request.user
             _rating.save()
 
@@ -229,7 +229,7 @@ def comment(request, movie_id) -> HttpResponse:
         if form.is_valid():
             _rating = form.save(commit=False)
             _rating.userid = request.user
-            _rating.movieId = movie
+            _rating.movieId = movie.movieId
             _rating.save()
             return redirect('board:reviewDetail', movie_id=movie_id)
     else:

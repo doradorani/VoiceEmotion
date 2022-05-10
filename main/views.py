@@ -3,8 +3,8 @@ from django.shortcuts import render
 from board.models import Movie
 
 def main(request) -> HttpResponse:
-    movie = Movie.objects.all()
-    return render(request, 'main.html', {'movie',movie})
+    datas = Movie.objects.order_by('movieId')
+    return render(request, 'main.html', {'movie',datas})
 
 def introduction(request) -> HttpResponse:
     return render(request, 'introduction.html', {})
