@@ -7,20 +7,48 @@
 > ## 프로젝트 기간
 > 2022.04.11 ~ 2022.05.11
 
+- requirements.txt 적용법
+
+```bash
+pip install -r requirements.txt
+```
+---
+- [Backend](backend/) 실행하기
+
+  Root directory 에서 실행됨
+
+  1. using make `make -B backend`
+  2. using *sh (bash, zsh, ash, sh) `cd backend && python app.py`
+  3. Powershell `cd backend; python app.py`
+
+---
+
 - [개요](#1-개요)
-   -[주제](#주제)
-   -[주요기술](#주요기술)
-   -[UI](#UI)
+    - [주제](#주제)
+    - [선정배경 및 기대효과](#선정배경-및-기대효과)
+    - [주요기술](#주요기술)
+    - [UI](#UI)
+    - 
 
 
 # 1. 개요
 ---
 ## 주제
-> 오늘 무슨 영화를 보고 싶은지 결정을 못하셨다면 니모션에게 '영화 추천해줘' 한 마디만 말해보세요.
-> 사용자의 음성이 성공적으로 입력되면 감정을 분석합니다.
-> 감정 분석 결과를 바탕으로 다양한 장르의 영화를 사용자에게 추천합니다.
-> 기존의 영화 추천시스템과 달리 실시간으로 변화하는 감정을 이용하여 주관적인 사용자 취향을 즉각적으로 반영하여 만족도를 상승시켜 줍니다.
+- 오늘 무슨 영화를 보고 싶은지 결정을 못하셨다면 니모션에게 '영화 추천해줘' 한 마디만 말해보세요.
+- 사용자의 음성이 성공적으로 입력되면 감정을 분석합니다.
+- 감정 분석 결과를 바탕으로 다양한 장르의 영화를 사용자에게 추천합니다.
+- 기존의 영화 추천시스템과 달리 실시간으로 변화하는 감정을 이용하여 주관적인 사용자 취향을 즉각적으로 반영하여 만족도를 상승시켜 줍니다.
+<br/>
+<br/>
 
+## 선정배경 및 기대효과
+- 전 세계 감정 분석 시장은 2018년 20억 9020만 달러에서 연평균 성장률 17.05%로 증가하여, 2023년에는 45억 9330만 달러에 이를 것으로 전망
+- 그 중 음성 분석은 2019년 4억 9700만 달러에서 연평균 성장률 14.9%로 증가하여, 2024년에는 9억 9300만 달러에 이를 것으로 전망
+![시장 규모](https://user-images.githubusercontent.com/96163167/167738929-4742fbc3-0321-4df9-9d9f-2d038dd4e08e.jpg)
+- 넷플릭스, 왓차와 같은 플랫폼에서는 현재 인기가 많은 영화나 사용자가 봤던 영화를 기반으로 추천을 해주는 서비스를 제공
+- 감정기반 서비스를 확대하여 음악, 도서, 광고, 쇼핑, 여행, 음악과 같은 다양한 컨텐츠에 추천 시스템을 적용가능
+<br/>
+<br/>
 
 ## 주요기술
 STT
@@ -46,23 +74,10 @@ CNN
  2. User-based: 두 사용자 간의 유사도를 기준
 
 ## UI
-> UI 초안 링크 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a5654f1-dc04/?fullscreen
-![예시 이미지](https://raw.githubusercontent.com/ByungJun25/Wiki/master/Markdown/example_image.jpg)
+> UI 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a5654f1-dc04/?fullscreen
+![메인화면](https://user-images.githubusercontent.com/96163167/167738410-f34e647d-6204-4872-ac94-06f42f450066.png)
 
 
-- requirements.txt 적용법
-
-```bash
-pip install -r requirements.txt
-```
-
-- [Backend](backend/) 실행하기
-
-  Root directory 에서 실행됨
-
-  1. using make `make -B backend`
-  2. using *sh (bash, zsh, ash, sh) `cd backend && python app.py`
-  3. Powershell `cd backend; python app.py`
 
 - django 실행하기 ( TODO )
 
