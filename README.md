@@ -16,6 +16,10 @@
   - [주요기술](#주요기술)
   - [UI](#UI)
 - [환경 및 버전](#3-환경-및-버전)
+  - [Environment](#environment)
+  - [Django](#django)
+  - [Modeling](#modeling)
+- [팀원 역할](#팀원-역할)
 <br/>
 <br/>
 
@@ -118,16 +122,12 @@ CNN
 - tensorflow
 - librosa
 
-## Contributors
+## 팀원 역할
 > ![프로젝트 소개](https://user-images.githubusercontent.com/96163167/167740554-dba9db93-a288-4eec-ac20-837baba7ac5e.png)
 
 | 이름                                        | 담당 직무                              |
 | ------------------------------------------- | --------------------------------------|
-| [권윤경](https://github.com/yoonkyeongkwon) | ML / AI Modeling                      
-|
-| [김란희](https://github.com/doradorani)     | Frontend / UI/UX Design 
-|         
-| [배성훈](https://github.com/fish895623)     | Additional Manpower
-|
-| [임성현](https://github.com/dlatjdgus95)    | Backend, Server Management
-|
+| [권윤경](https://github.com/yoonkyeongkwon) | ML / AI Modeling                       |
+| [김란희](https://github.com/doradorani)     | Frontend / UI/UX Design         |         
+| [배성훈](https://github.com/fish895623)     | Additional Manpower                    |
+| [임성현](https://github.com/dlatjdgus95)    | Backend, Server Management             |
