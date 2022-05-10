@@ -26,7 +26,7 @@
           <div>
             <p>별점</p>
           </div>
-          <form method="POST" class="my-3">
+          <form method="POST" class="my-3" onsubmit="return confirm('별점이 저장되었습니다.')">
             {% csrf_token %} {% include "form_errors.html" %}
             <div>
               <select name="rating">

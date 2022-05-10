@@ -100,12 +100,7 @@
   border-radius: 17%;
 }
 
-.text{
-  background-color: #9bb3db;
-  width: 90%;
-  margin: 0 5%;
-  border-radius: 3%;
-}
+
 .cardmy-3 > div > div > span:nth-child(2){
  padding: 0 5%;
 }
