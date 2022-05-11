@@ -146,7 +146,7 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 <br/>
 
 ## 아키텍처 정의서
-![아키텍처 정의서](https://user-images.githubusercontent.com/96163167/167754666-2ca3d595-3d71-4f4a-bc16-7bcfdfc8c71a.png)
+![아키텍처 정의서](https://user-images.githubusercontent.com/96163167/167755062-a8dbf217-75b5-4c8f-a4c8-8aa8f2040a9a.png)
 <br/>
 <br/>
 
