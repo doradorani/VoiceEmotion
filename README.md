@@ -114,7 +114,8 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 # 3. 아키텍처
 ---
 ## ERD설계
-![ERD](https://user-images.githubusercontent.com/96163167/167745564-f8707f72-1d02-446f-ae81-fd0ccf33e374.png)
+링크 : https://www.erdcloud.com/d/XXKkK8m77SjPrCCTJ
+![ERD](https://user-images.githubusercontent.com/96163167/167746627-6aafd388-d6a4-415b-a4e5-a881d5c231b5.png)
 <br/>
 <br/>
 
