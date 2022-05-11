@@ -34,6 +34,7 @@
   - [Modeling](#modeling)
 - [팀원 역할](#5.팀원-역할)
 - [시연 영상](#6.시연-영상)
+- [PPT](#7.PPT)
 <br/>
 <br/>
 
@@ -194,7 +195,15 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 | [김란희](https://github.com/doradorani)     | Frontend / UI/UX Design                |         
 | [배성훈](https://github.com/fish895623)     | Additional Manpower                    |
 | [임성현](https://github.com/dlatjdgus95)    | Backend, Server Management             |
+<br/>
+<br/>
 
 # 6. 시연 영상
 ---
-시연영상링크: https://youtu.be/MDiKSU7RE-Q
+시연 영상 : https://youtu.be/MDiKSU7RE-Q
+<br/>
+<br/>
+
+# 7. PPT
+---
+발표 PPT : https://drive.google.com/file/d/1JhGx2dA_lZFiZ6aVgLMYC3KVj3_JPQn8/view?usp=sharing
