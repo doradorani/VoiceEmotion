@@ -137,11 +137,19 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 
 - Python 3.8
 
+### Flask
+
+- Flask 2.1.1
+
 ### Modeling
 
 - Python 3.6
-- tensorflow
-- librosa
+- tensorflow 2.8.0
+- keras 2.8.0
+- librosa 0.91
+- xgboost 0.90
+- scikit-learn 1.0.2
+
 <br/>
 <br/>
 
