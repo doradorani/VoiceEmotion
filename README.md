@@ -55,6 +55,13 @@ python manage.py migrate
 python manage.py inspectdb
 python manage.py runserver
 ```
+<br/>
+
+- google.cloud.speech API 사용
+  conda 가상환경 activate 후 설치
+  ```bash
+  conda install -c conda-forge google-cloud-speech
+  ```
 
 <br/>
 <br/>
