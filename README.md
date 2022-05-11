@@ -1,4 +1,4 @@
-# Nemotion ![그룹 378](https://user-images.githubusercontent.com/96163167/167744810-3f1897f6-36a4-41eb-8877-9e409d9d1389.png){: width="5%" height="auto"} 감정 기반 영화 추천 서비스 보이스 챗봇
+# ![그룹 378](https://user-images.githubusercontent.com/96163167/167744810-3f1897f6-36a4-41eb-8877-9e409d9d1389.png)Nemotion 감정 기반 영화 추천 서비스 보이스 챗봇
 > KT AIVLE SCHOOL 1기 AI 15조 - 부산 경남 1반 3조
 >
 > ## 개발자
@@ -72,11 +72,10 @@ python manage.py runserver
 - 전 세계 감정 분석 시장은 2018년 20억 9020만 달러에서 __연평균 성장률 17.05%로 증가__ 하여, 2023년에는 45억 9330만 달러에 이를 것으로 전망
 - 그 중 음성 분석은 2019년 4억 9700만 달러에서 __연평균 성장률 14.9%로 증가__ 하여, 2024년에는 9억 9300만 달러에 이를 것으로 전망
 
-![시장 규모](https://user-images.githubusercontent.com/96163167/167738929-4742fbc3-0321-4df9-9d9f-2d038dd4e08e.jpg){: width="50%" height="auto"}
+![시장 규모](https://user-images.githubusercontent.com/96163167/167738929-4742fbc3-0321-4df9-9d9f-2d038dd4e08e.jpg)
 
 - 넷플릭스, 왓차와 같은 플랫폼에서는 현재 인기가 많은 영화나 사용자가 봤던 영화를 기반으로 추천을 해주는 서비스를 제공
 - 감정기반 서비스를 확대하여 음악, 도서, 광고, 쇼핑, 여행, 음악과 같은 다양한 컨텐츠에 추천 시스템을 적용가능
-![image](https://user-images.githubusercontent.com/96163167/167739533-ad2591cb-b9c4-43c5-a4f3-6edd7cc0a74e.png){: width="30%" height="auto"}
 <br/>
 <br/>
 
@@ -115,12 +114,12 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 # 3. 아키텍처
 ---
 ## ERD설계
-![ERD](https://user-images.githubusercontent.com/96163167/167745564-f8707f72-1d02-446f-ae81-fd0ccf33e374.png){:width: "100%"}
+![ERD](https://user-images.githubusercontent.com/96163167/167745564-f8707f72-1d02-446f-ae81-fd0ccf33e374.png)
 <br/>
 <br/>
 
 ## Service Flow
-![서비스 플로우](https://user-images.githubusercontent.com/96163167/167745556-445d2220-2084-426c-8ce5-0e02f9e8103c.jpg){: width:"100%"}
+![서비스 플로우](https://user-images.githubusercontent.com/96163167/167745556-445d2220-2084-426c-8ce5-0e02f9e8103c.jpg)
 <br/>
 <br/>
 
