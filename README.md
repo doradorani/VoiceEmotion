@@ -6,6 +6,9 @@
 >
 > ## 프로젝트 기간
 > 2022.04.11 ~ 2022.05.11
+> 
+> ## 담당 코치님
+> 정호용 코치님
 <br/>
 <br/>
 
@@ -55,6 +58,14 @@ python manage.py migrate
 python manage.py inspectdb
 python manage.py runserver
 ```
+<br/>
+
+- google.cloud.speech API 사용
+
+  conda 가상환경 실행 후 설치
+  ```bash
+  conda install -c conda-forge google-cloud-speech
+  ```
 
 <br/>
 <br/>
