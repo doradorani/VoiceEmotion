@@ -1,5 +1,7 @@
 # ![그룹 378](https://user-images.githubusercontent.com/96163167/167744810-3f1897f6-36a4-41eb-8877-9e409d9d1389.png)Nemotion 감정 기반 영화 추천 서비스 보이스 챗봇
 > KT AIVLE SCHOOL 1기 AI 15조 - 부산 경남 1반 3조
+> 너의 감정 => Ne + Emotion = Nemotion
+> ![썸네일](https://user-images.githubusercontent.com/96163167/167752978-c92ad4ef-b6c7-4408-8e76-253daaae9ef7.jpg)
 >
 > ## 개발자
 > __권윤경 김란희 임성현__
@@ -18,6 +20,7 @@
   - [선정배경 및 기대효과](#선정배경-및-기대효과)
   - [주요기술](#주요기술)
   - [UI](#UI)
+  - [프로젝트 폴더 설명](#프로젝트-폴더-설명)
 - [아키텍처](#3-아키텍처)
   - [ERD설계](#erd설계)
   - [ServiceFlow](#service-flow)
@@ -27,6 +30,7 @@
   - [Flask](#flask)
   - [Modeling](#modeling)
 - [팀원 역할](#5.팀원-역할)
+- [시연 영상](#6.시연-영상)
 <br/>
 <br/>
 
@@ -120,6 +124,13 @@ CNN
 UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a5654f1-dc04/?fullscreen
 ![메인화면](https://user-images.githubusercontent.com/96163167/167738410-f34e647d-6204-4872-ac94-06f42f450066.png)
 
+
+## 프로젝트 폴더 설명
+- `backend` : Flask API에서 음원을 받아 감정분석, 영화 추천 시스템을 돌리는 폴더
+- `board` : 서비스의 문의사항, 회원 정보 수정에 관한 기능 폴더
+- `member` : 서비스의 회원가입, 로그인, 로그아웃에 관한 기능 폴더
+- `model` : 서비스의 AI 모델 코드 폴더
+- `service` : Flask API에서 데이터를 전송받아 사용자에게 보이스 챗봇 형식으로 보여주는 기능 폴더
 <br/>
 <br/>
 
@@ -127,7 +138,7 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 ---
 ## ERD설계
 링크 : https://www.erdcloud.com/d/XXKkK8m77SjPrCCTJ
-![ERD](https://user-images.githubusercontent.com/96163167/167746627-6aafd388-d6a4-415b-a4e5-a881d5c231b5.png)
+![ERD](https://user-images.githubusercontent.com/96163167/167752934-2b7e9afc-e9be-48d5-9964-a32381997b4f.png)
 <br/>
 <br/>
 
@@ -149,7 +160,7 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 
 - Python 3.8
 
-### Flask
+### Flask API
 
 - Flask 2.1.1
 
@@ -175,3 +186,7 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 | [김란희](https://github.com/doradorani)     | Frontend / UI/UX Design                |         
 | [배성훈](https://github.com/fish895623)     | Additional Manpower                    |
 | [임성현](https://github.com/dlatjdgus95)    | Backend, Server Management             |
+
+# 6. 시연 영상
+---
+시연영상링크: https://youtu.be/MDiKSU7RE-Q
