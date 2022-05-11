@@ -25,6 +25,7 @@
   - [프로젝트 폴더 설명](#프로젝트-폴더-설명)
 - [아키텍처](#3-아키텍처)
   - [ERD설계](#erd설계)
+  - [아키텍처 정의서](#아키텍처-정의서)
   - [ServiceFlow](#service-flow)
 - [환경 및 버전](#4-환경-및-버전)
   - [Environment](#environment)
@@ -141,6 +142,11 @@ UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a56
 ## ERD설계
 링크 : https://www.erdcloud.com/d/XXKkK8m77SjPrCCTJ
 ![ERD](https://user-images.githubusercontent.com/96163167/167752934-2b7e9afc-e9be-48d5-9964-a32381997b4f.png)
+<br/>
+<br/>
+
+## 아키텍처 정의서
+![아키텍처 정의서](https://user-images.githubusercontent.com/96163167/167754666-2ca3d595-3d71-4f4a-bc16-7bcfdfc8c71a.png)
 <br/>
 <br/>
 
