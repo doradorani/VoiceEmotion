@@ -1,8 +1,8 @@
-# Nemotion 감정 기반 영화 추천 서비스 보이스 챗봇
+# Nemotion ![그룹 378](https://user-images.githubusercontent.com/96163167/167744810-3f1897f6-36a4-41eb-8877-9e409d9d1389.png){: width="5%" height="auto"} 감정 기반 영화 추천 서비스 보이스 챗봇
 > KT AIVLE SCHOOL 1기 AI 15조 - 부산 경남 1반 3조
 >
 > ## 개발자
-> 권윤경 김란희 임성현
+> __권윤경 김란희 임성현__
 >
 > ## 프로젝트 기간
 > 2022.04.11 ~ 2022.05.11
@@ -15,11 +15,14 @@
   - [선정배경 및 기대효과](#선정배경-및-기대효과)
   - [주요기술](#주요기술)
   - [UI](#UI)
-- [환경 및 버전](#3-환경-및-버전)
+- [아키텍처](#3-아키텍처)
+  - [ERD설계](#erd설계)
+  - [ServiceFlow](#service-flow)
+- [환경 및 버전](#4-환경-및-버전)
   - [Environment](#environment)
   - [Django](#django)
   - [Modeling](#modeling)
-- [팀원 역할](#팀원-역할)
+- [팀원 역할](#5.팀원-역할)
 <br/>
 <br/>
 
@@ -32,6 +35,7 @@
 pip install -r requirements.txt
 ```
 <br/>
+
 - [Backend](backend/) 실행하기
 
   Root directory 에서 실행됨
@@ -41,13 +45,15 @@ pip install -r requirements.txt
   3. Powershell `cd backend; python app.py`
 
 <br/>
+
 - django 실행하기
-  
-  1. pip install -r requirements.txt
-  2. python manage.py makemigrations
-  3. python manage.py migrate
-  4. python manage.py inspectdb
-  5. python manage.py runserver
+
+```bash
+python manage.py makemigrations
+python manage.py migrate
+python manage.py inspectdb
+python manage.py runserver
+```
 
 <br/>
 <br/>
@@ -55,20 +61,22 @@ pip install -r requirements.txt
 # 2. 개요
 ---
 ## 주제
-- 오늘 무슨 영화를 보고 싶은지 결정을 못하셨다면 니모션에게 '영화 추천해줘' 한 마디만 말해보세요.
-- 사용자의 음성이 성공적으로 입력되면 감정을 분석합니다.
-- 감정 분석 결과를 바탕으로 다양한 장르의 영화를 사용자에게 추천합니다.
+- 오늘 무슨 영화를 보고 싶은지 결정을 못하셨다면 니모션에게 __'영화 추천해줘'__ 한 마디만 말해보세요.
+- 사용자의 음성이 성공적으로 입력되면 __감정을 분석__ 합니다.
+- 감정 분석 결과를 바탕으로 다양한 장르의 __영화를 사용자에게 추천__ 합니다.
 - 기존의 영화 추천시스템과 달리 실시간으로 변화하는 감정을 이용하여 주관적인 사용자 취향을 즉각적으로 반영하여 만족도를 상승시켜 줍니다.
 <br/>
 <br/>
 
 ## 선정배경 및 기대효과
-- 전 세계 감정 분석 시장은 2018년 20억 9020만 달러에서 연평균 성장률 17.05%로 증가하여, 2023년에는 45억 9330만 달러에 이를 것으로 전망
-- 그 중 음성 분석은 2019년 4억 9700만 달러에서 연평균 성장률 14.9%로 증가하여, 2024년에는 9억 9300만 달러에 이를 것으로 전망
-> ![시장 규모](https://user-images.githubusercontent.com/96163167/167738929-4742fbc3-0321-4df9-9d9f-2d038dd4e08e.jpg)
+- 전 세계 감정 분석 시장은 2018년 20억 9020만 달러에서 __연평균 성장률 17.05%로 증가__ 하여, 2023년에는 45억 9330만 달러에 이를 것으로 전망
+- 그 중 음성 분석은 2019년 4억 9700만 달러에서 __연평균 성장률 14.9%로 증가__ 하여, 2024년에는 9억 9300만 달러에 이를 것으로 전망
+
+![시장 규모](https://user-images.githubusercontent.com/96163167/167738929-4742fbc3-0321-4df9-9d9f-2d038dd4e08e.jpg){: width="50%" height="auto"}
 
 - 넷플릭스, 왓차와 같은 플랫폼에서는 현재 인기가 많은 영화나 사용자가 봤던 영화를 기반으로 추천을 해주는 서비스를 제공
 - 감정기반 서비스를 확대하여 음악, 도서, 광고, 쇼핑, 여행, 음악과 같은 다양한 컨텐츠에 추천 시스템을 적용가능
+![image](https://user-images.githubusercontent.com/96163167/167739533-ad2591cb-b9c4-43c5-a4f3-6edd7cc0a74e.png){: width="30%" height="auto"}
 <br/>
 <br/>
 
@@ -98,13 +106,26 @@ CNN
 <br/>
 
 ## UI/UX
-> UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a5654f1-dc04/?fullscreen
+UI/UX 설계 도안 : https://xd.adobe.com/view/8957327b-6282-4145-bad6-ceb04a5654f1-dc04/?fullscreen
 ![메인화면](https://user-images.githubusercontent.com/96163167/167738410-f34e647d-6204-4872-ac94-06f42f450066.png)
 
 <br/>
 <br/>
 
-# 3. 환경 및 버전
+# 3. 아키텍처
+---
+## ERD설계
+![ERD](https://user-images.githubusercontent.com/96163167/167745564-f8707f72-1d02-446f-ae81-fd0ccf33e374.png){:width: "100%"}
+<br/>
+<br/>
+
+## Service Flow
+![서비스 플로우](https://user-images.githubusercontent.com/96163167/167745556-445d2220-2084-426c-8ce5-0e02f9e8103c.jpg){: width:"100%"}
+<br/>
+<br/>
+
+
+# 4. 환경 및 버전
 ---
 
 
@@ -121,13 +142,16 @@ CNN
 - Python 3.6
 - tensorflow
 - librosa
+<br/>
+<br/>
 
-## 팀원 역할
-> ![프로젝트 소개](https://user-images.githubusercontent.com/96163167/167740554-dba9db93-a288-4eec-ac20-837baba7ac5e.png)
+# 5. 팀원 역할
+---
+![프로젝트 소개](https://user-images.githubusercontent.com/96163167/167740554-dba9db93-a288-4eec-ac20-837baba7ac5e.png)
 
 | 이름                                        | 담당 직무                              |
 | ------------------------------------------- | --------------------------------------|
 | [권윤경](https://github.com/yoonkyeongkwon) | ML / AI Modeling                       |
-| [김란희](https://github.com/doradorani)     | Frontend / UI/UX Design         |         
+| [김란희](https://github.com/doradorani)     | Frontend / UI/UX Design                |         
 | [배성훈](https://github.com/fish895623)     | Additional Manpower                    |
 | [임성현](https://github.com/dlatjdgus95)    | Backend, Server Management             |
