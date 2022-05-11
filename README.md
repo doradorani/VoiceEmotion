@@ -1,8 +1,8 @@
 # ![그룹 378](https://user-images.githubusercontent.com/96163167/167744810-3f1897f6-36a4-41eb-8877-9e409d9d1389.png)Nemotion 감정 기반 영화 추천 서비스 보이스 챗봇
 > KT AIVLE SCHOOL 1기 AI 15조 - 부산 경남 1반 3조
 > 
-> 너의 감정 => Ne + Emotion = Nemotion
-> 
+>당신의 감정, Nemotion = Ne + Emotion
+>
 > ![썸네일](https://user-images.githubusercontent.com/96163167/167752978-c92ad4ef-b6c7-4408-8e76-253daaae9ef7.jpg)
 >
 > ## 개발자
