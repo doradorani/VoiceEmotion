@@ -1,6 +1,13 @@
 from django.http import HttpResponse
 from django.shortcuts import render
+from board.models import Movie
 
 
 def main(request) -> HttpResponse:
-    return render(request, 'main.html', {})
+    movie = Movie.objects.order_by('movieId')[:10]
+    context = {'movie':movie}
+    return render(request, 'main.html', context)
+
+def introduction(request) -> HttpResponse:
+    return render(request, 'introduction.html', {})
+

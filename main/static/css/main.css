@@ -17,7 +17,7 @@ body {
 
 #n_1 {
   right: 4px;
-  top: 328px;
+  top: 35%;
   position: absolute;
   font-family: "Jua", sans-serif;
   font-size: 124px;
@@ -26,7 +26,7 @@ body {
 
 #n_2 {
   right: 4px;
-  top: 463px;
+  top: 53%;
   position: absolute;
   width: 548px;
   text-align: right;
@@ -35,16 +35,8 @@ body {
   color: rgba(46, 45, 105, 1);
 }
 
-#m_char {
-  position: absolute;
-  top: -12px;
-  left: 116px;
-  width: 66px;
-  height: 49px;
-}
-
 #n_3 {
-  top: 520px;
+  top: 61%;
   right: 4px;
   position: absolute;
   font-weight: bold;
@@ -59,21 +51,22 @@ body {
   width: 100%;
   height: auto;
 }
-
 #NETFLIXlogo {
-  position: absolute;
-  top: 109%;
-  right: 46%;
-  width: 295px;
-  height: 92px;
+  background: #F5C518;
+    border-radius: 10px;
+    position: absolute;
+    top: 110%;
+    margin-left: 37%;
+    font-family: "Jua", sans-serif;
+    font-style: normal;
+    font-size: 100px;
+    padding: 0 1%;
 }
 
 #t_1 {
   position: absolute;
-  top: 107%;
-  right: 30%;
-  width: 292px;
-  height: 117px;
+  top: 110%;
+  margin-left: 53%;
   font-family: "Jua", sans-serif;
   font-style: normal;
   font-size: 100px;
@@ -93,11 +86,11 @@ a {
   text-decoration: none !important;
 }
 
-.TOP10-form .scrollcard {
+.scroll .scrollcard {
   display: relative;
 }
 
-.TOP10-form .scrollcard .card {
+.scroll .scrollcard .card {
   font-family: "Jua", sans-serif;
   display: inline-block;
   padding: 15px;
@@ -108,7 +101,7 @@ a {
   top: 1500px;
 }
 
-.TOP10-form .scrollcard .card > img {
+.scroll .scrollcard .card > img {
   width: 150px;
   height: auto;
   border-radius: 8px;
@@ -116,30 +109,129 @@ a {
   margin: 0 auto;
 }
 
-.TOP10-form .scrollcard .card h1 {
+.scroll .scrollcard .card h1 {
   font-size: 24px;
   color: #f16822;
   text-align: center;
 }
 
-.TOP10-form .scrollcard .card p {
+.scroll .scrollcard .card p {
   font-size: 16px;
   color: #000;
   text-align: center;
 }
 
-body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > button.slick-prev.slick-arrow {
+.scroll > div > button.slick-prev.slick-arrow {
   display: none !important;
 }
 
-body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > button.slick-next.slick-arrow {
+.scroll > div > button.slick-next.slick-arrow {
   display: none !important;
 }
 
-body > div > div.wrapper > section > div.TOP10-form > div.scroll > div > div {
+.scroll > div > div {
   transform: translateY(172px);
 }
 
-body > div > div.wrapper > section > div.TOP10-form > div.scroll > div {
-  min-height: 600px;
+
+.scrollwrapper{
+  margin-top: 13%;
+}
+
+
+
+@media screen and (max-width:800px) {
+  .wrapper{
+    left:-50%;
+    width: 219%;
+  }
+  .middlebackground-form{
+    width: 100%;
+    height: auto;
+    padding:20px;
+    top: auto;
+    bottom: 20px;
+  }
+  #n_1{
+    font-size: 75px;
+    top: 749px;
+  }
+  #n_2{
+    top: 829px;
+    font-size: 34px;
+  }
+  #n_3{
+    top: 865px;
+    font-size: 20px;
+  }
+  #NETFLIXlogo{
+    position: absolute;
+    top: 982px;
+    right: 49%;
+    font-size: 48px;
+  }
+
+  
+  .scroll > div > div > div > div{
+    width:90px;
+  }
+  #t_1 {
+    position: absolute;
+    top: 982px;
+    right: 11%;
+    font-size: 48px;
+  }
+}
+
+@media screen and (max-width:480px) {
+  #n_1{
+    font-size: 36px;
+    top: 505px;
+  }
+  #n_2{
+    top: 545px;
+    font-size: 19px;
+  }
+  #n_3{
+    top: 568px;
+    font-size: 10px;
+  }
+  #NETFLIXlogo{
+    top: 682px;
+    right: 46%;
+    font-size: 43px;
+  }
+
+  
+  #t_1 {
+    top: 682px;
+    right: -15%;
+    font-size: 43px;
+  }
+}
+@media screen and (max-width:320px) {
+  #n_1{
+    font-size: 29px;
+    top: 353px;
+  }
+  #n_2{
+    top: 385px;
+    font-size: 15px;
+  }
+  #n_3{
+    top: 403px;
+    font-size: 8px;
+  }
+  #NETFLIXlogo{
+    top: 505px;
+    right: 51%;
+    font-size: 32px;
+  }
+
+  
+  #t_1 {    
+    top: 506px;
+    right: -41%;
+    font-size: 32px;
+  }
 }

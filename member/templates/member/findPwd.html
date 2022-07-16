@@ -1,0 +1,6 @@
+<form method="post" action="{% url 'member:findPwd' %}">
+  {% csrf_token %}
+  이메일 : <input type="text" name="email"><br>
+  아이디 : <input type="text" name="username"><br>
+  <input type="submit" value="확인">
+</form>

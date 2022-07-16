@@ -1,11 +1,20 @@
-.container {
-    position:absolute;
-    top: 50%;
-    left: 33%;
-    width:30em;
-    height:18em;
-
+.wrapper{
+  width: 100%;
+  height: auto;
+  min-height: 90%;
+  padding-bottom: 0 10px;
 }
+
+.container{
+  width: 80%;
+  min-height: 100%;
+  border-radius: 59px 59px 26px 26px;
+  background: #F6F7FF;
+  margin: 20px auto;
+  align-content: center;
+  position: relative;
+}
+
 
 #speech {
     width: 300px;
@@ -18,5 +27,222 @@
     background-color: lightsalmon;
 }
 
+#recordStart{
+  width: 40px;
+  height: 58px;
+  border: none;
+  cursor: pointer;
+  right: 39%;
+    position: absolute;
+  background: transparent;
+}
+
+#recordStart .svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+}
+
+.mic{
+  width: 30px;
+  height: 34px;
+  margin: -22px -91%;
+  position: absolute;
+}
+
+.content{
+	width: 100%;
+	height: 100%;
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+  flex-direction: column;
+}
+
+.chat-box{
+	margin: 20px;
+}
+
+.chat-box input[type=text]{
+	width: 400px;
+	border-radius: 40px;
+	padding: 20px;
+	border: none;
+  font-size: 16px;
+  box-shadow: 1px 2px 10px -3px rgba(0,0,0,0.5);
+  color: #686868;
+}
+
+.chat-box input[type=text]:focus{
+  outline: none;
+}
+
+.chat-box button.active{
+  background-color: #FFD582;
+}
+
+#submit-chat{
+  width: 53px;
+  height: 59px;
+  background: none;
+  border: none;
+  margin-left: -50px;
+  vertical-align: top;
+  border-top-right-radius: 40px;
+  border-bottom-right-radius: 40px;
+  background-color: #9cb6ff;
+}
+
+.chat-box button:focus{
+  outline: none;
+  border: 1px solid white;
+}
+
+.chat-bubble{
+  width: fit-content;
+  box-shadow: 1px 2px 10px -3px rgba(0,0,0,0.5);
+  background-color: white;
+  border-radius: 30px;
+	padding: 2%;
+  margin: 7%;
+  animation: wiggle 1s ease-in-out;
+  display: grid;
+}
+
+.chat-bubble2{
+  width: fit-content;
+  box-shadow: 1px 2px 10px -3px rgba(0,0,0,0.5);
+  background-color: white;
+  border-radius: 30px;
+	padding: 2%;
+  margin: 0% 0% 0% 71%;
+  animation: wiggle 1s ease-in-out;
+}
+
+.chat-bubble3{
+  width: fit-content;
+  box-shadow: 1px 2px 10px -3px rgba(0,0,0,0.5);
+  background-color: white;
+  border-radius: 30px;
+	padding: 2%;
+  margin: 7%;
+  animation: wiggle 1s ease-in-out;
+  display: grid;
+}
+
+.chat-bubble p{
+    display: table-row;
+    margin: 0;
+    word-wrap: break-word;
+}
+.chat-bubble2 p{
+  margin: 0 6%;
+  word-wrap: break-word;
+}
+.chat-bubble2 .image{
+  object-fit: cover;
+}
+
+.chat-bubble2 .image.user{
+    content: url(https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZPhHNfZexB5B2SGcucNjrw-4LgcBNH-s_KlRb__cZnOMu1nJ58A);
+    float: right;
+    width: 48px;
+    height: 48px;
+    margin-right: -89%;
+    margin-top: -61%;
+    border-radius: 100%;
+    border: 3px solid white;
+}
+
+.chat-bubble .image.bot,
+.chat-bubble3 .image.bot{
+  content: url(../character.png);
+  height: auto;
+  margin-left: -39px;
+  margin-top: -44px;
+  margin-bottom: 3%;
+  width: 66px;
+}
+
+@keyframes wiggle {
+  20% {
+    transform: rotate(1deg);
+  }
+  
+  40% {
+    transform: rotate(-1deg);
+  }
+  
+  70% {
+    transform: rotate(.5deg);
+  }
+  
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+#chat-contents{
+  overflow-y: scroll;
+  -ms-overflow-style: none;
+  width: 54%;
+  flex-direction: column-reverse;
+}
+
+#chat-contents::-webkit-scrollbar{
+  display:none;
+}
 
 
+#recordStart > svg > path{
+  fill: #9cb6ff;
+}
+
+.poster{
+  width: 273px;
+  height: auto;
+}
+
+
+@media screen and (max-width:800px) {
+  .chat-bubble p,
+  .chat-bubble2 p{
+    font-size: 15px;
+  }
+  .chat-bubble .image.bot{
+    margin-left: -23px;
+    margin-top: -27px;
+    margin-bottom: 5%;
+    width:45px;
+  }
+  
+  .mic{
+    margin: -22px 27%;
+  }
+
+  .chat-box input[type=text] {
+    width: 296px;
+  }
+  .chat-bubble2 .image.user{
+    width: 35px;
+    height: 35px;
+    margin-right: -93%;
+    margin-top: -66%;
+    border-radius: 80%;
+  }
+
+}
+@media screen and (max-width:480px) {
+  .chat-bubble .image.bot {
+    margin-left: -15px;
+    margin-top: -16px;
+  }
+  .mic {
+    margin: -22px 77%;
+  }
+  .chat-bubble2 .image.user {
+
+  }
+}

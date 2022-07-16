@@ -3,16 +3,20 @@
 <!-- End: Navigation Clean -->
 <div class="wrapper" style="flex-wrap: wrap">
   <div class="sidebar">
-    <h2>Mypage</h2>
+    <h2>My</h2>
+    <h2>Page</h2>
     <ul>
       <li>
-        <a href="{% url 'board:mypage' %}"><i class="nav-link"></i>내가 쓴 글</a>
+        <a href="{% url 'board:mypage' %}"><i class="nav-link"></i>나의 문의사항</a>
       </li>
       <li>
-        <a href="{% url 'board:change_password' %}"><i class="nav-link"></i>회원정보수정</a>
+        <a href="{% url 'board:change_password' %}"><i class="nav-link"></i>비밀번호 수정</a>
       </li>
       <li>
-        <a href="{#}"><i class="nav-link"></i>내가 본 영화 목록</a>
+        <a href="{% url 'board:review' %}"><i class="nav-link"></i>영화 리뷰하기</a>
+      </li>
+      <li>
+        <a href="{% url 'board:withdraw' %}"><i class="nav-link"></i>회원탈퇴</a>
       </li>
     </ul>
   </div>
@@ -20,7 +24,7 @@
     <div class="container">
       <!-- Start: Login Form Clean -->
       <section class="login-clean">
-        <h2 class="visually-hidden">회원 탈퇴</h2>
+        <h1 class="visually-hidden">회원 탈퇴</h1>
         <form method="post">
           {% csrf_token %} {% include "form_errors.html" %}
           <div class="illustration"><i class="icon ion-ios-navigate"></i></div>

@@ -17,7 +17,7 @@
 
 .intro > h1{
     text-align: center;
-    padding: 5%;
+    padding: 5% 5% 0% 5%;
     font-size: 50px;
 }
 
@@ -43,29 +43,30 @@
     font-weight: 200;
     font-size: 32px;
 }
-.text > a{
-    right: 6%;
-    position: absolute;
+.text > div:nth-child(4){
+  position: absolute;
+    left: 81%;
+    padding: 2% 0%;
 }
 
-.text > div:nth-child(7){
+.cardmy-3{
     text-align: left;
     padding: 0 5%;
 }
 
 .text > div:nth-child(3) > div{
-    width: 100%;
-    min-height: 50%;
-    font-weight: lighter;
+  width: 90%;
+  min-height: 50%;
+  font-weight: lighter;
+  margin: 0% 5%;
+  border-radius: 1%;
 }
 
 .text > div:nth-child(5){
-    padding: 5%;
+  padding: 5% 5% 0 5%;
 }
 
-.text > div:nth-child(6) > div > div{
-    padding: 0 5%;
-}
+
 
 .text > form > div{
     padding: 5%;
@@ -73,6 +74,49 @@
 
 .text > form > input.btn.btn-primary{
     bottom: 3%;
-    right: 5%;
+    right: 9%;
     position: absolute;
+    border: none;
+    font-family: "Jua", sans-serif;
+    background-color: #e1e3fe;
+    border-radius: 10%;
+    
+}
+
+.card.my-3 > div{
+  background: #fff !important;
+  border-radius: 3%;
+}
+
+.text > div:nth-child(4) > a:nth-child(1),
+.text > div:nth-child(4) > a:nth-child(2){
+  background-color: #e1e3fe;
+  padding: 0.5%;
+  border-radius: 17%;
+}
+
+.text{
+  background-color: #9bb3db;
+  width: 90%;
+  margin: 0 5%;
+  border-radius: 3%;
+}
+.cardmy-3 > div > div > span:nth-child(2){
+ padding: 0 5%;
+}
+
+.text > form > div > p{
+ margin: 1% 0;
+}
+.text > form > div > textarea{
+ width: 90%;
+}
+
+.date{
+      font-size: 1.3rem !important;
+      margin: 0 -16%;
+}
+
+.wrapper > div > div > div > div.intro > div > a{
+  display: none;
 }

@@ -4,13 +4,17 @@
 <link rel="stylesheet" href="{% static 'css/mypage.css' %}? after" type="text/css" />
 <div class="wrapper">
   <div class="sidebar">
-    <h2>Mypage</h2>
+    <h2>My</h2>
+    <h2>Page</h2>
     <ul>
       <li>
-        <a href="{% url 'board:change_password' %}"><i class="nav-link"></i>회원정보수정</a>
+        <a href="{% url 'board:mypage' %}"><i class="nav-link"></i>나의 문의사항</a>
       </li>
       <li>
-        <a href="{#}"><i class="nav-link"></i>내가 본 영화 목록</a>
+        <a href="{% url 'board:change_password' %}"><i class="nav-link"></i>비밀번호 수정</a>
+      </li>
+      <li>
+        <a href="{% url 'board:review' %}"><i class="nav-link"></i>영화 리뷰하기</a>
       </li>
       <li>
         <a href="{% url 'board:withdraw' %}"><i class="nav-link"></i>회원탈퇴</a>
@@ -19,23 +23,27 @@
   </div>
   <div class="main_content">
     <div class="container">
+      <h1>나의 문의사항</h1>
       <div class="table-responsive">
         <table class="table">
           <thead>
             <tr>
-              <th>순번</th>
               <th>제목</th>
-              <th>작성자</th>
               <th>작성일</th>
+              <th>응답여부</th>
             </tr>
           </thead>
           <tbody>
             {% for data in info %}
             <tr>
-              <td>{{ data.id}}</td>
               <td><a href="../detail/{{ data.id}}">{{ data.title}}</a></td>
-              <td>{{ data.user}}</td>
-              <td>{{ data.date}}</td>
+              <td>{{ data.date | date:'Y년 m월 d일 a H:i'}}</td>
+              {% comment %} {% if data.user == 'admin' %}
+                <td>예</td>
+              {% else %}
+                <td>아니오</td>
+              {% endif %} {% endcomment %}
+              <td>{{data.user}}</td>
             </tr>
             {% endfor%}
           </tbody>
@@ -48,7 +56,7 @@
           </li>
           {% for i in page_range %}
           <li class="page-item">
-            <a class="page-link" href='{% url "board:board" %}?page={{ i }}'>{{ i }}</a>
+            <a class="page-link" href='{% url "board:mypage" %}?page={{ i }}'>{{ i }}</a>
           </li>
           {% endfor %}
           <li class="page-item">

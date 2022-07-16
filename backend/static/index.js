@@ -10,18 +10,20 @@
  TypeError - audio: false, video: false
  post_data - post data to flask api
  *********************************/
-let post_address = "/receive";
-let delay = 2000;
-let save_file_format = `${new Date().getTime()}.wav`;
-let constraintObj = {audio: true};
-
+let post_address = "/receive/emotion";
+let delay = 7000;
+let save_file_format = `${new Date().getTime()}.webm`;
+let constraintObj = { audio: true };
 
 if (navigator.mediaDevices === undefined) {
   navigator.mediaDevices = {};
   navigator.mediaDevices.getUserMedia = function (constraintObj) {
-    let getUserMedia = navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
+    let getUserMedia =
+      navigator.webkitGetUserMedia || navigator.mozGetUserMedia;
     if (!getUserMedia) {
-      return Promise.reject(new Error("getUserMedia is not implemented in this browser"));
+      return Promise.reject(
+        new Error("getUserMedia is not implemented in this browser")
+      );
     }
     return new Promise(function (resolve, reject) {
       getUserMedia.call(navigator, constraintObj, resolve, reject);
@@ -33,7 +35,7 @@ if (navigator.mediaDevices === undefined) {
     .then((devices) => {
       devices.forEach((device) => {
         console.log(device.kind.toUpperCase(), device.label);
-      })
+      });
     })
     .catch((err) => {
       console.log(err.name, err.message);
@@ -43,7 +45,7 @@ if (navigator.mediaDevices === undefined) {
 navigator.mediaDevices
   .getUserMedia(constraintObj)
   .then(function (mediaStreamObj) {
-    let start = document.getElementById('recordStart');
+    let start = document.getElementById("recordStart");
     let mediaRecorder = new MediaRecorder(mediaStreamObj);
     let chunks = [];
 
@@ -53,16 +55,16 @@ navigator.mediaDevices
       setTimeout(() => {
         mediaRecorder.stop();
         console.log(mediaRecorder.state);
-      }, delay)
-    })
+      }, delay);
+    });
     mediaRecorder.ondataavailable = function (ev) {
       chunks.push(ev.data);
-    }
+    };
     mediaRecorder.onstop = () => {
-      let blob = new Blob(chunks, {'type': 'audio/wav;'});
-      post_data(blob)
+      let blob = new Blob(chunks, { type: "audio/webm;" });
+      post_data(blob);
       chunks = [];
-    }
+    };
   })
   .catch(function (err) {
     console.log(err.name, err.message);

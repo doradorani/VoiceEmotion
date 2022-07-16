@@ -1,0 +1,50 @@
+{% extends "base.html" %} {% load static %} {% block content %}
+<!-- Start: Article Clean -->
+<link rel="stylesheet" href="{% static 'css/reviewdetail.css' %}? after" type="text/css" />
+<div class="wrapper">
+  <div class="container">
+    <div class="row">
+      <div class="content">
+        <!-- Start: Intro -->
+        <div class="intro">
+          <h1 class="text-center">{{ movie.title }}</h1>
+          <!-- Start: Date and Author -->
+          <p class="text-center">
+            <span class="text"> 평점 : {{ rating_avg.rating__avg |floatformat:-1  }} / 5.0 </span>
+          </p>
+          <!-- End: Date and Author -->
+          <div style="text-align: center">
+            {% if movie.img is not None %}
+            <img src={{ movie.img }}>
+            <br />
+            <br />
+            {% endif %}
+          </div>
+        </div>
+        <!-- End: Intro -->
+        <!-- Start: Text -->
+          <div>
+            <p>별점</p>
+          </div>
+          <form method="POST" class="my-3" onsubmit="return confirm('별점이 저장되었습니다.')">
+            {% csrf_token %} {% include "form_errors.html" %}
+            <div>
+              <select name="rating">
+                <option value='' selected>-- 별점 --</option>
+                <option value=0>☆☆☆☆☆</option>
+                <option value=1>★☆☆☆☆</option>
+                <option value=2>★★☆☆☆</option>
+                <option value=3>★★★☆☆</option>
+                <option value=4>★★★★☆</option>
+                <option value=5>★★★★★</option>
+              </select>
+            </div>
+            <input type="submit" value="등록" class="btn btn-primary" />
+          </form>
+        </div>
+        <!-- End: Text -->
+      </div>
+    </div>
+  </div>
+<!-- End: Article Clean -->
+{% endblock %}
